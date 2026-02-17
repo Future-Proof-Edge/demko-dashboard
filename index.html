@@ -238,7 +238,7 @@
             padding: 1.1rem 1.2rem;
             transition: all 0.15s ease;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
         .card::before {
             content: '';
@@ -247,6 +247,7 @@
             left: 0;
             width: 3px;
             height: 100%;
+            border-radius: 3px 0 0 3px;
         }
         .card:hover {
             border-color: #ccc;
@@ -257,7 +258,8 @@
         .card-high::before { background: #e67e22; }
         .card-medium::before { background: #3498db; }
         .card-low::before { background: #ccc; }
-        .card-done { opacity: 0.65; }
+        .card-done { opacity: 0.7; }
+        .card-done .unlocked-chain { opacity: 1; }
         .card-done::before { background: #27ae60; }
         .card-done h3 { text-decoration: line-through; color: #888; }
         .dot-done { background: #27ae60; }
@@ -380,16 +382,17 @@
         .chain-arrow {
             display: inline-flex;
             align-items: center;
-            gap: 0.2rem;
-            font-size: 0.55rem;
-            font-weight: 600;
-            color: #27ae60;
-            background: #f0faf3;
-            padding: 0.12rem 0.45rem;
-            border-radius: 4px;
+            gap: 0.25rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #1e8449;
+            background: #e8f8ee;
+            padding: 0.18rem 0.55rem;
+            border-radius: 5px;
             white-space: nowrap;
+            border: 1px solid #c3e6cb;
         }
-        .chain-arrow .arr { font-size: 0.65rem; }
+        .chain-arrow .arr { font-size: 0.75rem; }
 
         /* LEADERBOARD TOGGLE */
         .toggle-btn {
@@ -511,20 +514,20 @@
                 <div class="lbl">Pending</div>
             </div>
             <div class="topbar-stat">
-                <div class="val val-done">16</div>
+                <div class="val val-done">17</div>
                 <div class="lbl">Done</div>
             </div>
             <div class="topbar-stat">
-                <div class="val val-total">22</div>
+                <div class="val val-total">23</div>
                 <div class="lbl">Total</div>
             </div>
             <div class="topbar-divider"></div>
             <div class="topbar-stat">
-                <div class="val val-saved">50.5h</div>
+                <div class="val val-saved">51h</div>
                 <div class="lbl">Hrs Saved</div>
             </div>
             <div class="topbar-stat">
-                <div class="val val-saved">$12.6k</div>
+                <div class="val val-saved">$12.8k</div>
                 <div class="lbl">@ $250/hr</div>
             </div>
         </div>
@@ -543,12 +546,32 @@
         <div class="section-header">
             <div class="section-dot dot-done"></div>
             <h2>Done</h2>
-            <span class="count-badge">16</span>
+            <span class="count-badge">17</span>
             <button class="toggle-btn" id="leaderboard-toggle" onclick="toggleLeaderboard()">Leaderboard</button>
             <div class="section-line"></div>
         </div>
 
         <div class="card-grid" id="done-grid">
+            <div class="card card-done" data-hours="0.5">
+                <div class="card-top">
+                    <h3>Dashboard Deploy Sync Protocol</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~0.5 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">Cloned demko-dashboard deploy repo, synced kanban_dashboard.html &rarr; index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-infra">Infra</span>
+                        <span class="tag tag-protocol">Protocol</span>
+                    </div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> All future dashboard deploys</span>
+                </div>
+            </div>
+
             <div class="card card-done" data-hours="0.5">
                 <div class="card-top">
                     <h3>3D Scoring Framework</h3>
