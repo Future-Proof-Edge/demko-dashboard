@@ -1453,6 +1453,28 @@ var EMBEDDED_DATA = {
       "action_url": null
     },
     {
+      "id": "fix-invalid-settings-files",
+      "title": "Fix Claude Code Invalid Settings Files (4 errors)",
+      "description": "Diagnosed and fixed all invalid Claude Code settings files flagged by /doctor. 3 issue types across 8 files: (A) 6 invalid top-level keys in project settings.json (permissionMode, model, etc), (B) heredoc garbage accidentally saved as Bash permissions in 2 worktree settings, (C) invalid SessionStart/PreCompact hook events in 4 files. All cleaned. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
+      "tags": [
+        "debugging",
+        "cleanup"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
+    },
+    {
       "id": "openrouter-evaluation",
       "title": "Evaluate OpenRouter as Unified API Layer",
       "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
