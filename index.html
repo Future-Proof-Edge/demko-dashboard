@@ -980,7 +980,7 @@ function render() {
         html += '<div class="priority-banner"><div class="icon">!</div><div class="text">' + data.banners.priority + '</div></div>';
     }
     if (data.banners && data.banners.parallel) {
-        html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel</strong> on claude.ai. Click &ldquo;Launch&rdquo; to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently.</div></div>';
+        html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel.</strong> Click &ldquo;Launch&rdquo; to copy a Claude Code CLI command. Paste (Ctrl+V) in any terminal and hit Enter. Each runs independently.</div></div>';
     }
 
     // Sections
@@ -1214,11 +1214,12 @@ function clearPAT() {
 function launchTask(btn, cardId) {
     var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
     if (!card || !card.launch_prompt) return;
-    navigator.clipboard.writeText(card.launch_prompt).then(function() {
-        showToast('Prompt copied! Paste in the new Claude tab.');
+    var escaped = card.launch_prompt.replace(/"/g, '\\"');
+    var cmd = 'cd "C:\\Demko_Local_Project\\Demko Meta OS 2" && claude -p "' + escaped + '"';
+    navigator.clipboard.writeText(cmd).then(function() {
+        showToast('CLI command copied! Paste in any terminal.');
         btn.classList.add('launched');
         btn.innerHTML = '&#10003; Copied';
-        window.open('https://claude.ai/new', '_blank');
     });
 }
 
