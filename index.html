@@ -45,7 +45,7 @@
             background: #f0eeeb; color: #888; padding: 0.3rem 0.8rem;
             border-radius: 6px; font-size: 0.72rem; font-weight: 600;
         }
-        .topbar-right { display: flex; align-items: center; gap: 1.5rem; }
+        .topbar-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
         .topbar-stat { text-align: center; }
         .topbar-stat .val { font-size: 1.4rem; font-weight: 800; line-height: 1; }
         .topbar-stat .lbl {
@@ -57,7 +57,20 @@
         .val-done { color: #27ae60; }
         .val-total { color: #1a1a1a; }
         .val-saved { color: #2563eb; }
+        .val-today { color: #27ae60; }
+        .val-streak { color: #7c3aed; }
         .topbar-divider { width: 1px; height: 28px; background: #e8e5e0; }
+
+        /* VELOCITY SPARKLINE */
+        .vel-sparkline {
+            display: inline-flex; align-items: flex-end; gap: 2px; height: 20px;
+            vertical-align: middle;
+        }
+        .vel-bar {
+            width: 6px; border-radius: 2px 2px 0 0; min-height: 2px;
+            background: #2563eb; transition: height 0.3s;
+        }
+        .vel-bar.today { background: #27ae60; }
 
         /* SETTINGS GEAR */
         .settings-gear {
@@ -179,7 +192,7 @@
 
         .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
         .card h3 { font-size: 0.88rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; padding-left: 0.6rem; }
-        .card-chips { display: flex; gap: 0.4rem; flex-shrink: 0; align-items: center; }
+        .card-chips { display: flex; gap: 0.4rem; flex-shrink: 0; align-items: center; flex-wrap: wrap; }
 
         .priority-chip {
             padding: 0.15rem 0.5rem; border-radius: 5px; font-size: 0.58rem;
@@ -207,6 +220,21 @@
             background: #edf8f0; color: #27ae60; padding: 0.2rem 0.6rem;
             border-radius: 5px; font-size: 0.58rem; font-weight: 700; white-space: nowrap;
         }
+
+        /* DUE DATE CHIPS */
+        .due-chip {
+            display: inline-flex; align-items: center; gap: 0.2rem;
+            padding: 0.15rem 0.5rem; border-radius: 5px; font-size: 0.58rem;
+            font-weight: 700; white-space: nowrap;
+        }
+        .due-overdue { background: #fdf0f0; color: #dc3545; border: 1px solid #f5c6cb; animation: pulse-border 2s infinite; }
+        @keyframes pulse-border { 0%,100% { border-color: #f5c6cb; } 50% { border-color: #dc3545; } }
+        .due-today { background: #fff8ed; color: #e67e22; }
+        .due-tomorrow { background: #fffde8; color: #b8860b; }
+        .due-week { background: #edf4fc; color: #2563eb; }
+        .due-later { background: #f0eeeb; color: #777; }
+        .due-done { background: #edf8f0; color: #27ae60; }
+
         .card-desc {
             font-size: 0.78rem; color: #777; line-height: 1.55;
             padding-left: 0.6rem; margin-bottom: 0.7rem;
@@ -275,6 +303,30 @@
             padding: 0.25rem 0.6rem; border-radius: 5px; font-size: 0.6rem;
             font-weight: 700; white-space: nowrap; font-family: 'Inter', sans-serif;
             text-transform: uppercase; letter-spacing: 0.03em;
+        }
+
+        /* ACTIONABLE BUTTON (replaces inert needs-user badge when action_url exists) */
+        .action-btn {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            background: #e67e22; color: #fff; border: none;
+            padding: 0.3rem 0.7rem; border-radius: 5px; font-size: 0.6rem;
+            font-weight: 700; white-space: nowrap; font-family: 'Inter', sans-serif;
+            text-transform: uppercase; letter-spacing: 0.03em;
+            text-decoration: none; cursor: pointer; transition: all 0.15s;
+        }
+        .action-btn:hover { background: #d35400; transform: scale(1.03); }
+
+        /* MICRO-STEPS in description */
+        .micro-steps {
+            list-style: none; padding: 0; margin: 0.3rem 0 0 0;
+        }
+        .micro-steps li {
+            font-size: 0.72rem; color: #555; line-height: 1.6;
+            padding-left: 0.2rem;
+        }
+        .micro-steps li::before {
+            content: attr(data-step); font-weight: 800; color: #e67e22;
+            margin-right: 0.3rem;
         }
 
         /* COMPLETE MODAL */
@@ -418,6 +470,53 @@
         }
         .done-expander:hover { background: #e8e5e0; color: #555; }
 
+        /* TODAY FILTER BUTTON */
+        .today-btn {
+            background: #f0eeeb; border: 1px solid #e8e5e0;
+            padding: 0.2rem 0.7rem; border-radius: 6px; font-size: 0.6rem;
+            font-weight: 700; color: #777; cursor: pointer; transition: all 0.15s;
+            font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .today-btn:hover { background: #fef5ec; color: #e67e22; border-color: #f5dcc3; }
+        .today-btn.active { background: #e67e22; color: #fff; border-color: #e67e22; }
+
+        /* TIMELINE VIEW */
+        .timeline-view { display: none; }
+        .timeline-view.active { display: block; }
+        .kanban-view.hidden { display: none; }
+
+        .velocity-summary {
+            display: flex; align-items: center; gap: 1.5rem;
+            background: #fff; border: 1px solid #e8e5e0; border-radius: 10px;
+            padding: 1rem 1.5rem; margin-bottom: 1.5rem;
+        }
+        .vel-stat { text-align: center; }
+        .vel-stat .vel-val { font-size: 1.3rem; font-weight: 800; line-height: 1; }
+        .vel-stat .vel-lbl {
+            font-size: 0.6rem; text-transform: uppercase;
+            letter-spacing: 0.06em; color: #999; font-weight: 600;
+        }
+        .vel-stat .vel-val-green { color: #27ae60; }
+        .vel-stat .vel-val-blue { color: #2563eb; }
+
+        .day-group { margin-bottom: 2rem; }
+        .day-header {
+            display: flex; align-items: center; gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .day-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: #27ae60; flex-shrink: 0;
+        }
+        .day-header h3 {
+            font-size: 0.82rem; font-weight: 700; color: #555;
+        }
+        .day-count {
+            background: #edf8f0; color: #27ae60; padding: 0.15rem 0.55rem;
+            border-radius: 10px; font-size: 0.68rem; font-weight: 700;
+        }
+        .day-line { flex: 1; height: 1px; background: #e8e5e0; }
+
         /* FOOTER */
         .footer {
             text-align: center; padding: 2rem 0 1rem; color: #bbb;
@@ -433,9 +532,11 @@
 
         @media (max-width: 768px) {
             .topbar { padding: 1rem; flex-direction: column; gap: 0.8rem; }
-            .topbar-search { max-width: none; margin: 0; width: 100%; }
+            .topbar-search { max-width: none; margin: 0; width: 100%; flex-wrap: wrap; }
+            .topbar-right { justify-content: center; }
             .main { padding: 1.5rem 1rem; }
             .card-grid { grid-template-columns: 1fr; }
+            .velocity-summary { flex-wrap: wrap; gap: 1rem; }
         }
     </style>
 </head>
@@ -538,7 +639,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "dashboard-deploy-sync",
@@ -558,7 +663,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "dashboard"
+      "theme": "dashboard",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "3d-scoring-framework",
@@ -575,7 +684,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "e2e-stress-test",
@@ -595,7 +708,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "flo-health-instructions",
@@ -612,7 +729,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "flo-health"
+      "theme": "flo-health",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "eod-handoff-protocol",
@@ -629,7 +750,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "tighten-kill-filter",
@@ -646,7 +771,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "pipelines"
+      "theme": "pipelines",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "p0-hooks-layer",
@@ -667,7 +796,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "p1-skills-layer",
@@ -686,7 +819,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "p3-context-management",
@@ -705,7 +842,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "p4-custom-subagents",
@@ -727,7 +868,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "ci-header-validation",
@@ -744,7 +889,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "fix-claude-md",
@@ -761,7 +910,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "organize-root-dir",
@@ -780,7 +933,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "deploy-identity-rules",
@@ -797,7 +954,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "github-cli-auth",
@@ -816,7 +977,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "notebooklm-transcript-loop",
@@ -835,7 +1000,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "pipelines"
+      "theme": "pipelines",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "profile-sync-automation",
@@ -854,7 +1023,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "pipelines"
+      "theme": "pipelines",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "understand-claude-v18-evolution",
@@ -875,7 +1048,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "configure-mcp-api-keys",
@@ -893,7 +1070,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "globalize-mcp-servers",
@@ -916,12 +1097,16 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": "Fix MCP server scope in Claude Code. Current state: .claude.json has 'mcpServers': {} at global level but gdrive is only configured under project 'C:/Demko_Local_Project/Demko Meta OS 2'. Steps: (1) Copy gdrive MCP config to global mcpServers section in .claude.json, (2) Verify gdrive_mcp_server.py works from any directory (uses absolute paths — should be fine), (3) Add N8n MCP server if available, (4) Test: launch Claude Code from home dir, verify gdrive tools appear in /mcp, (5) Document which MCPs are cloud-hosted (Gamma via claude.ai) vs local (gdrive via stdio).",
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "install-agent-sdk-plugin",
       "title": "Install Agent SDK Dev Plugin",
-      "description": "Directly relevant to multi-agent architecture. Available in Desktop plugin browser. Click Plugins in sidebar, find Agent SDK dev, install.",
+      "description": "Step 1: Open Claude Desktop\nStep 2: Click Plugins in sidebar\nStep 3: Find 'Agent SDK Dev'\nStep 4: Click Install\n\nThat's it — ~1 min.",
       "column": "critical",
       "priority": "high",
       "hours_saved": null,
@@ -933,12 +1118,16 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": "Desktop UI click",
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     },
     {
       "id": "install-chrome-extension",
       "title": "Install Claude in Chrome Extension",
-      "description": "Use work/separate Chrome profile — NOT personal account. Enables browser automation from Claude Code.",
+      "description": "Step 1: Open Chrome (work profile)\nStep 2: Go to Chrome Web Store\nStep 3: Search 'Claude'\nStep 4: Click 'Add to Chrome'\n\nUse work/separate Chrome profile — NOT personal account. Enables browser automation from Claude Code. ~2 min.",
       "column": "critical",
       "priority": "high",
       "hours_saved": null,
@@ -950,7 +1139,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": "Chrome UI click",
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": "https://chromewebstore.google.com/search/claude"
     },
     {
       "id": "launch-claude-code-cli",
@@ -969,7 +1162,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": "Test in browser",
       "launch_prompt": null,
-      "theme": "dashboard"
+      "theme": "dashboard",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "memory-architecture-split",
@@ -991,7 +1188,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "build-in-public-autopost",
@@ -1012,7 +1213,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": "Needs Mike: X API keys",
       "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
-      "theme": "content-x"
+      "theme": "content-x",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     },
     {
       "id": "frontier-signals-pipeline",
@@ -1032,7 +1237,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": "Needs Mike: builder list",
       "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing.",
-      "theme": "content-x"
+      "theme": "content-x",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     },
     {
       "id": "build-in-public-flywheel",
@@ -1053,24 +1262,37 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": "Implement the 5 CUV upgrades for build_in_public.py in C:\\Demko_Local_Project\\Demko Meta OS 2: U1 Add engagement window reminder (post within 30 min of high-traffic times). U2 Switch from long threads to constellation format (standalone tweets + quote-tweets). U3 Inject streak counter, day number, and time-saved stats into tweet opener. U4 After posting, generate an engagement hit list of 5 accounts to reply to. U5 Create blog/index.html with navigation across all blog posts. Test with --dry-run flag. Commit when done.",
-      "theme": "content-x"
+      "theme": "content-x",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "gcp-domain-delegation",
-      "title": "GCP Domain-Wide Delegation",
-      "description": "Enables Google Drive browsing and searching. Currently limited to reading by direct Doc ID only.",
-      "column": "pending",
-      "priority": "medium",
-      "hours_saved": null,
-      "time_estimate": "~15 min",
+      "title": "Google Drive Full Access (OAuth2 + Write Tools)",
+      "description": "REPLACED domain-wide delegation approach (requires Workspace admin, doesn't work for personal accounts) with OAuth2 user consent flow. One-time browser auth saves token.json with full Drive/Docs/Sheets read+write access. MCP server rewritten v2.0: added gdrive_create_doc, gdrive_upload_file, gdrive_create_folder tools. Falls back to service account (readonly) if token missing. No more per-folder sharing. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
       "tags": [
-        "infra"
+        "infra",
+        "setup"
       ],
       "overnight": false,
-      "chains": [],
-      "needs_user": "Needs GCP Admin Console",
+      "chains": [
+        "All Google Drive operations",
+        "Mobile Capture Pipeline",
+        "NotebookLM Transcript Loop"
+      ],
+      "needs_user": null,
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "x-engagement-tracker",
@@ -1089,7 +1311,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": "Needs Mike: feedback",
       "launch_prompt": null,
-      "theme": "content-x"
+      "theme": "content-x",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     },
     {
       "id": "origin-story-narrative",
@@ -1109,7 +1335,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": "Needs Mike: pick format",
       "launch_prompt": null,
-      "theme": "content-x"
+      "theme": "content-x",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     },
     {
       "id": "auto-ingest-system",
@@ -1126,7 +1356,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": "Build auto_ingest.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report.",
-      "theme": "pipelines"
+      "theme": "pipelines",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "mobile-capture-pipeline",
@@ -1143,7 +1377,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": "Needs phone + Drive",
       "launch_prompt": null,
-      "theme": "setup"
+      "theme": "setup",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     },
     {
       "id": "interactive-dashboard-rewrite",
@@ -1163,7 +1401,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "dashboard"
+      "theme": "dashboard",
+      "created_date": "2026-02-16",
+      "due_date": null,
+      "completed_date": "2026-02-16",
+      "action_url": null
     },
     {
       "id": "done-section-collapse",
@@ -1180,7 +1422,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
-      "theme": "dashboard"
+      "theme": "dashboard",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "cuv-gate-implementation",
@@ -1200,7 +1446,11 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": "Implement 3-layer MEMORY.md write protection in C:\\Demko_Local_Project\\Demko Meta OS 2: (1) In CLAUDE.md Pre-Flight Gate section, reclassify MEMORY.md writes as TIER 2 and CLAUDE.md writes as TIER 3. (2) Create a PreToolUse advisory hook script (memory-cuv-gate.sh) that warns when Edit or Write targets *MEMORY.md or *CLAUDE.md files. (3) Add a self-referential protection rule in the MEMORY.md header. Reference red_team_input_memory_cuv_gate.md for full spec. Prerequisite: LEARNINGS.md must exist first. Commit when done.",
-      "theme": "meta-os"
+      "theme": "meta-os",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "openrouter-evaluation",
@@ -1218,7 +1468,11 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": "Research OpenRouter as a unified API routing layer. Compare: (1) Current direct-to-provider costs (Anthropic, OpenAI, DeepSeek, Gemini) vs OpenRouter 1% markup. (2) Feature comparison: caching, auto-fallback, rate limit handling, model availability. (3) Evaluate if red_team_review.py multi-model calls would simplify with OpenRouter's OpenAI-compatible endpoint. (4) Write a recommendation memo to C:\\Demko_Local_Project\\Demko Meta OS 2\\research\\openrouter_evaluation.md with a go/no-go verdict and migration plan if go.",
-      "theme": "research"
+      "theme": "research",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     }
   ]
 };
@@ -1228,6 +1482,35 @@ var kanbanData = null;
 var fileSha = null;
 var completingCardId = null;
 var leaderboardActive = false;
+var viewMode = 'kanban'; // 'kanban' or 'timeline'
+var todayFilterActive = false;
+
+// ── Utilities ───────────────────────────────────────────────────────────
+function todayISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+function daysBetween(iso1, iso2) {
+    var d1 = new Date(iso1 + 'T00:00:00');
+    var d2 = new Date(iso2 + 'T00:00:00');
+    return Math.round((d2 - d1) / 86400000);
+}
+
+function formatMonthDay(isoStr) {
+    if (!isoStr) return '';
+    var parts = isoStr.split('-');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[parseInt(parts[1])-1] + ' ' + parseInt(parts[2]);
+}
+
+function formatDayLong(isoStr) {
+    if (!isoStr) return '';
+    var d = new Date(isoStr + 'T12:00:00');
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
 
 // ── Init ────────────────────────────────────────────────────────────────
 async function init() {
@@ -1270,6 +1553,151 @@ function setLoading(pct) {
     document.getElementById('loading-bar').style.width = pct + '%';
 }
 
+// ── Velocity & Streak ───────────────────────────────────────────────────
+function computeVelocityStats(cards) {
+    var today = todayISO();
+    var counts = {};
+    cards.forEach(function(c) {
+        if (c.completed_date) {
+            counts[c.completed_date] = (counts[c.completed_date] || 0) + 1;
+        }
+    });
+
+    var todayCount = counts[today] || 0;
+
+    // Streak: walk backwards from today
+    var streak = 0;
+    var d = new Date(today + 'T12:00:00');
+    // If today has completions, count it
+    if (todayCount > 0) {
+        streak = 1;
+        d.setDate(d.getDate() - 1);
+    } else {
+        // Day isn't over — check yesterday
+        d.setDate(d.getDate() - 1);
+    }
+    while (true) {
+        var iso = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        if (counts[iso] && counts[iso] > 0) {
+            streak++;
+            d.setDate(d.getDate() - 1);
+        } else {
+            break;
+        }
+    }
+
+    // This week / last week
+    var now = new Date(today + 'T12:00:00');
+    var thisWeek = 0, lastWeek = 0;
+    for (var key in counts) {
+        var diff = daysBetween(key, today);
+        if (diff >= 0 && diff < 7) thisWeek += counts[key];
+        else if (diff >= 7 && diff < 14) lastWeek += counts[key];
+    }
+
+    return { todayCount: todayCount, streak: streak, thisWeek: thisWeek, lastWeek: lastWeek };
+}
+
+function buildVelocityData(cards) {
+    var today = todayISO();
+    var counts = {};
+    cards.forEach(function(c) {
+        if (c.completed_date) {
+            counts[c.completed_date] = (counts[c.completed_date] || 0) + 1;
+        }
+    });
+    var data = [];
+    for (var i = 6; i >= 0; i--) {
+        var d = new Date(today + 'T12:00:00');
+        d.setDate(d.getDate() - i);
+        var iso = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        data.push({ dateISO: iso, count: counts[iso] || 0 });
+    }
+    return data;
+}
+
+function velocitySparklineHTML(velData) {
+    var max = 1;
+    velData.forEach(function(v) { if (v.count > max) max = v.count; });
+    var today = todayISO();
+    var h = '<span class="vel-sparkline">';
+    velData.forEach(function(v) {
+        var height = Math.max(2, Math.round((v.count / max) * 20));
+        var cls = v.dateISO === today ? 'vel-bar today' : 'vel-bar';
+        h += '<span class="' + cls + '" style="height:' + height + 'px" title="' + formatMonthDay(v.dateISO) + ': ' + v.count + '"></span>';
+    });
+    h += '</span>';
+    return h;
+}
+
+// ── Due Date Chip ───────────────────────────────────────────────────────
+function dueDateChipHTML(card) {
+    if (card.column === 'done' || card.priority === 'done') {
+        if (card.completed_date) {
+            return '<span class="due-chip due-done">&#10003; Completed ' + formatMonthDay(card.completed_date) + '</span>';
+        }
+        return '';
+    }
+    if (!card.due_date) return '';
+
+    var today = todayISO();
+    var diff = daysBetween(today, card.due_date);
+
+    if (diff < 0) {
+        return '<span class="due-chip due-overdue">Overdue ' + Math.abs(diff) + 'd</span>';
+    } else if (diff === 0) {
+        return '<span class="due-chip due-today">Due Today</span>';
+    } else if (diff === 1) {
+        return '<span class="due-chip due-tomorrow">Due Tomorrow</span>';
+    } else if (diff <= 7) {
+        return '<span class="due-chip due-week">Due ' + formatMonthDay(card.due_date) + '</span>';
+    } else {
+        return '<span class="due-chip due-later">Due ' + formatMonthDay(card.due_date) + '</span>';
+    }
+}
+
+// ── Description Rendering (micro-steps support) ────────────────────────
+function renderDescription(text) {
+    if (!text) return '';
+    // Detect Step N: patterns
+    var stepPattern = /^Step \d+:/m;
+    if (stepPattern.test(text)) {
+        var lines = text.split('\n');
+        var beforeSteps = [];
+        var steps = [];
+        var afterSteps = [];
+        var inSteps = false;
+        var doneSteps = false;
+        lines.forEach(function(line) {
+            var trimmed = line.trim();
+            if (!doneSteps && /^Step \d+:/.test(trimmed)) {
+                inSteps = true;
+                steps.push(trimmed);
+            } else if (inSteps && trimmed === '') {
+                doneSteps = true;
+            } else if (!inSteps) {
+                beforeSteps.push(trimmed);
+            } else {
+                doneSteps = true;
+                if (trimmed) afterSteps.push(trimmed);
+            }
+        });
+        var h = '';
+        if (beforeSteps.length) h += esc(beforeSteps.join(' '));
+        if (steps.length) {
+            h += '<ol class="micro-steps">';
+            steps.forEach(function(s, i) {
+                var content = s.replace(/^Step \d+:\s*/, '');
+                h += '<li data-step="' + (i+1) + '.">' + esc(content) + '</li>';
+            });
+            h += '</ol>';
+        }
+        if (afterSteps.length) h += '<div style="margin-top:0.3rem;font-size:0.72rem;color:#27ae60;font-weight:600">' + esc(afterSteps.join(' ')) + '</div>';
+        return h;
+    }
+    return esc(text);
+}
+
 // ── Render ──────────────────────────────────────────────────────────────
 function esc(text) {
     if (!text) return '';
@@ -1297,6 +1725,11 @@ function render() {
     var hoursStr = totalHours === Math.floor(totalHours) ? Math.floor(totalHours) + 'h' : totalHours + 'h';
     var totalValue = totalHours * rate;
     var valueStr = totalValue >= 1000 ? '$' + (totalValue / 1000).toFixed(1) + 'k' : '$' + Math.floor(totalValue);
+
+    // Velocity
+    var vel = computeVelocityStats(cards);
+    var velData = buildVelocityData(cards);
+    var sparkHTML = velocitySparklineHTML(velData);
 
     var hasPAT = !!localStorage.getItem('demko_github_pat');
     var gearClass = hasPAT ? 'settings-gear connected' : 'settings-gear';
@@ -1338,6 +1771,8 @@ function render() {
     html += '      <span class="date-dash">&ndash;</span>';
     html += '      <input type="date" id="date-to" onchange="applyFilters()" title="To">';
     html += '    </div>';
+    html += '    <button class="today-btn' + (todayFilterActive ? ' active' : '') + '" id="today-btn" onclick="toggleTodayFilter()">Today</button>';
+    html += '    <button class="toggle-btn' + (viewMode === 'timeline' ? ' active' : '') + '" id="timeline-toggle" onclick="toggleViewMode()">Timeline</button>';
     html += '  </div>';
     html += '  <div class="topbar-right">';
     html += '    <div class="topbar-stat"><div class="val val-critical" id="stat-critical">' + nCritical + '</div><div class="lbl">Critical</div></div>';
@@ -1347,6 +1782,10 @@ function render() {
     html += '    <div class="topbar-divider"></div>';
     html += '    <div class="topbar-stat"><div class="val val-saved" id="stat-hours">' + hoursStr + '</div><div class="lbl">Hrs Saved</div></div>';
     html += '    <div class="topbar-stat"><div class="val val-saved" id="stat-value">' + valueStr + '</div><div class="lbl">@ $' + rate + '/hr</div></div>';
+    html += '    <div class="topbar-divider"></div>';
+    html += '    <div class="topbar-stat"><div class="val val-today">' + vel.todayCount + '</div><div class="lbl">Today</div></div>';
+    html += '    <div class="topbar-stat"><div class="val val-streak">' + (vel.streak > 0 ? vel.streak + ' &#128293;' : '0') + '</div><div class="lbl">Day Streak</div></div>';
+    html += '    <div class="topbar-stat">' + sparkHTML + '<div class="lbl">7-Day</div></div>';
     html += '    <div class="topbar-divider"></div>';
     html += '    <div class="' + gearClass + '" onclick="openSettings()" title="GitHub Connection">' + (hasPAT ? '&#9889;' : '&#9881;') + '</div>';
     html += '  </div>';
@@ -1363,11 +1802,17 @@ function render() {
         html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel</strong> on claude.ai. Click &ldquo;Launch&rdquo; to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently.</div></div>';
     }
 
+    // ── KANBAN VIEW ──
+    html += '<div class="kanban-view' + (viewMode === 'timeline' ? ' hidden' : '') + '" id="kanban-view">';
+
     // Sections
     columns.forEach(function(col) {
         var colCards = cards.filter(function(c) { return c.column === col.id; });
         if (colCards.length === 0) return;
         var isDone = col.id === 'done';
+
+        // Today filter: hide done and backlog
+        if (todayFilterActive && (col.id === 'done' || col.id === 'backlog')) return;
 
         // Leverage-weighted sort: priority tier first, then leverage within tier
         if (!isDone) {
@@ -1391,6 +1836,20 @@ function render() {
                 if (pd !== 0) return pd;
                 return b._leverage - a._leverage;
             });
+
+            // Today filter: only show overdue/due-today cards
+            if (todayFilterActive) {
+                var today = todayISO();
+                colCards = colCards.filter(function(c) {
+                    if (c.column === 'critical') return true;
+                    if (c.due_date) {
+                        var diff = daysBetween(today, c.due_date);
+                        return diff <= 0;
+                    }
+                    return c.column === 'critical';
+                });
+                if (colCards.length === 0) return;
+            }
         }
 
         html += '<div class="section-header">';
@@ -1424,12 +1883,66 @@ function render() {
         }
     });
 
+    html += '</div>'; // kanban-view
+
+    // ── TIMELINE VIEW ──
+    html += '<div class="timeline-view' + (viewMode === 'timeline' ? ' active' : '') + '" id="timeline-view">';
+    html += renderTimelineView(cards, vel, velData);
+    html += '</div>';
+
     html += '</div>'; // main
 
     // Footer
     html += '<div class="footer"><span>Last updated: ' + esc(meta.last_updated) + ' &middot; ' + esc(meta.title) + ' 2 &middot; CI: ' + esc(meta.ci_status) + '</span></div>';
 
     document.getElementById('app').innerHTML = html;
+}
+
+// ── Timeline View Renderer ──────────────────────────────────────────────
+function renderTimelineView(cards, vel, velData) {
+    var h = '';
+
+    // Velocity summary strip
+    h += '<div class="velocity-summary">';
+    h += '  <div class="vel-stat"><div class="vel-val vel-val-green">' + vel.thisWeek + '</div><div class="vel-lbl">This Week</div></div>';
+    h += '  <div class="vel-stat"><div class="vel-val vel-val-blue">' + vel.lastWeek + '</div><div class="vel-lbl">Last Week</div></div>';
+    h += '  <div class="vel-stat">' + velocitySparklineHTML(velData) + '<div class="vel-lbl">7-Day Trend</div></div>';
+    h += '</div>';
+
+    // Group done cards by completed_date
+    var groups = {};
+    cards.forEach(function(c) {
+        if (c.completed_date) {
+            if (!groups[c.completed_date]) groups[c.completed_date] = [];
+            groups[c.completed_date].push(c);
+        }
+    });
+
+    // Sort dates newest first
+    var dates = Object.keys(groups).sort(function(a, b) { return b.localeCompare(a); });
+
+    if (dates.length === 0) {
+        h += '<div style="text-align:center;color:#999;padding:3rem;font-size:0.85rem">No completed tasks with dates yet.</div>';
+    }
+
+    dates.forEach(function(dateISO) {
+        var dayCards = groups[dateISO];
+        h += '<div class="day-group">';
+        h += '  <div class="day-header">';
+        h += '    <div class="day-dot"></div>';
+        h += '    <h3>' + formatDayLong(dateISO) + '</h3>';
+        h += '    <span class="day-count">' + dayCards.length + ' task' + (dayCards.length !== 1 ? 's' : '') + '</span>';
+        h += '    <div class="day-line"></div>';
+        h += '  </div>';
+        h += '  <div class="card-grid">';
+        dayCards.forEach(function(card) {
+            h += renderCard(card);
+        });
+        h += '  </div>';
+        h += '</div>';
+    });
+
+    return h;
 }
 
 var TAG_CLASSES = { protocol: 'tag-protocol', setup: 'tag-setup', build: 'tag-build', infra: 'tag-infra', cleanup: 'tag-cleanup' };
@@ -1461,6 +1974,10 @@ function renderCard(card, seqNum, status) {
         var hs = card.hours_saved === Math.floor(card.hours_saved) ? Math.floor(card.hours_saved) : card.hours_saved;
         h += '<span class="time-saved">&#9201; Saved ~' + hs + ' hrs</span>';
     }
+
+    // Due date chip
+    h += dueDateChipHTML(card);
+
     if (p === 'done') {
         h += '<span class="priority-chip chip-done">Done</span>';
     } else {
@@ -1471,7 +1988,9 @@ function renderCard(card, seqNum, status) {
 
     h += '    </div>';
     h += '  </div>';
-    h += '  <div class="card-desc" id="desc-' + card.id + '">' + esc(card.description) + '</div>';
+
+    // Description with micro-steps support
+    h += '  <div class="card-desc" id="desc-' + card.id + '">' + renderDescription(card.description) + '</div>';
     var descLen = (card.description || '').length;
     h += '  <button class="show-more' + (descLen > 120 ? ' visible' : '') + '" id="more-' + card.id + '" onclick="toggleDesc(\'' + card.id + '\')">Show more</button>';
     h += '  <div class="card-footer">';
@@ -1490,7 +2009,12 @@ function renderCard(card, seqNum, status) {
     if (card.column !== 'done') {
         h += '<div style="display:flex;gap:0.4rem;align-items:center">';
         if (card.needs_user) {
-            h += '<span class="needs-user">' + esc(card.needs_user) + '</span>';
+            if (card.action_url) {
+                h += '<a class="action-btn" href="' + esc(card.action_url) + '" target="_blank" rel="noopener">';
+                h += esc(card.needs_user) + ' &#8599;</a>';
+            } else {
+                h += '<span class="needs-user">' + esc(card.needs_user) + '</span>';
+            }
         }
         if (card.launch_prompt && !card.needs_user) {
             h += '<button class="launch-btn" onclick="launchTask(this,\'' + card.id + '\')">&#8599; Launch</button>';
@@ -1500,7 +2024,12 @@ function renderCard(card, seqNum, status) {
         }
         h += '</div>';
     } else if (card.needs_user) {
-        h += '<span class="needs-user">' + esc(card.needs_user) + '</span>';
+        if (card.action_url) {
+            h += '<a class="action-btn" href="' + esc(card.action_url) + '" target="_blank" rel="noopener">';
+            h += esc(card.needs_user) + ' &#8599;</a>';
+        } else {
+            h += '<span class="needs-user">' + esc(card.needs_user) + '</span>';
+        }
     }
 
     h += '  </div>';
@@ -1551,8 +2080,9 @@ async function confirmComplete() {
     card.column = 'done';
     card.priority = 'done';
     card.hours_saved = hours;
+    card.completed_date = todayISO();
 
-    // Update timestamp
+    // Update timestamp in description (backward compat)
     var now = new Date();
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     card.description += ' Completed ' + months[now.getMonth()] + ' ' + now.getDate() + '.';
@@ -1694,6 +2224,18 @@ function toggleLeaderboard() {
         leaderboardActive = false;
         render(); // re-render to restore original order
     }
+}
+
+// ── View Mode Toggle ────────────────────────────────────────────────────
+function toggleViewMode() {
+    viewMode = viewMode === 'kanban' ? 'timeline' : 'kanban';
+    render();
+}
+
+// ── Today Filter ────────────────────────────────────────────────────────
+function toggleTodayFilter() {
+    todayFilterActive = !todayFilterActive;
+    render();
 }
 
 // ── Toast ───────────────────────────────────────────────────────────────
