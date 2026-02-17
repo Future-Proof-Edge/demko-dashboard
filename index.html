@@ -351,6 +351,17 @@
         }
         .show-more.visible { display: block; }
 
+        /* DONE COLLAPSE */
+        .done-collapsed { display: none; }
+        .done-collapsed.show-all { display: block; }
+        .done-expander {
+            display: block; width: 100%; padding: 0.6rem; margin-bottom: 2.5rem;
+            background: #f0eeeb; border: 1px dashed #ddd; border-radius: 8px;
+            font-size: 0.75rem; font-weight: 700; color: #777; cursor: pointer;
+            font-family: 'Inter', sans-serif; text-align: center; transition: all 0.15s;
+        }
+        .done-expander:hover { background: #e8e5e0; color: #555; }
+
         /* FOOTER */
         .footer {
             text-align: center; padding: 2rem 0 1rem; color: #bbb;
@@ -985,11 +996,11 @@ var EMBEDDED_DATA = {
     {
       "id": "done-section-collapse",
       "title": "Collapse Done Section (Show Recent 10)",
-      "description": "Done section shows only the 10 most recent completed cards by default. Add a 'Show more' expander button to reveal the rest. Keeps the dashboard scannable as Done cards accumulate.",
-      "column": "backlog",
-      "priority": "low",
-      "hours_saved": null,
-      "time_estimate": "~30 min",
+      "description": "Done section shows only the 10 most recent completed cards by default. 'Show N more' expander button reveals the rest. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
       "tags": [
         "build"
       ],
@@ -1189,11 +1200,26 @@ function render() {
         html += '</div>';
 
         var gridId = isDone ? ' id="done-grid"' : '';
+        var DONE_VISIBLE = 10;
         html += '<div class="card-grid"' + gridId + '>';
-        colCards.forEach(function(card) {
-            html += renderCard(card);
-        });
-        html += '</div>';
+        if (isDone && colCards.length > DONE_VISIBLE) {
+            // Show only last N (most recent = end of array)
+            var hidden = colCards.slice(0, colCards.length - DONE_VISIBLE);
+            var visible = colCards.slice(colCards.length - DONE_VISIBLE);
+            hidden.forEach(function(card) {
+                html += renderCard(card).replace('class="card ', 'class="card done-collapsed ');
+            });
+            visible.forEach(function(card) {
+                html += renderCard(card);
+            });
+            html += '</div>';
+            html += '<button class="done-expander" id="done-expander" onclick="toggleDoneCollapse()">Show ' + hidden.length + ' more completed tasks</button>';
+        } else {
+            colCards.forEach(function(card) {
+                html += renderCard(card);
+            });
+            html += '</div>';
+        }
     });
 
     html += '</div>'; // main
@@ -1494,6 +1520,18 @@ function toggleDesc(cardId) {
     if (!desc || !btn) return;
     var expanded = desc.classList.toggle('expanded');
     btn.textContent = expanded ? 'Show less' : 'Show more';
+}
+
+// ── Done Collapse ───────────────────────────────────────────────────────
+function toggleDoneCollapse() {
+    var collapsed = document.querySelectorAll('.done-collapsed');
+    var btn = document.getElementById('done-expander');
+    if (!btn) return;
+    var showing = collapsed.length > 0 && collapsed[0].classList.contains('show-all');
+    collapsed.forEach(function(el) { el.classList.toggle('show-all', !showing); });
+    btn.textContent = showing
+        ? 'Show ' + collapsed.length + ' more completed tasks'
+        : 'Show less';
 }
 
 // ── Go ──────────────────────────────────────────────────────────────────
