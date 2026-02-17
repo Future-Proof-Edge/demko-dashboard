@@ -441,21 +441,66 @@
       "theme": "setup"
     },
     {
-      "id": "gcp-domain-delegation",
-      "title": "GCP Domain-Wide Delegation",
-      "description": "Enables Google Drive browsing and searching. Currently limited to reading by direct Doc ID only.",
+      "id": "launch-claude-code-cli",
+      "title": "Launch Button → Claude Code CLI",
+      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
       "column": "pending",
-      "priority": "medium",
+      "priority": "high",
       "hours_saved": null,
-      "time_estimate": "~15 min",
+      "time_estimate": "~20 min",
       "tags": [
+        "build"
+      ],
+      "overnight": false,
+      "chains": [
+        "All launch_prompt cards"
+      ],
+      "needs_user": "Test in browser",
+      "launch_prompt": null,
+      "theme": "dashboard"
+    },
+    {
+      "id": "memory-architecture-split",
+      "title": "Phase 2 — Memory Architecture Split (3-Tier)",
+      "description": "Split MEMORY.md into 3 distinct tiers: (1) RULES layer — only persistent rules, preferences, shorthand commands; stays in system prompt, kept under 200 lines. (2) KNOWLEDGE layer — topic files (research, decisions, architecture notes); referenced by link in MEMORY.md, fetched on demand. (3) LESSONS layer — LEARNINGS.md, append-only session lessons; NOT in system prompt, searched when relevant. Dependency: CUV gate decision (red_team_input_memory_cuv_gate.md) determines write protection rules. Upstream of: every future memory write, session-close protocol, auto-ingest. DeepSeek red team finding #6: 'Remove intent-based classification; treat any write to MEMORY.md as TIER 2, full stop, and move lesson accumulation to a separate, append-only file.' Feb 17.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~1.5h",
+      "tags": [
+        "protocol",
         "infra"
       ],
       "overnight": false,
-      "chains": [],
-      "needs_user": "Needs GCP Admin Console",
-      "launch_prompt": null,
-      "theme": "setup"
+      "chains": [
+        "CUV Gate Implementation",
+        "Auto Session-Close",
+        "Auto-Ingest System"
+      ],
+      "needs_user": "Needs Mike: approve tier boundaries",
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
+      "theme": "meta-os"
+    },
+    {
+      "id": "build-in-public-autopost",
+      "title": "Build in Public — Daily Auto-Post to X",
+      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~1h",
+      "tags": [
+        "build",
+        "content"
+      ],
+      "overnight": false,
+      "chains": [
+        "Build in Public Flywheel",
+        "X Engagement Tracker"
+      ],
+      "needs_user": "Needs Mike: X API keys",
+      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
+      "theme": "content-x"
     },
     {
       "id": "frontier-signals-pipeline",
@@ -478,6 +523,44 @@
       "theme": "content-x"
     },
     {
+      "id": "build-in-public-flywheel",
+      "title": "Build in Public Content Flywheel — CUV Upgrades",
+      "description": "Core flywheel working (commits → themes → blog posts → tweet storm). CUV 1.8 identified 5 upgrades from 1% builder research: U1 Engagement window reminder, U2 Constellation format (standalone + quote-tweets instead of long threads), U3 Metrics injection (streak counter, day number, time-saved stats), U4 Engagement hit list (post-tweet reply targets), U5 Blog index page + navigation. Need to review, bless, and implement.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "content"
+      ],
+      "overnight": false,
+      "chains": [
+        "X Engagement Tracker",
+        "Frontier Signals Pipeline"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "content-x"
+    },
+    {
+      "id": "gcp-domain-delegation",
+      "title": "GCP Domain-Wide Delegation",
+      "description": "Enables Google Drive browsing and searching. Currently limited to reading by direct Doc ID only.",
+      "column": "pending",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~15 min",
+      "tags": [
+        "infra"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": "Needs GCP Admin Console",
+      "launch_prompt": null,
+      "theme": "setup"
+    },
+    {
       "id": "x-engagement-tracker",
       "title": "X Engagement Tracker — Polish & Ship",
       "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
@@ -493,6 +576,26 @@
         "Frontier Signals Pipeline"
       ],
       "needs_user": "Needs Mike: feedback",
+      "launch_prompt": null,
+      "theme": "content-x"
+    },
+    {
+      "id": "origin-story-narrative",
+      "title": "Plan & Write Origin Story Narrative",
+      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write.",
+      "column": "pending",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~2h",
+      "tags": [
+        "content",
+        "narrative"
+      ],
+      "overnight": false,
+      "chains": [
+        "Build in Public Flywheel"
+      ],
+      "needs_user": "Needs Mike: pick format",
       "launch_prompt": null,
       "theme": "content-x"
     },
@@ -551,47 +654,6 @@
       "theme": "dashboard"
     },
     {
-      "id": "build-in-public-flywheel",
-      "title": "Build in Public Content Flywheel — CUV Upgrades",
-      "description": "Core flywheel working (commits → themes → blog posts → tweet storm). CUV 1.8 identified 5 upgrades from 1% builder research: U1 Engagement window reminder, U2 Constellation format (standalone + quote-tweets instead of long threads), U3 Metrics injection (streak counter, day number, time-saved stats), U4 Engagement hit list (post-tweet reply targets), U5 Blog index page + navigation. Need to review, bless, and implement.",
-      "column": "pending",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": null,
-      "tags": [
-        "build",
-        "content"
-      ],
-      "overnight": false,
-      "chains": [
-        "X Engagement Tracker",
-        "Frontier Signals Pipeline"
-      ],
-      "needs_user": null,
-      "launch_prompt": null,
-      "theme": "content-x"
-    },
-    {
-      "id": "origin-story-narrative",
-      "title": "Plan & Write Origin Story Narrative",
-      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write.",
-      "column": "pending",
-      "priority": "medium",
-      "hours_saved": null,
-      "time_estimate": "~2h",
-      "tags": [
-        "content",
-        "narrative"
-      ],
-      "overnight": false,
-      "chains": [
-        "Build in Public Flywheel"
-      ],
-      "needs_user": "Needs Mike: pick format",
-      "launch_prompt": null,
-      "theme": "content-x"
-    },
-    {
       "id": "done-section-collapse",
       "title": "Collapse Done Section (Show Recent 10)",
       "description": "Done section shows only the 10 most recent completed cards by default. 'Show N more' expander button reveals the rest. Feb 17.",
@@ -607,49 +669,6 @@
       "needs_user": null,
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
       "theme": "dashboard"
-    },
-    {
-      "id": "build-in-public-autopost",
-      "title": "Build in Public — Daily Auto-Post to X",
-      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16.",
-      "column": "pending",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": "~1h",
-      "tags": [
-        "build",
-        "content"
-      ],
-      "overnight": false,
-      "chains": [
-        "Build in Public Flywheel",
-        "X Engagement Tracker"
-      ],
-      "needs_user": "Needs Mike: X API keys",
-      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
-      "theme": "content-x"
-    },
-    {
-      "id": "memory-architecture-split",
-      "title": "Phase 2 — Memory Architecture Split (3-Tier)",
-      "description": "Split MEMORY.md into 3 distinct tiers: (1) RULES layer — only persistent rules, preferences, shorthand commands; stays in system prompt, kept under 200 lines. (2) KNOWLEDGE layer — topic files (research, decisions, architecture notes); referenced by link in MEMORY.md, fetched on demand. (3) LESSONS layer — LEARNINGS.md, append-only session lessons; NOT in system prompt, searched when relevant. Dependency: CUV gate decision (red_team_input_memory_cuv_gate.md) determines write protection rules. Upstream of: every future memory write, session-close protocol, auto-ingest. DeepSeek red team finding #6: 'Remove intent-based classification; treat any write to MEMORY.md as TIER 2, full stop, and move lesson accumulation to a separate, append-only file.' Feb 17.",
-      "column": "pending",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": "~1.5h",
-      "tags": [
-        "protocol",
-        "infra"
-      ],
-      "overnight": false,
-      "chains": [
-        "CUV Gate Implementation",
-        "Auto Session-Close",
-        "Auto-Ingest System"
-      ],
-      "needs_user": "Needs Mike: approve tier boundaries",
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
-      "theme": "meta-os"
     },
     {
       "id": "cuv-gate-implementation",
@@ -688,25 +707,6 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "research"
-    },
-    {
-      "id": "launch-claude-code-cli",
-      "title": "Launch Button → Claude Code CLI",
-      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
-      "column": "pending",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": "~20 min",
-      "tags": [
-        "build"
-      ],
-      "overnight": false,
-      "chains": [
-        "All launch_prompt cards"
-      ],
-      "needs_user": "Test in browser",
-      "launch_prompt": null,
-      "theme": "dashboard"
     }
   ]
 }
