@@ -1107,6 +1107,48 @@ var EMBEDDED_DATA = {
       "theme": "content-x"
     },
     {
+      "id": "memory-architecture-split",
+      "title": "Phase 2 — Memory Architecture Split (3-Tier)",
+      "description": "Split MEMORY.md into 3 distinct tiers: (1) RULES layer — only persistent rules, preferences, shorthand commands; stays in system prompt, kept under 200 lines. (2) KNOWLEDGE layer — topic files (research, decisions, architecture notes); referenced by link in MEMORY.md, fetched on demand. (3) LESSONS layer — LEARNINGS.md, append-only session lessons; NOT in system prompt, searched when relevant. Dependency: CUV gate decision (red_team_input_memory_cuv_gate.md) determines write protection rules. Upstream of: every future memory write, session-close protocol, auto-ingest. DeepSeek red team finding #6: 'Remove intent-based classification; treat any write to MEMORY.md as TIER 2, full stop, and move lesson accumulation to a separate, append-only file.' Feb 17.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~1.5h",
+      "tags": [
+        "protocol",
+        "infra"
+      ],
+      "overnight": false,
+      "chains": [
+        "CUV Gate Implementation",
+        "Auto Session-Close",
+        "Auto-Ingest System"
+      ],
+      "needs_user": "Needs Mike: approve tier boundaries",
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
+      "theme": "meta-os"
+    },
+    {
+      "id": "cuv-gate-implementation",
+      "title": "MEMORY.md Write Protection (CUV Gate)",
+      "description": "Implement 3-layer write protection from red_team_input_memory_cuv_gate.md: (1) Reclassify in CLAUDE.md Pre-Flight Gate — MEMORY.md writes = TIER 2, CLAUDE.md writes = TIER 3. (2) PreToolUse advisory hook (memory-cuv-gate.sh) that warns on Edit/Write to *MEMORY.md or *CLAUDE.md. (3) Self-referential rule in MEMORY.md header. Red team validated by 3 models (25 findings). Blocked by: Memory Architecture Split (need LEARNINGS.md to exist first so lessons don't trigger false CUV gates). Feb 17.",
+      "column": "backlog",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~1h",
+      "tags": [
+        "protocol",
+        "infra"
+      ],
+      "overnight": false,
+      "chains": [
+        "All future MEMORY.md and CLAUDE.md writes"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os"
+    },
+    {
       "id": "openrouter-evaluation",
       "title": "Evaluate OpenRouter as Unified API Layer",
       "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
