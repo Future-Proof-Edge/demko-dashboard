@@ -1270,24 +1270,29 @@ var EMBEDDED_DATA = {
     },
     {
       "id": "gcp-domain-delegation",
-      "title": "GCP Domain-Wide Delegation",
-      "description": "Step 1: Open Google Admin Console (link below)\nStep 2: Navigate to Security > API Controls > Domain-wide Delegation\nStep 3: Add the service account client ID from GCP\nStep 4: Grant Drive API scopes\n\nEnables Google Drive browsing and searching. Currently limited to reading by direct Doc ID only. ~15 min.",
-      "column": "pending",
-      "priority": "medium",
-      "hours_saved": null,
-      "time_estimate": "~15 min",
+      "title": "Google Drive Full Access (OAuth2 + Write Tools)",
+      "description": "REPLACED domain-wide delegation approach (requires Workspace admin, doesn't work for personal accounts) with OAuth2 user consent flow. One-time browser auth saves token.json with full Drive/Docs/Sheets read+write access. MCP server rewritten v2.0: added gdrive_create_doc, gdrive_upload_file, gdrive_create_folder tools. Falls back to service account (readonly) if token missing. No more per-folder sharing. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
       "tags": [
-        "infra"
+        "infra",
+        "setup"
       ],
       "overnight": false,
-      "chains": [],
-      "needs_user": "Needs GCP Admin Console",
+      "chains": [
+        "All Google Drive operations",
+        "Mobile Capture Pipeline",
+        "NotebookLM Transcript Loop"
+      ],
+      "needs_user": null,
       "launch_prompt": null,
       "theme": "setup",
       "created_date": "2026-02-17",
       "due_date": null,
-      "completed_date": null,
-      "action_url": "https://admin.google.com/ac/owl/domainwidedelegation"
+      "completed_date": "2026-02-17",
+      "action_url": null
     },
     {
       "id": "x-engagement-tracker",
