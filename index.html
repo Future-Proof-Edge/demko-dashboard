@@ -396,6 +396,11 @@ var EMBEDDED_DATA = {
   },
   "columns": [
     {
+      "id": "done",
+      "label": "Done",
+      "dot": "dot-done"
+    },
+    {
       "id": "critical",
       "label": "Critical - Do Now",
       "dot": "dot-critical"
@@ -409,11 +414,6 @@ var EMBEDDED_DATA = {
       "id": "backlog",
       "label": "Backlog - Later",
       "dot": "dot-backlog"
-    },
-    {
-      "id": "done",
-      "label": "Done",
-      "dot": "dot-done"
     }
   ],
   "cards": [
@@ -799,6 +799,24 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": "Curate top 10 builder list",
       "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing."
+    },
+    {
+      "id": "x-engagement-tracker",
+      "title": "X Engagement Tracker — Polish & Ship",
+      "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~1h",
+      "tags": [
+        "build"
+      ],
+      "overnight": false,
+      "chains": [
+        "Frontier Signals Pipeline"
+      ],
+      "needs_user": "Visual feedback on dashboard",
+      "launch_prompt": null
     },
     {
       "id": "auto-ingest-system",
