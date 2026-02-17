@@ -849,6 +849,25 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": "Needs phone + Drive",
       "launch_prompt": null
+    },
+    {
+      "id": "interactive-dashboard-rewrite",
+      "title": "Interactive Dashboard Rewrite",
+      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON → python render → copy repo → git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "infra"
+      ],
+      "overnight": false,
+      "chains": [
+        "All future dashboard updates"
+      ],
+      "needs_user": null,
+      "launch_prompt": null
     }
   ]
 };
