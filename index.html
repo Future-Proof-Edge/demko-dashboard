@@ -868,6 +868,22 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null
+    },
+    {
+      "id": "done-section-collapse",
+      "title": "Collapse Done Section (Show Recent 10)",
+      "description": "Done section shows only the 10 most recent completed cards by default. Add a 'Show more' expander button to reveal the rest. Keeps the dashboard scannable as Done cards accumulate.",
+      "column": "backlog",
+      "priority": "low",
+      "hours_saved": null,
+      "time_estimate": "~30 min",
+      "tags": [
+        "build"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics."
     }
   ]
 };
@@ -980,7 +996,7 @@ function render() {
         html += '<div class="priority-banner"><div class="icon">!</div><div class="text">' + data.banners.priority + '</div></div>';
     }
     if (data.banners && data.banners.parallel) {
-        html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel.</strong> Click &ldquo;Launch&rdquo; to copy a Claude Code CLI command. Paste (Ctrl+V) in any terminal and hit Enter. Each runs independently.</div></div>';
+        html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel</strong> on claude.ai. Click &ldquo;Launch&rdquo; to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently.</div></div>';
     }
 
     // Sections
@@ -1214,12 +1230,11 @@ function clearPAT() {
 function launchTask(btn, cardId) {
     var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
     if (!card || !card.launch_prompt) return;
-    var escaped = card.launch_prompt.replace(/"/g, '\\"');
-    var cmd = 'cd "C:\\Demko_Local_Project\\Demko Meta OS 2" && claude -p "' + escaped + '"';
-    navigator.clipboard.writeText(cmd).then(function() {
-        showToast('CLI command copied! Paste in any terminal.');
+    navigator.clipboard.writeText(card.launch_prompt).then(function() {
+        showToast('Prompt copied! Paste in the new Claude tab.');
         btn.classList.add('launched');
         btn.innerHTML = '&#10003; Copied';
+        window.open('https://claude.ai/new', '_blank');
     });
 }
 
