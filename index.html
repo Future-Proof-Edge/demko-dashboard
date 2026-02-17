@@ -544,6 +544,162 @@
 
         <!-- SECTIONS -->
         <div class="section-header">
+            <div class="section-dot dot-critical"></div>
+            <h2>Critical - Do Now</h2>
+            <span class="count-badge">3</span>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card card-critical">
+                <div class="card-top">
+                    <h3>Configure MCP API Keys</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~20 min</span>
+                        <span class="priority-chip chip-critical">Critical</span>
+                    </div>
+                </div>
+                <div class="card-desc">Firecrawl, Brave Search, Perplexity — none in .env yet. Required for Layer 1 intelligence scraping pipeline.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-setup">Setup</span>
+                        <span class="tag tag-infra">Infra</span>
+                    </div>
+                    <span class="needs-user">Needs your accounts</span>
+                </div>
+            </div>
+
+            <div class="card card-high">
+                <div class="card-top">
+                    <h3>Install Agent SDK Dev Plugin</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~1 min</span>
+                        <span class="priority-chip chip-high">High</span>
+                    </div>
+                </div>
+                <div class="card-desc">Directly relevant to multi-agent architecture. Available in Desktop plugin browser. Click Plugins in sidebar, find Agent SDK dev, install.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-setup">Setup</span>
+                    </div>
+                    <span class="needs-user">Desktop UI click</span>
+                </div>
+            </div>
+
+            <div class="card card-high">
+                <div class="card-top">
+                    <h3>Install Claude in Chrome Extension</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~2 min</span>
+                        <span class="priority-chip chip-high">High</span>
+                    </div>
+                </div>
+                <div class="card-desc">Use work/separate Chrome profile — NOT personal account. Enables browser automation from Claude Code.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-setup">Setup</span>
+                    </div>
+                    <span class="needs-user">Chrome UI click</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-header">
+            <div class="section-dot dot-pending"></div>
+            <h2>Pending - Next Up</h2>
+            <span class="count-badge">2</span>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card card-medium">
+                <div class="card-top">
+                    <h3>GCP Domain-Wide Delegation</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~15 min</span>
+                        <span class="priority-chip chip-medium">Medium</span>
+                    </div>
+                </div>
+                <div class="card-desc">Enables Google Drive browsing and searching. Currently limited to reading by direct Doc ID only.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-infra">Infra</span>
+                    </div>
+                    <span class="needs-user">Needs GCP Admin Console</span>
+                </div>
+            </div>
+
+            <div class="card card-medium">
+                <div class="card-top">
+                    <h3>Frontier Signals Pipeline (Twitter/X)</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~2h build</span>
+                        <span class="priority-chip chip-medium">Medium</span>
+                    </div>
+                </div>
+                <div class="card-desc">Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds &rarr; FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-build">Build</span>
+                        <span class="tag tag-infra">Infra</span>
+                    </div>
+                    <span class="needs-user">Curate top 10 builder list</span>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> CUV v1.8 frontier retro-check</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-header">
+            <div class="section-dot dot-backlog"></div>
+            <h2>Backlog - Later</h2>
+            <span class="count-badge">2</span>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card card-low">
+                <div class="card-top">
+                    <h3>Auto-Ingest System</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~20 min</span>
+                        <span class="priority-chip chip-low">Backlog</span>
+                    </div>
+                </div>
+                <div class="card-desc">auto_ingest.py — reads accretive report, copies INGEST files to knowledge corpus automatically.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-build">Build</span>
+                    </div>
+                    <button class="launch-btn" onclick="launchTask(this, 'Build auto_ingest.py in C:\Demko_Local_Project\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report.')">
+                        <span class="arrow">&#8599;</span> Launch
+                    </button>
+                </div>
+            </div>
+
+            <div class="card card-low">
+                <div class="card-top">
+                    <h3>Mobile Capture Pipeline</h3>
+                    <div class="card-chips">
+                        <span class="time-chip">~30 min</span>
+                        <span class="priority-chip chip-low">Backlog</span>
+                    </div>
+                </div>
+                <div class="card-desc">End-to-end test: Pixel 9a &rarr; Google Recorder &rarr; Drive &rarr; Claude Code ingestion.</div>
+                <div class="card-footer">
+                    <div class="card-tags">
+                        <span class="tag tag-infra">Infra</span>
+                    </div>
+                    <span class="needs-user">Needs phone + Drive</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-header">
             <div class="section-dot dot-done"></div>
             <h2>Done</h2>
             <span class="count-badge">17</span>
@@ -861,162 +1017,6 @@
                 </div>
                 <div class="unlocked-chain">
                     <span class="chain-arrow"><span class="arr">&rarr;</span> Deploy Identity Rules</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="section-header">
-            <div class="section-dot dot-critical"></div>
-            <h2>Critical - Do Now</h2>
-            <span class="count-badge">3</span>
-            <div class="section-line"></div>
-        </div>
-
-        <div class="card-grid">
-            <div class="card card-critical">
-                <div class="card-top">
-                    <h3>Configure MCP API Keys</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~20 min</span>
-                        <span class="priority-chip chip-critical">Critical</span>
-                    </div>
-                </div>
-                <div class="card-desc">Firecrawl, Brave Search, Perplexity — none in .env yet. Required for Layer 1 intelligence scraping pipeline.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-setup">Setup</span>
-                        <span class="tag tag-infra">Infra</span>
-                    </div>
-                    <span class="needs-user">Needs your accounts</span>
-                </div>
-            </div>
-
-            <div class="card card-high">
-                <div class="card-top">
-                    <h3>Install Agent SDK Dev Plugin</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~1 min</span>
-                        <span class="priority-chip chip-high">High</span>
-                    </div>
-                </div>
-                <div class="card-desc">Directly relevant to multi-agent architecture. Available in Desktop plugin browser. Click Plugins in sidebar, find Agent SDK dev, install.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-setup">Setup</span>
-                    </div>
-                    <span class="needs-user">Desktop UI click</span>
-                </div>
-            </div>
-
-            <div class="card card-high">
-                <div class="card-top">
-                    <h3>Install Claude in Chrome Extension</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~2 min</span>
-                        <span class="priority-chip chip-high">High</span>
-                    </div>
-                </div>
-                <div class="card-desc">Use work/separate Chrome profile — NOT personal account. Enables browser automation from Claude Code.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-setup">Setup</span>
-                    </div>
-                    <span class="needs-user">Chrome UI click</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="section-header">
-            <div class="section-dot dot-pending"></div>
-            <h2>Pending - Next Up</h2>
-            <span class="count-badge">2</span>
-            <div class="section-line"></div>
-        </div>
-
-        <div class="card-grid">
-            <div class="card card-medium">
-                <div class="card-top">
-                    <h3>GCP Domain-Wide Delegation</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~15 min</span>
-                        <span class="priority-chip chip-medium">Medium</span>
-                    </div>
-                </div>
-                <div class="card-desc">Enables Google Drive browsing and searching. Currently limited to reading by direct Doc ID only.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-infra">Infra</span>
-                    </div>
-                    <span class="needs-user">Needs GCP Admin Console</span>
-                </div>
-            </div>
-
-            <div class="card card-medium">
-                <div class="card-top">
-                    <h3>Frontier Signals Pipeline (Twitter/X)</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~2h build</span>
-                        <span class="priority-chip chip-medium">Medium</span>
-                    </div>
-                </div>
-                <div class="card-desc">Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds &rarr; FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-build">Build</span>
-                        <span class="tag tag-infra">Infra</span>
-                    </div>
-                    <span class="needs-user">Curate top 10 builder list</span>
-                </div>
-                <div class="unlocked-chain">
-                    <span class="chain-arrow"><span class="arr">&rarr;</span> CUV v1.8 frontier retro-check</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="section-header">
-            <div class="section-dot dot-backlog"></div>
-            <h2>Backlog - Later</h2>
-            <span class="count-badge">2</span>
-            <div class="section-line"></div>
-        </div>
-
-        <div class="card-grid">
-            <div class="card card-low">
-                <div class="card-top">
-                    <h3>Auto-Ingest System</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~20 min</span>
-                        <span class="priority-chip chip-low">Backlog</span>
-                    </div>
-                </div>
-                <div class="card-desc">auto_ingest.py — reads accretive report, copies INGEST files to knowledge corpus automatically.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-build">Build</span>
-                    </div>
-                    <button class="launch-btn" onclick="launchTask(this, 'Build auto_ingest.py in C:\Demko_Local_Project\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report.')">
-                        <span class="arrow">&#8599;</span> Launch
-                    </button>
-                </div>
-            </div>
-
-            <div class="card card-low">
-                <div class="card-top">
-                    <h3>Mobile Capture Pipeline</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~30 min</span>
-                        <span class="priority-chip chip-low">Backlog</span>
-                    </div>
-                </div>
-                <div class="card-desc">End-to-end test: Pixel 9a &rarr; Google Recorder &rarr; Drive &rarr; Claude Code ingestion.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-infra">Infra</span>
-                    </div>
-                    <span class="needs-user">Needs phone + Drive</span>
                 </div>
             </div>
 
