@@ -314,6 +314,43 @@
             100% { background: #fff; }
         }
 
+        /* SEARCH BAR */
+        .search-bar {
+            margin-bottom: 1.5rem; position: relative;
+        }
+        .search-bar input {
+            width: 100%; padding: 0.6rem 1rem 0.6rem 2.4rem;
+            border: 1px solid #e8e5e0; border-radius: 8px;
+            font-size: 0.82rem; font-family: 'Inter', sans-serif;
+            background: #fff; color: #1a1a1a; outline: none;
+            transition: border-color 0.15s;
+        }
+        .search-bar input:focus { border-color: #2563eb; }
+        .search-bar input::placeholder { color: #bbb; }
+        .search-bar .search-icon {
+            position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%);
+            font-size: 0.85rem; color: #bbb; pointer-events: none;
+        }
+        .search-bar .search-clear {
+            position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+            background: none; border: none; font-size: 1rem; color: #bbb;
+            cursor: pointer; display: none; font-family: 'Inter', sans-serif;
+        }
+        .search-bar .search-clear.visible { display: block; }
+        .card.search-hidden { display: none; }
+        .section-header.search-hidden { display: none; }
+
+        /* DESC TRUNCATION */
+        .card-desc { max-height: 3.2em; overflow: hidden; transition: max-height 0.25s ease; }
+        .card-desc.expanded { max-height: none; }
+        .show-more {
+            padding-left: 0.6rem; font-size: 0.68rem; color: #2563eb;
+            cursor: pointer; font-weight: 600; margin-bottom: 0.5rem;
+            display: none; background: none; border: none;
+            font-family: 'Inter', sans-serif;
+        }
+        .show-more.visible { display: block; }
+
         /* FOOTER */
         .footer {
             text-align: center; padding: 2rem 0 1rem; color: #bbb;
@@ -1130,6 +1167,13 @@ function render() {
         html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel</strong> on claude.ai. Click &ldquo;Launch&rdquo; to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently.</div></div>';
     }
 
+    // Search bar
+    html += '<div class="search-bar">';
+    html += '  <span class="search-icon">&#128269;</span>';
+    html += '  <input type="text" id="search-input" placeholder="Search tasks..." oninput="filterCards(this.value)">';
+    html += '  <button class="search-clear" id="search-clear" onclick="clearSearch()">&#10005;</button>';
+    html += '</div>';
+
     // Sections
     columns.forEach(function(col) {
         var colCards = cards.filter(function(c) { return c.column === col.id; });
@@ -1190,7 +1234,9 @@ function renderCard(card) {
 
     h += '    </div>';
     h += '  </div>';
-    h += '  <div class="card-desc">' + esc(card.description) + '</div>';
+    h += '  <div class="card-desc" id="desc-' + card.id + '">' + esc(card.description) + '</div>';
+    var descLen = (card.description || '').length;
+    h += '  <button class="show-more' + (descLen > 120 ? ' visible' : '') + '" id="more-' + card.id + '" onclick="toggleDesc(\'' + card.id + '\')">Show more</button>';
     h += '  <div class="card-footer">';
     h += '    <div class="card-tags">';
     (card.tags || []).forEach(function(tag) {
@@ -1413,6 +1459,41 @@ function showToast(msg) {
     t.textContent = msg;
     t.classList.add('show');
     setTimeout(function() { t.classList.remove('show'); }, 4000);
+}
+
+// ── Search ──────────────────────────────────────────────────────────────
+function filterCards(query) {
+    var clearBtn = document.getElementById('search-clear');
+    if (clearBtn) clearBtn.classList.toggle('visible', query.length > 0);
+    var q = query.toLowerCase().trim();
+    var allCards = document.querySelectorAll('.card');
+    allCards.forEach(function(el) {
+        var title = (el.querySelector('h3') || {}).textContent || '';
+        var desc = (el.querySelector('.card-desc') || {}).textContent || '';
+        var tags = Array.from(el.querySelectorAll('.tag')).map(function(t) { return t.textContent; }).join(' ');
+        var match = !q || title.toLowerCase().indexOf(q) >= 0 || desc.toLowerCase().indexOf(q) >= 0 || tags.toLowerCase().indexOf(q) >= 0;
+        el.classList.toggle('search-hidden', !match);
+    });
+    document.querySelectorAll('.section-header').forEach(function(hdr) {
+        var grid = hdr.nextElementSibling;
+        if (!grid || !grid.classList.contains('card-grid')) return;
+        var visibleCards = grid.querySelectorAll('.card:not(.search-hidden)');
+        hdr.classList.toggle('search-hidden', visibleCards.length === 0);
+        grid.classList.toggle('search-hidden', visibleCards.length === 0);
+    });
+}
+function clearSearch() {
+    var input = document.getElementById('search-input');
+    if (input) { input.value = ''; filterCards(''); input.focus(); }
+}
+
+// ── Desc Toggle ─────────────────────────────────────────────────────────
+function toggleDesc(cardId) {
+    var desc = document.getElementById('desc-' + cardId);
+    var btn = document.getElementById('more-' + cardId);
+    if (!desc || !btn) return;
+    var expanded = desc.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less' : 'Show more';
 }
 
 // ── Go ──────────────────────────────────────────────────────────────────
