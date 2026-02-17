@@ -304,30 +304,6 @@
             font-size: 0.6rem; font-weight: 800; z-index: 2;
         }
 
-        /* PRIORITY DROPDOWN */
-        .priority-chip.clickable { cursor: pointer; transition: all 0.15s; }
-        .priority-chip.clickable:hover { filter: brightness(0.92); transform: scale(1.05); }
-        .priority-dropdown {
-            position: absolute; top: 100%; right: 0; margin-top: 0.3rem;
-            background: #fff; border: 1px solid #e8e5e0; border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 50;
-            overflow: hidden; min-width: 120px; display: none;
-        }
-        .priority-dropdown.open { display: block; }
-        .priority-dropdown-item {
-            padding: 0.45rem 0.8rem; font-size: 0.7rem; font-weight: 700;
-            cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
-            transition: background 0.1s; text-transform: uppercase; letter-spacing: 0.04em;
-        }
-        .priority-dropdown-item:hover { background: #f8f7f4; }
-        .priority-dropdown-item .pdot {
-            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-        }
-        .pdot-critical { background: #dc3545; }
-        .pdot-high { background: #e67e22; }
-        .pdot-medium { background: #3498db; }
-        .pdot-low { background: #ccc; }
-
         /* CARD COMPLETE ANIMATION */
         .card.completing {
             animation: completeFlash 0.6s ease;
@@ -420,6 +396,11 @@ var EMBEDDED_DATA = {
   },
   "columns": [
     {
+      "id": "done",
+      "label": "Done",
+      "dot": "dot-done"
+    },
+    {
       "id": "critical",
       "label": "Critical - Do Now",
       "dot": "dot-critical"
@@ -433,11 +414,6 @@ var EMBEDDED_DATA = {
       "id": "backlog",
       "label": "Backlog - Later",
       "dot": "dot-backlog"
-    },
-    {
-      "id": "done",
-      "label": "Done",
-      "dot": "dot-done"
     }
   ],
   "cards": [
@@ -741,6 +717,26 @@ var EMBEDDED_DATA = {
       "launch_prompt": null
     },
     {
+      "id": "understand-claude-v18-evolution",
+      "title": "P0 — Understand CLAUDE.md v1.6→v1.8 Evolution",
+      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6→v1.7→v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 — passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~30 min review",
+      "tags": [
+        "protocol",
+        "review"
+      ],
+      "overnight": false,
+      "chains": [
+        "Build in Public CUV Upgrades",
+        "Frontier Signals Pipeline"
+      ],
+      "needs_user": "Your understanding required — foundational changes",
+      "launch_prompt": null
+    },
+    {
       "id": "configure-mcp-api-keys",
       "title": "Configure MCP API Keys",
       "description": "Firecrawl, Brave Search, Perplexity — none in .env yet. Required for Layer 1 intelligence scraping pipeline.",
@@ -810,7 +806,7 @@ var EMBEDDED_DATA = {
       "title": "Frontier Signals Pipeline (Twitter/X)",
       "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds → FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
       "column": "pending",
-      "priority": "medium",
+      "priority": "high",
       "hours_saved": null,
       "time_estimate": "~2h build",
       "tags": [
@@ -829,7 +825,7 @@ var EMBEDDED_DATA = {
       "title": "X Engagement Tracker — Polish & Ship",
       "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
       "column": "pending",
-      "priority": "high",
+      "priority": "low",
       "hours_saved": null,
       "time_estimate": "~1h",
       "tags": [
@@ -928,6 +924,24 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics."
+    },
+    {
+      "id": "launch-claude-code-cli",
+      "title": "Launch Button → Claude Code CLI",
+      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~20 min",
+      "tags": [
+        "build"
+      ],
+      "overnight": false,
+      "chains": [
+        "All launch_prompt cards"
+      ],
+      "needs_user": "Test in browser",
+      "launch_prompt": null
     }
   ]
 };
@@ -1098,16 +1112,7 @@ function renderCard(card) {
     } else {
         if (card.time_estimate) h += '<span class="time-chip">' + esc(card.time_estimate) + '</span>';
         var chip = CHIP_MAP[p] || ['chip-low', 'Backlog'];
-        h += '<span style="position:relative;display:inline-block">';
-        h += '<span class="priority-chip clickable ' + chip[0] + '" onclick="event.stopPropagation();openPriorityDropdown(\'' + card.id + '\',this)">' + chip[1] + '</span>';
-        h += '<div class="priority-dropdown" id="pdd-' + card.id + '">';
-        ['critical','high','medium','low'].forEach(function(lvl) {
-            var cm = CHIP_MAP[lvl];
-            h += '<div class="priority-dropdown-item" onclick="event.stopPropagation();changePriority(\'' + card.id + '\',\'' + lvl + '\')">';
-            h += '<span class="pdot pdot-' + lvl + '"></span>' + cm[1];
-            h += '</div>';
-        });
-        h += '</div></span>';
+        h += '<span class="priority-chip ' + chip[0] + '">' + chip[1] + '</span>';
     }
 
     h += '    </div>';
@@ -1197,33 +1202,6 @@ async function confirmComplete() {
     // Persist to GitHub
     await pushToGitHub('Complete: ' + card.title + ' (' + hours + 'h saved)');
 }
-
-// ── Priority Selector ───────────────────────────────────────────────────
-function openPriorityDropdown(cardId, chipEl) {
-    // Close any open dropdown first
-    document.querySelectorAll('.priority-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
-    var dd = document.getElementById('pdd-' + cardId);
-    if (dd) dd.classList.add('open');
-}
-
-async function changePriority(cardId, newPriority) {
-    var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
-    if (!card || card.priority === newPriority) {
-        document.querySelectorAll('.priority-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
-        return;
-    }
-    var oldP = card.priority;
-    card.priority = newPriority;
-    render();
-    var chipLabel = (CHIP_MAP[newPriority] || ['','?'])[1];
-    showToast('Priority: ' + card.title.substring(0, 30) + ' → ' + chipLabel);
-    await pushToGitHub('Priority: ' + card.title + ' ' + oldP + ' → ' + newPriority);
-}
-
-// Close priority dropdown on outside click
-document.addEventListener('click', function() {
-    document.querySelectorAll('.priority-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
-});
 
 // ── GitHub Persistence ──────────────────────────────────────────────────
 async function pushToGitHub(commitMsg) {
