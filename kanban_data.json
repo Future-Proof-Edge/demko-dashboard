@@ -3,7 +3,7 @@
     "title": "Demko Meta OS",
     "session_tag": "Feb 13-16, 2026 \u2014 Updated Feb 17 priorities",
     "hourly_rate": 250,
-    "last_updated": "Feb 16, 2026 (night)",
+    "last_updated": "Feb 17, 2026",
     "ci_status": "Green"
   },
   "banners": {
@@ -17,6 +17,20 @@
     { "id": "done", "label": "Done", "dot": "dot-done" }
   ],
   "cards": [
+    {
+      "id": "wispr-flow-optimization",
+      "title": "Wispr Flow Deep Dive & Mic Lock Fix",
+      "description": "Full audit of Wispr Flow voice dictation: Ctrl+Space conflict check (clean), system resource check (clean), config.json diagnostic analysis revealing 38 mic switches → 96 cancelled transcripts → 64 paste failures. Root cause: overrideAudioDeviceId set to dynamic 'communications' instead of specific device. Fix: locked to Blue Snowball device hash. Drafted feedback for Wispr Flow team (email, X, roadmap). Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1.5,
+      "time_estimate": null,
+      "tags": ["tool-config", "debugging"],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null
+    },
     {
       "id": "dashboard-deploy-sync",
       "title": "Dashboard Deploy Sync Protocol",
