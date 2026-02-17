@@ -443,9 +443,10 @@
     {
       "id": "launch-claude-code-cli",
       "title": "Launch Button → Claude Code CLI",
-      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
-      "column": "pending",
-      "priority": "high",
+      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() fires claude-code://launch?prompt=... URL. Fixed Feb 17: changed -p (print mode, blank screen) to interactive mode. Tested and working — Windows Terminal opens with Claude Code session pre-loaded with task prompt.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1,
       "hours_saved": null,
       "time_estimate": "~20 min",
       "tags": [
