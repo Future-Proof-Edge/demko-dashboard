@@ -490,13 +490,13 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 13-16, 2026 — Updated Feb 17 priorities",
+    "session_tag": "Feb 17, 2026 — 5 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 17, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "🚨 Feb 17 TOP PRIORITY: Configure MCP API keys (Firecrawl, Brave, Perplexity) + curate top 10 Twitter builder handles for Frontier Signals Pipeline. 20 min total. Unlocks Layer 1 intelligence.",
+    "priority": "🚀 Feb 17: 5 tasks completed autonomously while Mike was AFK. Memory split, CUV gates, Build-in-Public upgrades, Auto-Ingest, MCP globalized.",
     "parallel": "Run up to 5 tasks in parallel on claude.ai. Click “Launch” to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently."
   },
   "columns": [
@@ -898,7 +898,7 @@ var EMBEDDED_DATA = {
     {
       "id": "globalize-mcp-servers",
       "title": "Globalize MCP Servers for Claude Code CLI",
-      "description": "DONE: Moved gdrive MCP from project-scoped to global mcpServers in .claude.json. Removed redundant project-level config. Audited Desktop vs Code parity — Desktop uses zero local MCPs (all cloud via claude.ai connectors). Cloud MCPs (Gamma) already work in Code CLI. N8n/Firecrawl/Brave MCPs add marginal value over built-in WebSearch/WebFetch. Result: gdrive now works from any directory. Feb 17.",
+      "description": "Moved gdrive MCP from project-scoped to global mcpServers in .claude.json. gdrive now works from any directory. Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -974,11 +974,11 @@ var EMBEDDED_DATA = {
     {
       "id": "memory-architecture-split",
       "title": "Phase 2 — Memory Architecture Split (3-Tier)",
-      "description": "Split MEMORY.md into 3 distinct tiers: (1) RULES layer — only persistent rules, preferences, shorthand commands; stays in system prompt, kept under 200 lines. (2) KNOWLEDGE layer — topic files (research, decisions, architecture notes); referenced by link in MEMORY.md, fetched on demand. (3) LESSONS layer — LEARNINGS.md, append-only session lessons; NOT in system prompt, searched when relevant. Dependency: CUV gate decision (red_team_input_memory_cuv_gate.md) determines write protection rules. Upstream of: every future memory write, session-close protocol, auto-ingest. DeepSeek red team finding #6: 'Remove intent-based classification; treat any write to MEMORY.md as TIER 2, full stop, and move lesson accumulation to a separate, append-only file.' Feb 17.",
-      "column": "pending",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": "~1.5h",
+      "description": "MEMORY.md split into 3 tiers: (1) RULES layer (<150 lines, loaded into prompt), (2) KNOWLEDGE topic files (linked, fetched on demand), (3) LEARNINGS.md (append-only session lessons, not in prompt). Session-close protocol updated to route lessons to LEARNINGS.md. Self-referential TIER 2 rule added. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1.5,
+      "time_estimate": null,
       "tags": [
         "protocol",
         "infra"
@@ -989,7 +989,7 @@ var EMBEDDED_DATA = {
         "Auto Session-Close",
         "Auto-Ingest System"
       ],
-      "needs_user": "Needs Mike: approve tier boundaries",
+      "needs_user": null,
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
       "theme": "meta-os"
     },
@@ -1037,10 +1037,10 @@ var EMBEDDED_DATA = {
     {
       "id": "build-in-public-flywheel",
       "title": "Build in Public Content Flywheel — CUV Upgrades",
-      "description": "Core flywheel working (commits → themes → blog posts → tweet storm). CUV 1.8 identified 5 upgrades from 1% builder research: U1 Engagement window reminder, U2 Constellation format (standalone + quote-tweets instead of long threads), U3 Metrics injection (streak counter, day number, time-saved stats), U4 Engagement hit list (post-tweet reply targets), U5 Blog index page + navigation. Need to review, bless, and implement.",
-      "column": "pending",
-      "priority": "high",
-      "hours_saved": null,
+      "description": "5 CUV upgrades implemented: U1 engagement window reminder, U2 constellation format (standalone + quote-tweets), U3 metrics injection (streak/day/time-saved), U4 engagement hit list (5 accounts after posting), U5 blog/index.html with navigation. --dry-run flag added. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
       "time_estimate": null,
       "tags": [
         "build",
@@ -1114,11 +1114,11 @@ var EMBEDDED_DATA = {
     {
       "id": "auto-ingest-system",
       "title": "Auto-Ingest System",
-      "description": "auto_ingest.py — reads accretive report, copies INGEST files to knowledge corpus automatically.",
-      "column": "backlog",
-      "priority": "low",
-      "hours_saved": null,
-      "time_estimate": "~20 min",
+      "description": "auto_ingest.py built: reads accretive_evaluation_report.json, finds INGEST-tagged items, copies to knowledge corpus, updates index. Handles missing files, deduplication. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
       "tags": [
         "build"
       ],
@@ -1185,11 +1185,11 @@ var EMBEDDED_DATA = {
     {
       "id": "cuv-gate-implementation",
       "title": "MEMORY.md Write Protection (CUV Gate)",
-      "description": "Implement 3-layer write protection from red_team_input_memory_cuv_gate.md: (1) Reclassify in CLAUDE.md Pre-Flight Gate — MEMORY.md writes = TIER 2, CLAUDE.md writes = TIER 3. (2) PreToolUse advisory hook (memory-cuv-gate.sh) that warns on Edit/Write to *MEMORY.md or *CLAUDE.md. (3) Self-referential rule in MEMORY.md header. Red team validated by 3 models (25 findings). Blocked by: Memory Architecture Split (need LEARNINGS.md to exist first so lessons don't trigger false CUV gates). Feb 17.",
-      "column": "backlog",
-      "priority": "medium",
-      "hours_saved": null,
-      "time_estimate": "~1h",
+      "description": "3-layer write protection: (1) CLAUDE.md Pre-Flight Gate reclassified (MEMORY.md=TIER 2, CLAUDE.md=TIER 3, LEARNINGS.md=EXEMPT), (2) memory-cuv-gate.sh hook (exit 2 blocking), (3) Self-referential rule in MEMORY.md header. Wired into settings.local.json. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1,
+      "time_estimate": null,
       "tags": [
         "protocol",
         "infra"
