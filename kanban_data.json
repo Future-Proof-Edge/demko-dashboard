@@ -256,6 +256,20 @@
       "launch_prompt": null
     },
     {
+      "id": "understand-claude-v18-evolution",
+      "title": "P0 — Understand CLAUDE.md v1.6→v1.8 Evolution",
+      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6→v1.7→v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 — passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~30 min review",
+      "tags": ["protocol", "review"],
+      "overnight": false,
+      "chains": ["Build in Public CUV Upgrades", "Frontier Signals Pipeline"],
+      "needs_user": "Your understanding required — foundational changes",
+      "launch_prompt": null
+    },
+    {
       "id": "configure-mcp-api-keys",
       "title": "Configure MCP API Keys",
       "description": "Firecrawl, Brave Search, Perplexity \u2014 none in .env yet. Required for Layer 1 intelligence scraping pipeline.",
@@ -396,6 +410,20 @@
       "launch_prompt": null
     },
     {
+      "id": "origin-story-narrative",
+      "title": "Plan & Write Origin Story Narrative",
+      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write.",
+      "column": "pending",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~2h",
+      "tags": ["content", "narrative"],
+      "overnight": false,
+      "chains": ["Build in Public Flywheel"],
+      "needs_user": "Choose format: blog post, presentation, NotebookLM source, or Twitter thread",
+      "launch_prompt": null
+    },
+    {
       "id": "done-section-collapse",
       "title": "Collapse Done Section (Show Recent 10)",
       "description": "Done section shows only the 10 most recent completed cards by default. Add a 'Show more' expander button to reveal the rest. Keeps the dashboard scannable as Done cards accumulate.",
@@ -408,6 +436,20 @@
       "chains": [],
       "needs_user": null,
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics."
+    },
+    {
+      "id": "launch-claude-code-cli",
+      "title": "Launch Button \u2192 Claude Code CLI",
+      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~20 min",
+      "tags": ["build"],
+      "overnight": false,
+      "chains": ["All launch_prompt cards"],
+      "needs_user": "Test in browser",
+      "launch_prompt": null
     }
   ]
 }
