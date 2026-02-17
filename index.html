@@ -879,20 +879,43 @@ var EMBEDDED_DATA = {
     },
     {
       "id": "configure-mcp-api-keys",
-      "title": "Configure MCP API Keys",
-      "description": "Firecrawl, Brave Search, Perplexity — none in .env yet. Required for Layer 1 intelligence scraping pipeline.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~20 min",
+      "title": "API Key Inventory Sync (Google Doc → Global)",
+      "description": "Synced all API keys from canonical Google Doc to Windows user env vars + .env. Added 6 missing keys: GEMINI_API_KEY, XAI_API_KEY, X_CLIENT_ID, X_CLIENT_SECRET, N8N_API_KEY, GOOGLE_AI_STUDIO_API_KEY. Updated DEEPSEEK_API_KEY to match doc. All 17 keys now in .env + Windows env. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1,
+      "time_estimate": null,
       "tags": [
         "setup",
         "infra"
       ],
       "overnight": false,
       "chains": [],
-      "needs_user": "Needs Mike: accounts",
+      "needs_user": null,
       "launch_prompt": null,
+      "theme": "setup"
+    },
+    {
+      "id": "globalize-mcp-servers",
+      "title": "Globalize MCP Servers for Claude Code CLI",
+      "description": "DONE: Moved gdrive MCP from project-scoped to global mcpServers in .claude.json. Removed redundant project-level config. Audited Desktop vs Code parity — Desktop uses zero local MCPs (all cloud via claude.ai connectors). Cloud MCPs (Gamma) already work in Code CLI. N8n/Firecrawl/Brave MCPs add marginal value over built-in WebSearch/WebFetch. Result: gdrive now works from any directory. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
+      "tags": [
+        "setup",
+        "infra",
+        "critical"
+      ],
+      "overnight": false,
+      "chains": [
+        "All MCP-dependent workflows",
+        "Google Drive access",
+        "N8n automation"
+      ],
+      "needs_user": null,
+      "launch_prompt": "Fix MCP server scope in Claude Code. Current state: .claude.json has 'mcpServers': {} at global level but gdrive is only configured under project 'C:/Demko_Local_Project/Demko Meta OS 2'. Steps: (1) Copy gdrive MCP config to global mcpServers section in .claude.json, (2) Verify gdrive_mcp_server.py works from any directory (uses absolute paths — should be fine), (3) Add N8n MCP server if available, (4) Test: launch Claude Code from home dir, verify gdrive tools appear in /mcp, (5) Document which MCPs are cloud-hosted (Gamma via claude.ai) vs local (gdrive via stdio).",
       "theme": "setup"
     },
     {
