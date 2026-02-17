@@ -945,6 +945,26 @@ var EMBEDDED_DATA = {
       "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics."
     },
     {
+      "id": "build-in-public-autopost",
+      "title": "Build in Public — Daily Auto-Post to X",
+      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~1h",
+      "tags": [
+        "build",
+        "content"
+      ],
+      "overnight": false,
+      "chains": [
+        "Build in Public Flywheel",
+        "X Engagement Tracker"
+      ],
+      "needs_user": "Create X Developer account at developer.x.com, get 4 API keys",
+      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end."
+    },
+    {
       "id": "launch-claude-code-cli",
       "title": "Launch Button → Claude Code CLI",
       "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
