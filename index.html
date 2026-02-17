@@ -7,6 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+        html { font-size: 125%; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -107,6 +108,12 @@
         .val-pending { color: #e67e22; }
         .val-done { color: #27ae60; }
         .val-total { color: #1a1a1a; }
+        .val-saved { color: #2563eb; }
+        .topbar-divider {
+            width: 1px;
+            height: 28px;
+            background: #e8e5e0;
+        }
 
         /* MAIN CONTENT */
         .main {
@@ -255,6 +262,35 @@
         .card-done h3 { text-decoration: line-through; color: #888; }
         .dot-done { background: #27ae60; }
 
+        /* OVERNIGHT BADGE */
+        .overnight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 100%);
+            color: #e0d4ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.58rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        .overnight-badge .moon { font-size: 0.7rem; }
+        .time-saved {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: #edf8f0;
+            color: #27ae60;
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.58rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
         .card-top {
             display: flex;
             align-items: flex-start;
@@ -332,6 +368,64 @@
         .tag-infra { background: #fdf8ed; color: #b8860b; }
         .tag-cleanup { background: #edf5f5; color: #16a085; }
 
+        /* COMPOUND CHAIN ARROWS */
+        .unlocked-chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            padding: 0.4rem 0.6rem 0;
+            margin-top: 0.3rem;
+            border-top: 1px dashed #e8e5e0;
+        }
+        .chain-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: #27ae60;
+            background: #f0faf3;
+            padding: 0.12rem 0.45rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .chain-arrow .arr { font-size: 0.65rem; }
+
+        /* LEADERBOARD TOGGLE */
+        .toggle-btn {
+            background: #f0eeeb;
+            border: 1px solid #e8e5e0;
+            padding: 0.2rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-left: 0.5rem;
+        }
+        .toggle-btn:hover { background: #e8e5e0; }
+        .toggle-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+        .leaderboard-rank {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #2563eb;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
         .launch-btn {
             background: #1a1a1a;
             color: #fff;
@@ -405,36 +499,38 @@
         <div class="topbar-left">
             <div class="logo">D</div>
             <h1>Demko Meta OS</h1>
-            <span class="session-tag">Feb 13-16, 2026 — Updated Feb 16</span>
+            <span class="session-tag">Feb 13-16, 2026 — Updated Feb 16 (evening)</span>
         </div>
         <div class="topbar-right">
             <div class="topbar-stat">
-                <div class="val val-critical">2</div>
+                <div class="val val-critical">1</div>
                 <div class="lbl">Critical</div>
             </div>
             <div class="topbar-stat">
-                <div class="val val-pending">9</div>
+                <div class="val val-pending">6</div>
                 <div class="lbl">Pending</div>
             </div>
             <div class="topbar-stat">
-                <div class="val val-done">11</div>
+                <div class="val val-done">16</div>
                 <div class="lbl">Done</div>
             </div>
             <div class="topbar-stat">
                 <div class="val val-total">22</div>
                 <div class="lbl">Total</div>
             </div>
+            <div class="topbar-divider"></div>
+            <div class="topbar-stat">
+                <div class="val val-saved">50.5h</div>
+                <div class="lbl">Hrs Saved</div>
+            </div>
+            <div class="topbar-stat">
+                <div class="val val-saved">$12.6k</div>
+                <div class="lbl">@ $250/hr</div>
+            </div>
         </div>
     </div>
 
     <div class="main">
-
-        <div class="priority-banner">
-            <div class="icon">!</div>
-            <div class="text">
-                <strong>TOP PRIORITY: End-to-End Stress Test.</strong> All 4 enforcement layers built (hooks, skills, agents, CLAUDE.md). Run /ci-swarm on real competitors, pipe through strategic-reviewer agent, verify every layer fires. One real run validates everything.
-            </div>
-        </div>
 
         <div class="parallel-bar">
             <div class="icon">||</div>
@@ -443,35 +539,287 @@
             </div>
         </div>
 
-        <!-- CRITICAL -->
+        <!-- DONE (scoreboard — top of page) -->
         <div class="section-header">
-            <div class="section-dot dot-critical"></div>
-            <h2>Critical - Do Now</h2>
-            <span class="count-badge">4</span>
+            <div class="section-dot dot-done"></div>
+            <h2>Done</h2>
+            <span class="count-badge">16</span>
+            <button class="toggle-btn" id="leaderboard-toggle" onclick="toggleLeaderboard()">Leaderboard</button>
             <div class="section-line"></div>
         </div>
 
-        <div class="card-grid">
-            <div class="card card-critical">
+        <div class="card-grid" id="done-grid">
+            <div class="card card-done" data-hours="0.5">
+                <div class="card-top">
+                    <h3>3D Scoring Framework</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~0.5 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">Replaced simple impact/effort ROI with Amplification &times; Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="6">
                 <div class="card-top">
                     <h3>End-to-End Stress Test</h3>
                     <div class="card-chips">
-                        <span class="time-chip">~30 min</span>
-                        <span class="priority-chip chip-critical">Critical</span>
+                        <span class="time-saved">&#9201; Saved ~6 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
                     </div>
                 </div>
-                <div class="card-desc">Run the full pipeline on real data: /ci-swarm &rarr; strategic-reviewer agent (CUV audit) &rarr; verify hooks fire (Stop gate, audit logger, anti-rationalization). Validates all 4 enforcement layers simultaneously and produces an actual deliverable.</div>
+                <div class="card-desc">Full pipeline validated: /ci-swarm (6 competitors, 87KB report) &rarr; strategic-reviewer CUV audit (3 rounds, 6.6&rarr;9.0/10) &rarr; hooks verified (audit logger, file protection, session context). Found &amp; fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.</div>
                 <div class="card-footer">
                     <div class="card-tags">
                         <span class="tag tag-build">Build</span>
                         <span class="tag tag-protocol">Protocol</span>
                     </div>
-                    <button class="launch-btn" onclick="launchTask(this, 'Run a full end-to-end stress test of the Demko Meta OS enforcement layers. Steps:\n\n1. Run /ci-swarm on real competitors (use competitors.txt)\n2. Pipe the CI output through the strategic-reviewer agent for CUV audit\n3. Verify hooks fired correctly: check SESSION_AUDIT file for CUV logging, verify Stop gate JSON validation, verify anti-rationalization gate\n4. Confirm the full pipeline works: hooks → skills → agents → CLAUDE.md protocols\n\nReport: What worked, what broke, what needs fixing. This is the validation run before shifting to real strategic work.')">
-                        <span class="arrow">&#8599;</span> Launch
-                    </button>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> 3D Scoring Framework</span>
                 </div>
             </div>
 
+            <div class="card card-done" data-hours="4">
+                <div class="card-top">
+                    <h3>Write Flo Health Project Instructions</h3>
+                    <div class="card-chips">
+                        <span class="overnight-badge"><span class="moon">&#127769;</span> Overnight</span>
+                        <span class="time-saved">&#9201; Saved ~4 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">CLAUDE_FloHealth.md — full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-protocol">Protocol</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="2">
+                <div class="card-top">
+                    <h3>End-of-Day Handoff Protocol</h3>
+                    <div class="card-chips">
+                        <span class="overnight-badge"><span class="moon">&#127769;</span> Overnight</span>
+                        <span class="time-saved">&#9201; Saved ~2 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">HANDOFF_PROTOCOL.md — task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-protocol">Protocol</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="3">
+                <div class="card-top">
+                    <h3>Tighten Kill Filter Prompts</h3>
+                    <div class="card-chips">
+                        <span class="overnight-badge"><span class="moon">&#127769;</span> Overnight</span>
+                        <span class="time-saved">&#9201; Saved ~3 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates &rarr; 7 real ones. Built by parallel agent. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="8">
+                <div class="card-top">
+                    <h3>P0 — Hooks Layer (Deterministic Enforcement)</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~8 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">CUV Stop Gate, Audit Logger, File Protection, Anti-Rationalization Gate, Session Context Injection, PreCompact Backup, Windows Notification. All 7 hooks wired in settings.local.json. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-infra">Infra</span><span class="tag tag-protocol">Protocol</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Stress Test</span>
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> CLAUDE.md Fix</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="4">
+                <div class="card-top">
+                    <h3>P1 — Skills Layer (One-Command Workflows)</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~4 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close — 5 skills in .claude/skills/. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Stress Test</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="3">
+                <div class="card-top">
+                    <h3>P3 — Context Management (Compaction Survival)</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~3 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">PreCompact backup hook, SessionStart reload, auto-compact at 50%, bash output cap, compaction directives in CLAUDE.md. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-infra">Infra</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Overnight autonomous work</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="3">
+                <div class="card-top">
+                    <h3>P4 — Custom Subagents (4 Specialized Agents)</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~3 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">ci-researcher (haiku), strategic-reviewer (sonnet), doc-fixer (haiku), codebase-auditor (haiku) in .claude/agents/. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Flo Health Instructions</span>
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Handoff Protocol</span>
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Kill Filter</span>
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Stress Test</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="2">
+                <div class="card-top">
+                    <h3>CI Header Validation Fix</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~2 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">Batch-fixed 15 legacy artifacts missing Canonical_Location, Artifact_Owner, Modification_Policy, Status fields. CI now green. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-cleanup">Cleanup</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="1.5">
+                <div class="card-top">
+                    <h3>Fix CLAUDE.md Protocol Contradictions</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~1.5 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">Fixed 3 red team findings: pre-flight gate opt-out consolidation, recursive lessons circular dep (exempt autonomous actions), SESSION_AUDIT collision (session ID in filename). Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-protocol">Protocol</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="3">
+                <div class="card-top">
+                    <h3>Organize Root Directory</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~3 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">222 files &rarr; organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-cleanup">Cleanup</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> CI Header Fix</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="2">
+                <div class="card-top">
+                    <h3>Deploy Identity Rules to Claude.ai</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~2 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">Automated via deploy_claude_profile.py. Profile + Project Instructions deployed to claude.ai. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-protocol">Protocol</span></div>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="0.5">
+                <div class="card-top">
+                    <h3>Complete GitHub CLI Auth</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~0.5 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">gh in PATH, git push working, branch synced to origin/master. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-setup">Setup</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> All deployments</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="5">
+                <div class="card-top">
+                    <h3>NotebookLM Transcript Loop</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~5 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">notebooklm_loop.py — single command: download &rarr; compress &rarr; transcribe &rarr; extract &rarr; red team. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Kill Filter Prompts</span>
+                </div>
+            </div>
+
+            <div class="card card-done" data-hours="3">
+                <div class="card-top">
+                    <h3>Profile Sync Automation</h3>
+                    <div class="card-chips">
+                        <span class="time-saved">&#9201; Saved ~3 hrs</span>
+                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
+                    </div>
+                </div>
+                <div class="card-desc">deploy_claude_profile.py — Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.</div>
+                <div class="card-footer">
+                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
+                </div>
+                <div class="unlocked-chain">
+                    <span class="chain-arrow"><span class="arr">&rarr;</span> Deploy Identity Rules</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRITICAL -->
+        <div class="section-header">
+            <div class="section-dot dot-critical"></div>
+            <h2>Critical - Do Now</h2>
+            <span class="count-badge">3</span>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="card-grid">
 <div class="card card-critical">
                 <div class="card-top">
                     <h3>Configure MCP API Keys</h3>
@@ -529,68 +877,11 @@
         <div class="section-header">
             <div class="section-dot dot-pending"></div>
             <h2>Pending - Next Up</h2>
-            <span class="count-badge">4</span>
+            <span class="count-badge">1</span>
             <div class="section-line"></div>
         </div>
 
         <div class="card-grid">
-            <div class="card card-high">
-                <div class="card-top">
-                    <h3>Write Flo Health Project Instructions</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~30 min</span>
-                        <span class="priority-chip chip-high">High</span>
-                    </div>
-                </div>
-                <div class="card-desc">Derive from Demko Meta OS CLAUDE.md, customize for Flo Health domain. Pending since Feb 14.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-protocol">Protocol</span>
-                    </div>
-                    <button class="launch-btn" onclick="launchTask(this, 'I need to create Flo Health project-specific instructions. Read the CLAUDE.md from Demko Meta OS 2 at C:\\Demko_Local_Project\\Demko Meta OS 2. Also read any Flo Health related files (flo_corpus_*.txt, flo_mega_corpus.txt, NOTEBOOKLM_SOURCE_FloHealth_Vision.md). Create a new CLAUDE.md specifically for a Flo Health project that inherits the core protocols (CUV, pre-flight gate, tiering) but customizes the domain context, competitors, and strategic focus for Flo Health specifically.')">
-                        <span class="arrow">&#8599;</span> Launch
-                    </button>
-                </div>
-            </div>
-
-            <div class="card card-medium">
-                <div class="card-top">
-                    <h3>End-of-Day Handoff Protocol</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~15 min</span>
-                        <span class="priority-chip chip-medium">Medium</span>
-                    </div>
-                </div>
-                <div class="card-desc">Template for assigning overnight autonomous sessions. Max Plan enables Opus all day + parallel overnight work.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-protocol">Protocol</span>
-                    </div>
-                    <button class="launch-btn" onclick="launchTask(this, 'Create an end-of-day handoff protocol for the Demko Meta OS project. I want a template I can use every evening to assign 3-5 overnight autonomous Claude sessions. The template should include:\n1. Task description format (clear enough for autonomous execution)\n2. Expected outputs / deliverables\n3. Where to save results\n4. Which model to use (Opus for judgment, Sonnet for execution)\n5. How to verify completion in the morning\n\nSave it as HANDOFF_PROTOCOL.md in C:\\Demko_Local_Project\\Demko Meta OS 2. Also add a section to CLAUDE.md referencing it.')">
-                        <span class="arrow">&#8599;</span> Launch
-                    </button>
-                </div>
-            </div>
-
-            <div class="card card-medium">
-                <div class="card-top">
-                    <h3>Tighten Kill Filter Prompts</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~15 min</span>
-                        <span class="priority-chip chip-medium">Medium</span>
-                    </div>
-                </div>
-                <div class="card-desc">extract_recording_feedback.py: dedup across phrasings (Kill 1) + auto-kill speculative items over 16h effort (Kill 4).</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-build">Build</span>
-                    </div>
-                    <button class="launch-btn" onclick="launchTask(this, 'Read extract_recording_feedback.py in C:\\Demko_Local_Project\\Demko Meta OS 2. The kill filter prompts need tightening based on a calibration run that found 34 BUILD candidates vs 7 real ones. Two specific fixes:\n\n1. Kill 1 (deduplication): App Store reviews appear as 3-4 separate BUILD items with different phrasings of the same idea. Add cross-claim dedup logic.\n2. Kill 4 (effort threshold): The signal correlation engine (24 hrs, 10/10 impact) was let through but should be killed as speculative. Auto-KILL anything over 16 hours effort unless explicitly flagged foundational.\n3. Metrics-as-features: \"39 hours to 90 seconds\" is a claim, not a build candidate. Script turned it into \"add time tracking\" — tighten the prompt to distinguish claims from actionable builds.\n\nMake the edits and re-run the script.')">
-                        <span class="arrow">&#8599;</span> Launch
-                    </button>
-                </div>
-            </div>
-
             <div class="card card-medium">
                 <div class="card-top">
                     <h3>GCP Domain-Wide Delegation</h3>
@@ -613,30 +904,11 @@
         <div class="section-header">
             <div class="section-dot dot-backlog"></div>
             <h2>Backlog - Later</h2>
-            <span class="count-badge">3</span>
+            <span class="count-badge">2</span>
             <div class="section-line"></div>
         </div>
 
         <div class="card-grid">
-            <div class="card card-low">
-                <div class="card-top">
-                    <h3>3D Scoring Framework</h3>
-                    <div class="card-chips">
-                        <span class="time-chip">~30 min</span>
-                        <span class="priority-chip chip-low">Backlog</span>
-                    </div>
-                </div>
-                <div class="card-desc">Replace simple ROI with Amplification x Creative / Effort for meta-learning loop scoring.</div>
-                <div class="card-footer">
-                    <div class="card-tags">
-                        <span class="tag tag-build">Build</span>
-                    </div>
-                    <button class="launch-btn" onclick="launchTask(this, 'Read meta_learning_loop.py in C:\\Demko_Local_Project\\Demko Meta OS 2. Replace the current ROI scoring with a 3D Scoring Framework: Amplification x Creative / Effort. Amplification = how many downstream outputs does this improvement affect. Creative = does this require novel thinking vs mechanical execution. Effort = hours to implement. Update the scoring logic and re-run.')">
-                        <span class="arrow">&#8599;</span> Launch
-                    </button>
-                </div>
-            </div>
-
             <div class="card card-low">
                 <div class="card-top">
                     <h3>Auto-Ingest System</h3>
@@ -674,159 +946,6 @@
             </div>
         </div>
 
-        <!-- DONE -->
-        <div class="section-header">
-            <div class="section-dot dot-done"></div>
-            <h2>Done</h2>
-            <span class="count-badge">11</span>
-            <div class="section-line"></div>
-        </div>
-
-        <div class="card-grid">
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>P0 — Hooks Layer (Deterministic Enforcement)</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">CUV Stop Gate, Audit Logger, File Protection, Anti-Rationalization Gate, Session Context Injection, PreCompact Backup, Windows Notification. All 7 hooks wired in settings.local.json. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-infra">Infra</span><span class="tag tag-protocol">Protocol</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>P1 — Skills Layer (One-Command Workflows)</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close — 5 skills in .claude/skills/. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>P3 — Context Management (Compaction Survival)</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">PreCompact backup hook, SessionStart reload, auto-compact at 50%, bash output cap, compaction directives in CLAUDE.md. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-infra">Infra</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>P4 — Custom Subagents (4 Specialized Agents)</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">ci-researcher (haiku), strategic-reviewer (sonnet), doc-fixer (haiku), codebase-auditor (haiku) in .claude/agents/. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>CI Header Validation Fix</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">Batch-fixed 15 legacy artifacts missing Canonical_Location, Artifact_Owner, Modification_Policy, Status fields. CI now green. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-cleanup">Cleanup</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>Fix CLAUDE.md Protocol Contradictions</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">Fixed 3 red team findings: pre-flight gate opt-out consolidation, recursive lessons circular dep (exempt autonomous actions), SESSION_AUDIT collision (session ID in filename). Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-protocol">Protocol</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>Organize Root Directory</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">222 files &rarr; organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-cleanup">Cleanup</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>Deploy Identity Rules to Claude.ai</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">Automated via deploy_claude_profile.py. Profile + Project Instructions deployed to claude.ai. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-protocol">Protocol</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>Complete GitHub CLI Auth</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">gh in PATH, git push working, branch synced to origin/master. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-setup">Setup</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>NotebookLM Transcript Loop</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">notebooklm_loop.py — single command: download &rarr; compress &rarr; transcribe &rarr; extract &rarr; red team. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
-                </div>
-            </div>
-
-            <div class="card card-done">
-                <div class="card-top">
-                    <h3>Profile Sync Automation</h3>
-                    <div class="card-chips">
-                        <span class="priority-chip" style="background:#edf8f0;color:#27ae60;">Done</span>
-                    </div>
-                </div>
-                <div class="card-desc">deploy_claude_profile.py — Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.</div>
-                <div class="card-footer">
-                    <div class="card-tags"><span class="tag tag-build">Build</span></div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <div class="footer">
@@ -834,6 +953,53 @@
     </div>
 
     <script>
+        var leaderboardActive = false;
+        var originalOrder = [];
+
+        function toggleLeaderboard() {
+            var grid = document.getElementById('done-grid');
+            var btn = document.getElementById('leaderboard-toggle');
+            var cards = Array.from(grid.children);
+
+            if (!leaderboardActive) {
+                // Save original order
+                originalOrder = cards.map(function(c) { return c; });
+                // Sort by hours descending
+                cards.sort(function(a, b) {
+                    return parseFloat(b.dataset.hours || 0) - parseFloat(a.dataset.hours || 0);
+                });
+                // Add rank badges, hide chain arrows
+                cards.forEach(function(card, i) {
+                    var rank = document.createElement('div');
+                    rank.className = 'leaderboard-rank';
+                    rank.textContent = '#' + (i + 1);
+                    card.style.position = 'relative';
+                    card.appendChild(rank);
+                    if (i < 3) card.style.opacity = '0.9';
+                    var chain = card.querySelector('.unlocked-chain');
+                    if (chain) chain.style.display = 'none';
+                });
+                cards.forEach(function(c) { grid.appendChild(c); });
+                btn.classList.add('active');
+                btn.textContent = 'Chronological';
+                leaderboardActive = true;
+            } else {
+                // Remove rank badges, restore opacity, show chain arrows
+                cards.forEach(function(card) {
+                    var rank = card.querySelector('.leaderboard-rank');
+                    if (rank) rank.remove();
+                    card.style.opacity = '';
+                    var chain = card.querySelector('.unlocked-chain');
+                    if (chain) chain.style.display = '';
+                });
+                // Restore original order
+                originalOrder.forEach(function(c) { grid.appendChild(c); });
+                btn.classList.remove('active');
+                btn.textContent = 'Leaderboard';
+                leaderboardActive = false;
+            }
+        }
+
         function launchTask(btn, prompt) {
             // Copy prompt to clipboard
             navigator.clipboard.writeText(prompt).then(function() {
