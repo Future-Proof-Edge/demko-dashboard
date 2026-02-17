@@ -1457,6 +1457,7 @@ function renderCard(card, seqNum, status) {
         h += '<span class="theme-chip theme-' + card.theme + '">' + THEME_MAP[card.theme] + '</span>';
     }
     (card.tags || []).forEach(function(tag) {
+        if (card.theme && tag.toLowerCase() === card.theme.toLowerCase()) return;
         var tc = TAG_CLASSES[tag] || 'tag-build';
         h += '<span class="tag ' + tc + '">' + tag.charAt(0).toUpperCase() + tag.slice(1) + '</span>';
     });
