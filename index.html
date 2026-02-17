@@ -1469,10 +1469,12 @@ function renderCard(card, seqNum, status) {
         if (card.needs_user) {
             h += '<span class="needs-user">' + esc(card.needs_user) + '</span>';
         }
-        if (card.launch_prompt) {
+        if (card.launch_prompt && !card.needs_user) {
             h += '<button class="launch-btn" onclick="launchTask(this,\'' + card.id + '\')">&#8599; Launch</button>';
         }
-        h += '<button class="complete-btn" onclick="openCompleteModal(\'' + card.id + '\')">&#10003; Done</button>';
+        if (!card.needs_user) {
+            h += '<button class="complete-btn" onclick="openCompleteModal(\'' + card.id + '\')">&#10003; Done</button>';
+        }
         h += '</div>';
     } else if (card.needs_user) {
         h += '<span class="needs-user">' + esc(card.needs_user) + '</span>';
