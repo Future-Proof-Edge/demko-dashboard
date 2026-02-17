@@ -1098,7 +1098,16 @@ function renderCard(card) {
     } else {
         if (card.time_estimate) h += '<span class="time-chip">' + esc(card.time_estimate) + '</span>';
         var chip = CHIP_MAP[p] || ['chip-low', 'Backlog'];
-        h += '<span class="priority-chip ' + chip[0] + '">' + chip[1] + '</span>';
+        h += '<span style="position:relative;display:inline-block">';
+        h += '<span class="priority-chip clickable ' + chip[0] + '" onclick="event.stopPropagation();openPriorityDropdown(\'' + card.id + '\',this)">' + chip[1] + '</span>';
+        h += '<div class="priority-dropdown" id="pdd-' + card.id + '">';
+        ['critical','high','medium','low'].forEach(function(lvl) {
+            var cm = CHIP_MAP[lvl];
+            h += '<div class="priority-dropdown-item" onclick="event.stopPropagation();changePriority(\'' + card.id + '\',\'' + lvl + '\')">';
+            h += '<span class="pdot pdot-' + lvl + '"></span>' + cm[1];
+            h += '</div>';
+        });
+        h += '</div></span>';
     }
 
     h += '    </div>';
@@ -1188,6 +1197,33 @@ async function confirmComplete() {
     // Persist to GitHub
     await pushToGitHub('Complete: ' + card.title + ' (' + hours + 'h saved)');
 }
+
+// ── Priority Selector ───────────────────────────────────────────────────
+function openPriorityDropdown(cardId, chipEl) {
+    // Close any open dropdown first
+    document.querySelectorAll('.priority-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
+    var dd = document.getElementById('pdd-' + cardId);
+    if (dd) dd.classList.add('open');
+}
+
+async function changePriority(cardId, newPriority) {
+    var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
+    if (!card || card.priority === newPriority) {
+        document.querySelectorAll('.priority-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
+        return;
+    }
+    var oldP = card.priority;
+    card.priority = newPriority;
+    render();
+    var chipLabel = (CHIP_MAP[newPriority] || ['','?'])[1];
+    showToast('Priority: ' + card.title.substring(0, 30) + ' → ' + chipLabel);
+    await pushToGitHub('Priority: ' + card.title + ' ' + oldP + ' → ' + newPriority);
+}
+
+// Close priority dropdown on outside click
+document.addEventListener('click', function() {
+    document.querySelectorAll('.priority-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
+});
 
 // ── GitHub Persistence ──────────────────────────────────────────────────
 async function pushToGitHub(commitMsg) {
