@@ -169,9 +169,13 @@
         .seq-badge {
             display: inline-flex; align-items: center; justify-content: center;
             min-width: 22px; height: 22px; border-radius: 50%;
-            background: #1a1a1a; color: #fff; font-size: 0.6rem; font-weight: 800;
+            color: #fff; font-size: 0.6rem; font-weight: 800;
             margin-right: 0.4rem; flex-shrink: 0; vertical-align: middle;
         }
+        .seq-badge-go { background: #27ae60; }
+        .seq-badge-wait { background: #e67e22; }
+        .card-go::before { background: #27ae60 !important; }
+        .card-wait::before { background: #e67e22 !important; }
 
         .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
         .card h3 { font-size: 0.88rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; padding-left: 0.6rem; }
@@ -1342,11 +1346,27 @@ function render() {
         if (colCards.length === 0) return;
         var isDone = col.id === 'done';
 
-        // Sort non-done columns by priority (critical > high > medium > low)
+        // Leverage-weighted sort: priority tier first, then leverage within tier
         if (!isDone) {
             var PW = { critical: 0, high: 1, medium: 2, low: 3 };
+            function parseEffort(est) {
+                if (!est) return 1;
+                var m = est.match(/(\d+(?:\.\d+)?)\s*h/i);
+                if (m) return parseFloat(m[1]);
+                m = est.match(/(\d+)\s*min/i);
+                if (m) return parseFloat(m[1]) / 60;
+                return 1;
+            }
+            colCards.forEach(function(c) {
+                var downstream = (c.chains || []).length;
+                var effort = parseEffort(c.time_estimate);
+                c._leverage = (downstream + 1) / effort;
+                c._status = c.needs_user ? 'wait' : 'go';
+            });
             colCards.sort(function(a, b) {
-                return (PW[a.priority] || 99) - (PW[b.priority] || 99);
+                var pd = (PW[a.priority] || 99) - (PW[b.priority] || 99);
+                if (pd !== 0) return pd;
+                return b._leverage - a._leverage;
             });
         }
 
@@ -1375,7 +1395,7 @@ function render() {
             html += '<button class="done-expander" id="done-expander" onclick="toggleDoneCollapse()">Show ' + hidden.length + ' more completed tasks</button>';
         } else {
             colCards.forEach(function(card, i) {
-                html += renderCard(card, !isDone ? (i + 1) : null);
+                html += renderCard(card, !isDone ? (i + 1) : null, card._status || null);
             });
             html += '</div>';
         }
@@ -1394,9 +1414,11 @@ var CARD_CLASSES = { done: 'card-done', critical: 'card-critical', high: 'card-h
 var CHIP_MAP = { critical: ['chip-critical','Critical'], high: ['chip-high','High'], medium: ['chip-medium','Medium'], low: ['chip-low','Backlog'] };
 var THEME_MAP = { 'content-x': 'Content & X', 'meta-os': 'Meta OS', 'dashboard': 'Dashboard', 'pipelines': 'Pipelines', 'setup': 'Setup', 'research': 'Research', 'flo-health': 'Flo Health' };
 
-function renderCard(card, seqNum) {
+function renderCard(card, seqNum, status) {
     var p = card.priority;
     var cls = CARD_CLASSES[p] || 'card-low';
+    if (status === 'go') cls += ' card-go';
+    else if (status === 'wait') cls += ' card-wait';
     var hoursAttr = card.hours_saved != null ? ' data-hours="' + card.hours_saved + '"' : '';
     var themeAttr = card.theme ? ' data-theme="' + card.theme + '"' : '';
     var h = '';
@@ -1404,7 +1426,8 @@ function renderCard(card, seqNum) {
     h += '<div class="card ' + cls + '" data-id="' + card.id + '"' + hoursAttr + themeAttr + '>';
     h += '  <div class="card-top">';
     if (seqNum) {
-        h += '    <h3><span class="seq-badge">' + seqNum + '</span>' + esc(card.title) + '</h3>';
+        var badgeCls = status === 'go' ? 'seq-badge seq-badge-go' : 'seq-badge seq-badge-wait';
+        h += '    <h3><span class="' + badgeCls + '">' + seqNum + '</span>' + esc(card.title) + '</h3>';
     } else {
         h += '    <h3>' + esc(card.title) + '</h3>';
     }
