@@ -304,6 +304,30 @@
             font-size: 0.6rem; font-weight: 800; z-index: 2;
         }
 
+        /* PRIORITY DROPDOWN */
+        .priority-chip.clickable { cursor: pointer; transition: all 0.15s; }
+        .priority-chip.clickable:hover { filter: brightness(0.92); transform: scale(1.05); }
+        .priority-dropdown {
+            position: absolute; top: 100%; right: 0; margin-top: 0.3rem;
+            background: #fff; border: 1px solid #e8e5e0; border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 50;
+            overflow: hidden; min-width: 120px; display: none;
+        }
+        .priority-dropdown.open { display: block; }
+        .priority-dropdown-item {
+            padding: 0.45rem 0.8rem; font-size: 0.7rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+            transition: background 0.1s; text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .priority-dropdown-item:hover { background: #f8f7f4; }
+        .priority-dropdown-item .pdot {
+            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+        .pdot-critical { background: #dc3545; }
+        .pdot-high { background: #e67e22; }
+        .pdot-medium { background: #3498db; }
+        .pdot-low { background: #ccc; }
+
         /* CARD COMPLETE ANIMATION */
         .card.completing {
             animation: completeFlash 0.6s ease;
@@ -1250,12 +1274,11 @@ function clearPAT() {
 function launchTask(btn, cardId) {
     var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
     if (!card || !card.launch_prompt) return;
-    navigator.clipboard.writeText(card.launch_prompt).then(function() {
-        showToast('Prompt copied! Paste in the new Claude tab.');
-        btn.classList.add('launched');
-        btn.innerHTML = '&#10003; Copied';
-        window.open('https://claude.ai/new', '_blank');
-    });
+    var encoded = encodeURIComponent(card.launch_prompt);
+    window.location.href = 'claude-code://launch?prompt=' + encoded;
+    btn.classList.add('launched');
+    btn.innerHTML = '&#10003; Launched';
+    showToast('Opening Claude Code CLI...');
 }
 
 // ── Leaderboard Toggle ─────────────────────────────────────────────────
