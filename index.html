@@ -225,6 +225,7 @@
         .theme-pipelines { background: #fefce8; color: #a16207; border: 1px solid #fde68a; }
         .theme-setup { background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; }
         .theme-research { background: #faf5ff; color: #7c3aed; border: 1px solid #ddd6fe; }
+        .theme-flo-health { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
 
         .unlocked-chain {
             display: flex; flex-wrap: wrap; gap: 0.3rem;
@@ -600,7 +601,7 @@ var EMBEDDED_DATA = {
       "chains": [],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os"
+      "theme": "flo-health"
     },
     {
       "id": "eod-handoff-protocol",
@@ -847,11 +848,11 @@ var EMBEDDED_DATA = {
     {
       "id": "understand-claude-v18-evolution",
       "title": "P0 — Understand CLAUDE.md v1.6→v1.8 Evolution",
-      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6→v1.7→v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 — passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~30 min review",
+      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6→v1.7→v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 — passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16. Reviewed Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
       "tags": [
         "protocol",
         "review"
@@ -861,7 +862,7 @@ var EMBEDDED_DATA = {
         "Build in Public CUV Upgrades",
         "Frontier Signals Pipeline"
       ],
-      "needs_user": "Needs Mike: review",
+      "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os"
     },
@@ -1289,6 +1290,7 @@ function render() {
     html += '      <option value="pipelines">Pipelines</option>';
     html += '      <option value="setup">Setup</option>';
     html += '      <option value="research">Research</option>';
+    html += '      <option value="flo-health">Flo Health</option>';
     html += '    </select>';
     html += '    <select id="date-select" class="date-select" onchange="onDateSelect(this.value)">';
     html += '      <option value="all">All time</option>';
@@ -1375,7 +1377,7 @@ function render() {
 var TAG_CLASSES = { protocol: 'tag-protocol', setup: 'tag-setup', build: 'tag-build', infra: 'tag-infra', cleanup: 'tag-cleanup' };
 var CARD_CLASSES = { done: 'card-done', critical: 'card-critical', high: 'card-high', medium: 'card-medium', low: 'card-low' };
 var CHIP_MAP = { critical: ['chip-critical','Critical'], high: ['chip-high','High'], medium: ['chip-medium','Medium'], low: ['chip-low','Backlog'] };
-var THEME_MAP = { 'content-x': 'Content & X', 'meta-os': 'Meta OS', 'dashboard': 'Dashboard', 'pipelines': 'Pipelines', 'setup': 'Setup', 'research': 'Research' };
+var THEME_MAP = { 'content-x': 'Content & X', 'meta-os': 'Meta OS', 'dashboard': 'Dashboard', 'pipelines': 'Pipelines', 'setup': 'Setup', 'research': 'Research', 'flo-health': 'Flo Health' };
 
 function renderCard(card) {
     var p = card.priority;
