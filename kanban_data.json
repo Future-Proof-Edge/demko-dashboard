@@ -541,7 +541,7 @@
         "Frontier Signals Pipeline"
       ],
       "needs_user": null,
-      "launch_prompt": null,
+      "launch_prompt": "Implement the 5 CUV upgrades for build_in_public.py in C:\\Demko_Local_Project\\Demko Meta OS 2: U1 Add engagement window reminder (post within 30 min of high-traffic times). U2 Switch from long threads to constellation format (standalone tweets + quote-tweets). U3 Inject streak counter, day number, and time-saved stats into tweet opener. U4 After posting, generate an engagement hit list of 5 accounts to reply to. U5 Create blog/index.html with navigation across all blog posts. Test with --dry-run flag. Commit when done.",
       "theme": "content-x"
     },
     {
@@ -688,7 +688,7 @@
         "All future MEMORY.md and CLAUDE.md writes"
       ],
       "needs_user": null,
-      "launch_prompt": null,
+      "launch_prompt": "Implement 3-layer MEMORY.md write protection in C:\\Demko_Local_Project\\Demko Meta OS 2: (1) In CLAUDE.md Pre-Flight Gate section, reclassify MEMORY.md writes as TIER 2 and CLAUDE.md writes as TIER 3. (2) Create a PreToolUse advisory hook script (memory-cuv-gate.sh) that warns when Edit or Write targets *MEMORY.md or *CLAUDE.md files. (3) Add a self-referential protection rule in the MEMORY.md header. Reference red_team_input_memory_cuv_gate.md for full spec. Prerequisite: LEARNINGS.md must exist first. Commit when done.",
       "theme": "meta-os"
     },
     {
@@ -706,7 +706,7 @@
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null,
+      "launch_prompt": "Research OpenRouter as a unified API routing layer. Compare: (1) Current direct-to-provider costs (Anthropic, OpenAI, DeepSeek, Gemini) vs OpenRouter 1% markup. (2) Feature comparison: caching, auto-fallback, rate limit handling, model availability. (3) Evaluate if red_team_review.py multi-model calls would simplify with OpenRouter's OpenAI-compatible endpoint. (4) Write a recommendation memo to C:\\Demko_Local_Project\\Demko Meta OS 2\\research\\openrouter_evaluation.md with a go/no-go verdict and migration plan if go.",
       "theme": "research"
     }
   ]
