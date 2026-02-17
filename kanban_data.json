@@ -1,20 +1,36 @@
 {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 13-16, 2026 \u2014 Updated Feb 17 priorities",
+    "session_tag": "Feb 13-16, 2026 — Updated Feb 17 priorities",
     "hourly_rate": 250,
     "last_updated": "Feb 17, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "\ud83d\udea8 Feb 17 TOP PRIORITY: Configure MCP API keys (Firecrawl, Brave, Perplexity) + curate top 10 Twitter builder handles for Frontier Signals Pipeline. 20 min total. Unlocks Layer 1 intelligence.",
-    "parallel": "Run up to 5 tasks in parallel on claude.ai. Click \u201cLaunch\u201d to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently."
+    "priority": "🚨 Feb 17 TOP PRIORITY: Configure MCP API keys (Firecrawl, Brave, Perplexity) + curate top 10 Twitter builder handles for Frontier Signals Pipeline. 20 min total. Unlocks Layer 1 intelligence.",
+    "parallel": "Run up to 5 tasks in parallel on claude.ai. Click “Launch” to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently."
   },
   "columns": [
-    { "id": "critical", "label": "Critical - Do Now", "dot": "dot-critical" },
-    { "id": "pending", "label": "Pending - Next Up", "dot": "dot-pending" },
-    { "id": "backlog", "label": "Backlog - Later", "dot": "dot-backlog" },
-    { "id": "done", "label": "Done", "dot": "dot-done" }
+    {
+      "id": "critical",
+      "label": "Critical - Do Now",
+      "dot": "dot-critical"
+    },
+    {
+      "id": "pending",
+      "label": "Pending - Next Up",
+      "dot": "dot-pending"
+    },
+    {
+      "id": "backlog",
+      "label": "Backlog - Later",
+      "dot": "dot-backlog"
+    },
+    {
+      "id": "done",
+      "label": "Done",
+      "dot": "dot-done"
+    }
   ],
   "cards": [
     {
@@ -25,151 +41,204 @@
       "priority": "done",
       "hours_saved": 1.5,
       "time_estimate": null,
-      "tags": ["tool-config", "debugging"],
+      "tags": [
+        "tool-config",
+        "debugging"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "dashboard-deploy-sync",
       "title": "Dashboard Deploy Sync Protocol",
-      "description": "Cloned demko-dashboard deploy repo, synced kanban_dashboard.html \u2192 index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.",
+      "description": "Cloned demko-dashboard deploy repo, synced kanban_dashboard.html → index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["infra", "protocol"],
+      "tags": [
+        "infra",
+        "protocol"
+      ],
       "overnight": false,
-      "chains": ["All future dashboard deploys"],
+      "chains": [
+        "All future dashboard deploys"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "dashboard"
     },
     {
       "id": "3d-scoring-framework",
       "title": "3D Scoring Framework",
-      "description": "Replaced simple impact/effort ROI with Amplification \u00d7 Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.",
+      "description": "Replaced simple impact/effort ROI with Amplification × Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "e2e-stress-test",
       "title": "End-to-End Stress Test",
-      "description": "Full pipeline validated: /ci-swarm (6 competitors, 87KB report) \u2192 strategic-reviewer CUV audit (3 rounds, 6.6\u21929.0/10) \u2192 hooks verified (audit logger, file protection, session context). Found & fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.",
+      "description": "Full pipeline validated: /ci-swarm (6 competitors, 87KB report) → strategic-reviewer CUV audit (3 rounds, 6.6→9.0/10) → hooks verified (audit logger, file protection, session context). Found & fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 6,
       "time_estimate": null,
-      "tags": ["build", "protocol"],
+      "tags": [
+        "build",
+        "protocol"
+      ],
       "overnight": false,
-      "chains": ["3D Scoring Framework"],
+      "chains": [
+        "3D Scoring Framework"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "flo-health-instructions",
       "title": "Write Flo Health Project Instructions",
-      "description": "CLAUDE_FloHealth.md \u2014 full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.",
+      "description": "CLAUDE_FloHealth.md — full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": true,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "eod-handoff-protocol",
       "title": "End-of-Day Handoff Protocol",
-      "description": "HANDOFF_PROTOCOL.md \u2014 task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.",
+      "description": "HANDOFF_PROTOCOL.md — task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": true,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "tighten-kill-filter",
       "title": "Tighten Kill Filter Prompts",
-      "description": "3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates \u2192 7 real ones. Built by parallel agent. Feb 16.",
+      "description": "3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates → 7 real ones. Built by parallel agent. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": true,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "pipelines"
     },
     {
       "id": "p0-hooks-layer",
-      "title": "P0 \u2014 Hooks Layer (Deterministic Enforcement)",
+      "title": "P0 — Hooks Layer (Deterministic Enforcement)",
       "description": "CUV Stop Gate, Audit Logger, File Protection, Anti-Rationalization Gate, Session Context Injection, PreCompact Backup, Windows Notification. All 7 hooks wired in settings.local.json. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 8,
       "time_estimate": null,
-      "tags": ["infra", "protocol"],
+      "tags": [
+        "infra",
+        "protocol"
+      ],
       "overnight": false,
-      "chains": ["Stress Test", "CLAUDE.md Fix"],
+      "chains": [
+        "Stress Test",
+        "CLAUDE.md Fix"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "p1-skills-layer",
-      "title": "P1 \u2014 Skills Layer (One-Command Workflows)",
-      "description": "/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close \u2014 5 skills in .claude/skills/. Feb 16.",
+      "title": "P1 — Skills Layer (One-Command Workflows)",
+      "description": "/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close — 5 skills in .claude/skills/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Stress Test"],
+      "chains": [
+        "Stress Test"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "p3-context-management",
-      "title": "P3 \u2014 Context Management (Compaction Survival)",
+      "title": "P3 — Context Management (Compaction Survival)",
       "description": "PreCompact backup hook, SessionStart reload, auto-compact at 50%, bash output cap, compaction directives in CLAUDE.md. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["infra"],
+      "tags": [
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["Overnight autonomous work"],
+      "chains": [
+        "Overnight autonomous work"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "p4-custom-subagents",
-      "title": "P4 \u2014 Custom Subagents (4 Specialized Agents)",
+      "title": "P4 — Custom Subagents (4 Specialized Agents)",
       "description": "ci-researcher (haiku), strategic-reviewer (sonnet), doc-fixer (haiku), codebase-auditor (haiku) in .claude/agents/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Flo Health Instructions", "Handoff Protocol", "Kill Filter", "Stress Test"],
+      "chains": [
+        "Flo Health Instructions",
+        "Handoff Protocol",
+        "Kill Filter",
+        "Stress Test"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "ci-header-validation",
@@ -179,11 +248,14 @@
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["cleanup"],
+      "tags": [
+        "cleanup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "fix-claude-md",
@@ -193,25 +265,33 @@
       "priority": "done",
       "hours_saved": 1.5,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "organize-root-dir",
       "title": "Organize Root Directory",
-      "description": "222 files \u2192 organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.",
+      "description": "222 files → organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["cleanup"],
+      "tags": [
+        "cleanup"
+      ],
       "overnight": false,
-      "chains": ["CI Header Fix"],
+      "chains": [
+        "CI Header Fix"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "deploy-identity-rules",
@@ -221,11 +301,14 @@
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "github-cli-auth",
@@ -235,39 +318,54 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["setup"],
+      "tags": [
+        "setup"
+      ],
       "overnight": false,
-      "chains": ["All deployments"],
+      "chains": [
+        "All deployments"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "notebooklm-transcript-loop",
       "title": "NotebookLM Transcript Loop",
-      "description": "notebooklm_loop.py \u2014 single command: download \u2192 compress \u2192 transcribe \u2192 extract \u2192 red team. Feb 16.",
+      "description": "notebooklm_loop.py — single command: download → compress → transcribe → extract → red team. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Kill Filter Prompts"],
+      "chains": [
+        "Kill Filter Prompts"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "pipelines"
     },
     {
       "id": "profile-sync-automation",
       "title": "Profile Sync Automation",
-      "description": "deploy_claude_profile.py \u2014 Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.",
+      "description": "deploy_claude_profile.py — Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Deploy Identity Rules"],
+      "chains": [
+        "Deploy Identity Rules"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "pipelines"
     },
     {
       "id": "understand-claude-v18-evolution",
@@ -277,25 +375,36 @@
       "priority": "critical",
       "hours_saved": null,
       "time_estimate": "~30 min review",
-      "tags": ["protocol", "review"],
+      "tags": [
+        "protocol",
+        "review"
+      ],
       "overnight": false,
-      "chains": ["Build in Public CUV Upgrades", "Frontier Signals Pipeline"],
-      "needs_user": "Your understanding required — foundational changes",
-      "launch_prompt": null
+      "chains": [
+        "Build in Public CUV Upgrades",
+        "Frontier Signals Pipeline"
+      ],
+      "needs_user": "Needs Mike: review",
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "configure-mcp-api-keys",
       "title": "Configure MCP API Keys",
-      "description": "Firecrawl, Brave Search, Perplexity \u2014 none in .env yet. Required for Layer 1 intelligence scraping pipeline.",
+      "description": "Firecrawl, Brave Search, Perplexity — none in .env yet. Required for Layer 1 intelligence scraping pipeline.",
       "column": "critical",
       "priority": "critical",
       "hours_saved": null,
       "time_estimate": "~20 min",
-      "tags": ["setup", "infra"],
+      "tags": [
+        "setup",
+        "infra"
+      ],
       "overnight": false,
       "chains": [],
-      "needs_user": "Needs your accounts",
-      "launch_prompt": null
+      "needs_user": "Needs Mike: accounts",
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "install-agent-sdk-plugin",
@@ -305,25 +414,31 @@
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~1 min",
-      "tags": ["setup"],
+      "tags": [
+        "setup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": "Desktop UI click",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "install-chrome-extension",
       "title": "Install Claude in Chrome Extension",
-      "description": "Use work/separate Chrome profile \u2014 NOT personal account. Enables browser automation from Claude Code.",
+      "description": "Use work/separate Chrome profile — NOT personal account. Enables browser automation from Claude Code.",
       "column": "critical",
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~2 min",
-      "tags": ["setup"],
+      "tags": [
+        "setup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": "Chrome UI click",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "gcp-domain-delegation",
@@ -333,95 +448,128 @@
       "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~15 min",
-      "tags": ["infra"],
+      "tags": [
+        "infra"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": "Needs GCP Admin Console",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "frontier-signals-pipeline",
       "title": "Frontier Signals Pipeline (Twitter/X)",
-      "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds \u2192 FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
+      "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds → FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
       "column": "pending",
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~2h build",
-      "tags": ["build", "infra"],
+      "tags": [
+        "build",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["CUV v1.8 frontier retro-check"],
-      "needs_user": "Curate top 10 builder list",
-      "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing."
+      "chains": [
+        "CUV v1.8 frontier retro-check"
+      ],
+      "needs_user": "Needs Mike: builder list",
+      "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing.",
+      "theme": "content-x"
     },
     {
       "id": "x-engagement-tracker",
       "title": "X Engagement Tracker — Polish & Ship",
       "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
       "column": "pending",
-      "priority": "low",
+      "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~1h",
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Frontier Signals Pipeline"],
-      "needs_user": "Visual feedback on dashboard",
-      "launch_prompt": null
+      "chains": [
+        "Frontier Signals Pipeline"
+      ],
+      "needs_user": "Needs Mike: feedback",
+      "launch_prompt": null,
+      "theme": "content-x"
     },
     {
       "id": "auto-ingest-system",
       "title": "Auto-Ingest System",
-      "description": "auto_ingest.py \u2014 reads accretive report, copies INGEST files to knowledge corpus automatically.",
+      "description": "auto_ingest.py — reads accretive report, copies INGEST files to knowledge corpus automatically.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
       "time_estimate": "~20 min",
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": "Build auto_ingest.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report."
+      "launch_prompt": "Build auto_ingest.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report.",
+      "theme": "pipelines"
     },
     {
       "id": "mobile-capture-pipeline",
       "title": "Mobile Capture Pipeline",
-      "description": "End-to-end test: Pixel 9a \u2192 Google Recorder \u2192 Drive \u2192 Claude Code ingestion.",
+      "description": "End-to-end test: Pixel 9a → Google Recorder → Drive → Claude Code ingestion.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
       "time_estimate": "~30 min",
-      "tags": ["infra"],
+      "tags": [
+        "infra"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": "Needs phone + Drive",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "interactive-dashboard-rewrite",
       "title": "Interactive Dashboard Rewrite",
-      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON \u2192 python render \u2192 copy repo \u2192 git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
+      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON → python render → copy repo → git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["build", "infra"],
+      "tags": [
+        "build",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["All future dashboard updates"],
+      "chains": [
+        "All future dashboard updates"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "dashboard"
     },
     {
       "id": "build-in-public-flywheel",
       "title": "Build in Public Content Flywheel — CUV Upgrades",
-      "description": "Core flywheel working (commits \u2192 themes \u2192 blog posts \u2192 tweet storm). CUV 1.8 identified 5 upgrades from 1% builder research: U1 Engagement window reminder, U2 Constellation format (standalone + quote-tweets instead of long threads), U3 Metrics injection (streak counter, day number, time-saved stats), U4 Engagement hit list (post-tweet reply targets), U5 Blog index page + navigation. Need to review, bless, and implement.",
+      "description": "Core flywheel working (commits → themes → blog posts → tweet storm). CUV 1.8 identified 5 upgrades from 1% builder research: U1 Engagement window reminder, U2 Constellation format (standalone + quote-tweets instead of long threads), U3 Metrics injection (streak counter, day number, time-saved stats), U4 Engagement hit list (post-tweet reply targets), U5 Blog index page + navigation. Need to review, bless, and implement.",
       "column": "pending",
       "priority": "high",
       "hours_saved": null,
       "time_estimate": null,
-      "tags": ["build", "content"],
+      "tags": [
+        "build",
+        "content"
+      ],
       "overnight": false,
-      "chains": ["X Engagement Tracker", "Frontier Signals Pipeline"],
+      "chains": [
+        "X Engagement Tracker",
+        "Frontier Signals Pipeline"
+      ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "content-x"
     },
     {
       "id": "origin-story-narrative",
@@ -431,11 +579,17 @@
       "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~2h",
-      "tags": ["content", "narrative"],
+      "tags": [
+        "content",
+        "narrative"
+      ],
       "overnight": false,
-      "chains": ["Build in Public Flywheel"],
-      "needs_user": "Choose format: blog post, presentation, NotebookLM source, or Twitter thread",
-      "launch_prompt": null
+      "chains": [
+        "Build in Public Flywheel"
+      ],
+      "needs_user": "Needs Mike: pick format",
+      "launch_prompt": null,
+      "theme": "content-x"
     },
     {
       "id": "done-section-collapse",
@@ -445,11 +599,14 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics."
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
+      "theme": "dashboard"
     },
     {
       "id": "build-in-public-autopost",
@@ -459,11 +616,18 @@
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~1h",
-      "tags": ["build", "content"],
+      "tags": [
+        "build",
+        "content"
+      ],
       "overnight": false,
-      "chains": ["Build in Public Flywheel", "X Engagement Tracker"],
-      "needs_user": "Create X Developer account at developer.x.com, get 4 API keys",
-      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end."
+      "chains": [
+        "Build in Public Flywheel",
+        "X Engagement Tracker"
+      ],
+      "needs_user": "Needs Mike: X API keys",
+      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
+      "theme": "content-x"
     },
     {
       "id": "openrouter-evaluation",
@@ -473,25 +637,34 @@
       "priority": "low",
       "hours_saved": null,
       "time_estimate": "~1h",
-      "tags": ["infra", "research"],
+      "tags": [
+        "infra",
+        "research"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "research"
     },
     {
       "id": "launch-claude-code-cli",
-      "title": "Launch Button \u2192 Claude Code CLI",
+      "title": "Launch Button → Claude Code CLI",
       "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() updated to fire claude-code://launch?prompt=... URL. Needs testing: click Launch on a card, confirm browser prompts 'Allow?', confirm Windows Terminal opens with claude -p running. If bat fails on long/special-char prompts, switch to temp-file approach. Feb 16.",
       "column": "pending",
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~20 min",
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["All launch_prompt cards"],
+      "chains": [
+        "All launch_prompt cards"
+      ],
       "needs_user": "Test in browser",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "dashboard"
     }
   ]
 }

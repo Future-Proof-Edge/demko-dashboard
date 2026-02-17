@@ -214,6 +214,18 @@
         .tag-infra { background: #fdf8ed; color: #b8860b; }
         .tag-cleanup { background: #edf5f5; color: #16a085; }
 
+        .theme-chip {
+            padding: 0.18rem 0.55rem; border-radius: 5px; font-size: 0.58rem;
+            font-weight: 700; letter-spacing: 0.04em; white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .theme-content-x { background: #fef0f5; color: #d63384; border: 1px solid #f5c2d7; }
+        .theme-meta-os { background: #eef0ff; color: #4338ca; border: 1px solid #c7d2fe; }
+        .theme-dashboard { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+        .theme-pipelines { background: #fefce8; color: #a16207; border: 1px solid #fde68a; }
+        .theme-setup { background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; }
+        .theme-research { background: #faf5ff; color: #7c3aed; border: 1px solid #ddd6fe; }
+
         .unlocked-chain {
             display: flex; flex-wrap: wrap; gap: 0.3rem;
             padding: 0.4rem 0.6rem 0; margin-top: 0.3rem; border-top: 1px dashed #e8e5e0;
@@ -318,7 +330,7 @@
         /* TOPBAR SEARCH */
         .topbar-search {
             display: flex; gap: 0.5rem; align-items: center; flex: 1;
-            max-width: 520px; margin: 0 1.5rem;
+            max-width: 640px; margin: 0 1.5rem;
         }
         .search-wrap { position: relative; flex: 1; min-width: 0; }
         .search-wrap input {
@@ -350,6 +362,16 @@
             white-space: nowrap;
         }
         .date-select:focus { border-color: #2563eb; }
+        .theme-select {
+            padding: 0.45rem 1.6rem 0.45rem 0.6rem; border: 1px solid #e8e5e0; border-radius: 7px;
+            font-size: 0.72rem; font-family: 'Inter', sans-serif;
+            background: #f8f7f4; color: #1a1a1a; cursor: pointer; outline: none;
+            transition: border-color 0.15s; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.5rem center;
+            white-space: nowrap;
+        }
+        .theme-select:focus { border-color: #2563eb; }
         .date-custom { display: none; }
         .date-custom.visible { display: flex; gap: 0.3rem; align-items: center; }
         .date-custom input[type="date"] {
@@ -503,7 +525,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "dashboard-deploy-sync",
@@ -522,7 +545,8 @@ var EMBEDDED_DATA = {
         "All future dashboard deploys"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "dashboard"
     },
     {
       "id": "3d-scoring-framework",
@@ -538,7 +562,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "e2e-stress-test",
@@ -557,7 +582,8 @@ var EMBEDDED_DATA = {
         "3D Scoring Framework"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "flo-health-instructions",
@@ -573,7 +599,8 @@ var EMBEDDED_DATA = {
       "overnight": true,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "eod-handoff-protocol",
@@ -589,7 +616,8 @@ var EMBEDDED_DATA = {
       "overnight": true,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "tighten-kill-filter",
@@ -605,7 +633,8 @@ var EMBEDDED_DATA = {
       "overnight": true,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "pipelines"
     },
     {
       "id": "p0-hooks-layer",
@@ -625,7 +654,8 @@ var EMBEDDED_DATA = {
         "CLAUDE.md Fix"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "p1-skills-layer",
@@ -643,7 +673,8 @@ var EMBEDDED_DATA = {
         "Stress Test"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "p3-context-management",
@@ -661,7 +692,8 @@ var EMBEDDED_DATA = {
         "Overnight autonomous work"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "p4-custom-subagents",
@@ -682,7 +714,8 @@ var EMBEDDED_DATA = {
         "Stress Test"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "ci-header-validation",
@@ -698,7 +731,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "fix-claude-md",
@@ -714,7 +748,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "organize-root-dir",
@@ -732,7 +767,8 @@ var EMBEDDED_DATA = {
         "CI Header Fix"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "deploy-identity-rules",
@@ -748,7 +784,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "github-cli-auth",
@@ -766,7 +803,8 @@ var EMBEDDED_DATA = {
         "All deployments"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "notebooklm-transcript-loop",
@@ -784,7 +822,8 @@ var EMBEDDED_DATA = {
         "Kill Filter Prompts"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "pipelines"
     },
     {
       "id": "profile-sync-automation",
@@ -802,7 +841,8 @@ var EMBEDDED_DATA = {
         "Deploy Identity Rules"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "pipelines"
     },
     {
       "id": "understand-claude-v18-evolution",
@@ -821,8 +861,9 @@ var EMBEDDED_DATA = {
         "Build in Public CUV Upgrades",
         "Frontier Signals Pipeline"
       ],
-      "needs_user": "Your understanding required — foundational changes",
-      "launch_prompt": null
+      "needs_user": "Needs Mike: review",
+      "launch_prompt": null,
+      "theme": "meta-os"
     },
     {
       "id": "configure-mcp-api-keys",
@@ -838,8 +879,9 @@ var EMBEDDED_DATA = {
       ],
       "overnight": false,
       "chains": [],
-      "needs_user": "Needs your accounts",
-      "launch_prompt": null
+      "needs_user": "Needs Mike: accounts",
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "install-agent-sdk-plugin",
@@ -855,7 +897,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": "Desktop UI click",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "install-chrome-extension",
@@ -871,7 +914,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": "Chrome UI click",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "gcp-domain-delegation",
@@ -887,7 +931,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": "Needs GCP Admin Console",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "frontier-signals-pipeline",
@@ -905,15 +950,16 @@ var EMBEDDED_DATA = {
       "chains": [
         "CUV v1.8 frontier retro-check"
       ],
-      "needs_user": "Curate top 10 builder list",
-      "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing."
+      "needs_user": "Needs Mike: builder list",
+      "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing.",
+      "theme": "content-x"
     },
     {
       "id": "x-engagement-tracker",
       "title": "X Engagement Tracker — Polish & Ship",
       "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
       "column": "pending",
-      "priority": "low",
+      "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~1h",
       "tags": [
@@ -923,8 +969,9 @@ var EMBEDDED_DATA = {
       "chains": [
         "Frontier Signals Pipeline"
       ],
-      "needs_user": "Visual feedback on dashboard",
-      "launch_prompt": null
+      "needs_user": "Needs Mike: feedback",
+      "launch_prompt": null,
+      "theme": "content-x"
     },
     {
       "id": "auto-ingest-system",
@@ -940,7 +987,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": "Build auto_ingest.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report."
+      "launch_prompt": "Build auto_ingest.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read the latest accretive_evaluation_report.json, 2) Find items tagged for INGEST, 3) Copy them into the knowledge corpus (used by knowledge_corpus_rag.py), 4) Update knowledge_corpus_index.json. Follow the INGEST_PIPELINE_CONTRACT__v1.0.md for artifact standards. Test by running it against the current accretive report.",
+      "theme": "pipelines"
     },
     {
       "id": "mobile-capture-pipeline",
@@ -956,7 +1004,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": "Needs phone + Drive",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "setup"
     },
     {
       "id": "interactive-dashboard-rewrite",
@@ -975,7 +1024,8 @@ var EMBEDDED_DATA = {
         "All future dashboard updates"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "dashboard"
     },
     {
       "id": "build-in-public-flywheel",
@@ -995,7 +1045,8 @@ var EMBEDDED_DATA = {
         "Frontier Signals Pipeline"
       ],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "content-x"
     },
     {
       "id": "origin-story-narrative",
@@ -1013,8 +1064,9 @@ var EMBEDDED_DATA = {
       "chains": [
         "Build in Public Flywheel"
       ],
-      "needs_user": "Choose format: blog post, presentation, NotebookLM source, or Twitter thread",
-      "launch_prompt": null
+      "needs_user": "Needs Mike: pick format",
+      "launch_prompt": null,
+      "theme": "content-x"
     },
     {
       "id": "done-section-collapse",
@@ -1030,7 +1082,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics."
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
+      "theme": "dashboard"
     },
     {
       "id": "build-in-public-autopost",
@@ -1049,8 +1102,9 @@ var EMBEDDED_DATA = {
         "Build in Public Flywheel",
         "X Engagement Tracker"
       ],
-      "needs_user": "Create X Developer account at developer.x.com, get 4 API keys",
-      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end."
+      "needs_user": "Needs Mike: X API keys",
+      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
+      "theme": "content-x"
     },
     {
       "id": "openrouter-evaluation",
@@ -1067,7 +1121,8 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "research"
     },
     {
       "id": "launch-claude-code-cli",
@@ -1085,7 +1140,8 @@ var EMBEDDED_DATA = {
         "All launch_prompt cards"
       ],
       "needs_user": "Test in browser",
-      "launch_prompt": null
+      "launch_prompt": null,
+      "theme": "dashboard"
     }
   ]
 };
@@ -1183,6 +1239,15 @@ function render() {
     html += '      <input type="text" id="search-input" placeholder="Search tasks..." oninput="applyFilters()">';
     html += '      <button class="search-clear" id="search-clear" onclick="clearSearch()">&#10005;</button>';
     html += '    </div>';
+    html += '    <select id="theme-select" class="theme-select" onchange="applyFilters()">';
+    html += '      <option value="all">All themes</option>';
+    html += '      <option value="content-x">Content &amp; X</option>';
+    html += '      <option value="meta-os">Meta OS</option>';
+    html += '      <option value="dashboard">Dashboard</option>';
+    html += '      <option value="pipelines">Pipelines</option>';
+    html += '      <option value="setup">Setup</option>';
+    html += '      <option value="research">Research</option>';
+    html += '    </select>';
     html += '    <select id="date-select" class="date-select" onchange="onDateSelect(this.value)">';
     html += '      <option value="all">All time</option>';
     html += '      <option value="1">Last 24h</option>';
@@ -1268,14 +1333,16 @@ function render() {
 var TAG_CLASSES = { protocol: 'tag-protocol', setup: 'tag-setup', build: 'tag-build', infra: 'tag-infra', cleanup: 'tag-cleanup' };
 var CARD_CLASSES = { done: 'card-done', critical: 'card-critical', high: 'card-high', medium: 'card-medium', low: 'card-low' };
 var CHIP_MAP = { critical: ['chip-critical','Critical'], high: ['chip-high','High'], medium: ['chip-medium','Medium'], low: ['chip-low','Backlog'] };
+var THEME_MAP = { 'content-x': 'Content & X', 'meta-os': 'Meta OS', 'dashboard': 'Dashboard', 'pipelines': 'Pipelines', 'setup': 'Setup', 'research': 'Research' };
 
 function renderCard(card) {
     var p = card.priority;
     var cls = CARD_CLASSES[p] || 'card-low';
     var hoursAttr = card.hours_saved != null ? ' data-hours="' + card.hours_saved + '"' : '';
+    var themeAttr = card.theme ? ' data-theme="' + card.theme + '"' : '';
     var h = '';
 
-    h += '<div class="card ' + cls + '" data-id="' + card.id + '"' + hoursAttr + '>';
+    h += '<div class="card ' + cls + '" data-id="' + card.id + '"' + hoursAttr + themeAttr + '>';
     h += '  <div class="card-top">';
     h += '    <h3>' + esc(card.title) + '</h3>';
     h += '    <div class="card-chips">';
@@ -1300,6 +1367,9 @@ function renderCard(card) {
     h += '  <button class="show-more' + (descLen > 120 ? ' visible' : '') + '" id="more-' + card.id + '" onclick="toggleDesc(\'' + card.id + '\')">Show more</button>';
     h += '  <div class="card-footer">';
     h += '    <div class="card-tags">';
+    if (card.theme && THEME_MAP[card.theme]) {
+        h += '<span class="theme-chip theme-' + card.theme + '">' + THEME_MAP[card.theme] + '</span>';
+    }
     (card.tags || []).forEach(function(tag) {
         var tc = TAG_CLASSES[tag] || 'tag-build';
         h += '<span class="tag ' + tc + '">' + tag.charAt(0).toUpperCase() + tag.slice(1) + '</span>';
@@ -1556,6 +1626,10 @@ function applyFilters() {
     if (clearBtn) clearBtn.classList.toggle('visible', query.length > 0);
     var q = query.toLowerCase().trim();
 
+    // Theme filter
+    var themeSel = document.getElementById('theme-select');
+    var themeVal = themeSel ? themeSel.value : 'all';
+
     // Date range
     var sel = document.getElementById('date-select');
     var dateVal = sel ? sel.value : 'all';
@@ -1581,6 +1655,9 @@ function applyFilters() {
         var tags = Array.from(el.querySelectorAll('.tag')).map(function(t) { return t.textContent; }).join(' ');
         var textMatch = !q || title.toLowerCase().indexOf(q) >= 0 || desc.toLowerCase().indexOf(q) >= 0 || tags.toLowerCase().indexOf(q) >= 0;
 
+        // Theme match
+        var themeMatch = (themeVal === 'all') || (el.dataset.theme === themeVal);
+
         // Date match
         var dateMatch = true;
         if (dateFrom || dateTo) {
@@ -1593,7 +1670,7 @@ function applyFilters() {
             }
         }
 
-        el.classList.toggle('search-hidden', !(textMatch && dateMatch));
+        el.classList.toggle('search-hidden', !(textMatch && themeMatch && dateMatch));
     });
 
     // Hide empty sections
@@ -1609,9 +1686,11 @@ function applyFilters() {
 function clearSearch() {
     var input = document.getElementById('search-input');
     var sel = document.getElementById('date-select');
+    var themeSel = document.getElementById('theme-select');
     var custom = document.getElementById('date-custom');
     if (input) { input.value = ''; }
     if (sel) { sel.value = 'all'; }
+    if (themeSel) { themeSel.value = 'all'; }
     if (custom) { custom.classList.remove('visible'); }
     applyFilters();
     if (input) input.focus();
