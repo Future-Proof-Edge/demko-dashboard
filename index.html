@@ -624,6 +624,30 @@ var EMBEDDED_DATA = {
   ],
   "cards": [
     {
+      "id": "n8n-red-team-pipeline",
+      "title": "n8n Red Team Pipeline + Report Redesign",
+      "description": "Built red_team.py CLI: fires n8n webhook (o3 + Claude Opus + Grok-3 → DeepSeek R1), polls via execution ID, renders premium HTML report. Fixed polling timeout (ID-based vs timestamp), webhook error visibility. Redesigned report template: structured markdown parser, severity color-coded cards, expandable findings, filter pills, copy-to-clipboard, scroll progress, blind spot hero. Switched to light mode matching dashboard palette (#f8f7f4 cream, warm gray borders, matching severity chips). Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "pipelines"
+      ],
+      "overnight": false,
+      "chains": [
+        "NotebookLM Transcript Loop"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "pipelines",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
+    },
+    {
       "id": "wispr-flow-optimization",
       "title": "Wispr Flow Deep Dive & Mic Lock Fix",
       "description": "Full audit of Wispr Flow voice dictation: Ctrl+Space conflict check (clean), system resource check (clean), config.json diagnostic analysis revealing 38 mic switches → 96 cancelled transcripts → 64 paste failures. Root cause: overrideAudioDeviceId set to dynamic 'communications' instead of specific device. Fix: locked to Blue Snowball device hash. Drafted feedback for Wispr Flow team (email, X, roadmap). Feb 17.",
