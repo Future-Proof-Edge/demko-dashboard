@@ -450,16 +450,52 @@
         }
         .show-more.visible { display: block; }
 
-        /* DONE COLLAPSE */
-        .done-collapsed { display: none; }
-        .done-collapsed.show-all { display: block; }
-        .done-expander {
-            display: block; width: 100%; padding: 0.6rem; margin-bottom: 2.5rem;
-            background: #f0eeeb; border: 1px dashed #ddd; border-radius: 8px;
-            font-size: 0.75rem; font-weight: 700; color: #777; cursor: pointer;
-            font-family: 'Inter', sans-serif; text-align: center; transition: all 0.15s;
+        /* DONE DATE FILTER */
+        .done-filter-select {
+            background: #f0eeeb; border: 1px solid #e8e5e0;
+            padding: 0.2rem 0.5rem; border-radius: 6px; font-size: 0.6rem;
+            font-weight: 700; color: #777; cursor: pointer; transition: all 0.15s;
+            font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.04em;
+            margin-left: 0.5rem; appearance: auto;
         }
-        .done-expander:hover { background: #e8e5e0; color: #555; }
+        .done-filter-select:hover { background: #e8e5e0; }
+        .done-empty {
+            text-align: center; color: #999; padding: 2rem; font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* VALUE KERNEL VIEW */
+        .value-summary {
+            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+            padding: 0.75rem; background: #fdfcfb; border: 1px solid #e8e5e0;
+            border-radius: 10px;
+        }
+        .value-kernel {
+            flex: 1; min-width: 140px; padding: 0.5rem 0.75rem;
+            background: #fff; border: 1px solid #e8e5e0; border-radius: 8px;
+            text-align: center;
+        }
+        .value-kernel-rank {
+            font-size: 0.55rem; font-weight: 800; color: #999;
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem;
+        }
+        .value-kernel-title {
+            font-size: 0.72rem; font-weight: 700; color: #333;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .value-kernel-amount {
+            font-size: 0.85rem; font-weight: 800; color: #27ae60;
+            margin-top: 0.1rem;
+        }
+        .value-kernel-hours {
+            font-size: 0.55rem; color: #999; margin-top: 0.1rem;
+        }
+        .value-badge {
+            position: absolute; bottom: 0.5rem; right: 0.5rem;
+            background: #27ae60; color: #fff; padding: 0.15rem 0.5rem;
+            border-radius: 12px; font-size: 0.6rem; font-weight: 800;
+            z-index: 2;
+        }
 
         /* TODAY FILTER BUTTON */
         .today-btn {
@@ -1641,6 +1677,7 @@ var completingCardId = null;
 var leaderboardActive = false;
 var viewMode = 'kanban'; // 'kanban' or 'timeline'
 var todayFilterActive = false;
+var doneFilter = 'today'; // 'today', 'yesterday', '7d', 'all'
 
 // ── Utilities ───────────────────────────────────────────────────────────
 function todayISO() {
@@ -2017,34 +2054,88 @@ function render() {
             }
         }
 
+        // ── Done section: date filter + value kernel ──
+        if (isDone) {
+            var today = todayISO();
+            var yesterday = (function() { var d = new Date(); d.setDate(d.getDate()-1); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); })();
+
+            // Build date options from actual card data
+            var dateCounts = {};
+            colCards.forEach(function(c) {
+                var dt = c.completed_date || 'unknown';
+                dateCounts[dt] = (dateCounts[dt] || 0) + 1;
+            });
+
+            // Filter cards by doneFilter
+            var filteredDone;
+            if (doneFilter === 'today') {
+                filteredDone = colCards.filter(function(c) { return c.completed_date === today; });
+            } else if (doneFilter === 'yesterday') {
+                filteredDone = colCards.filter(function(c) { return c.completed_date === yesterday; });
+            } else if (doneFilter === '7d') {
+                filteredDone = colCards.filter(function(c) { return c.completed_date && daysBetween(c.completed_date, today) <= 6; });
+            } else {
+                filteredDone = colCards;
+            }
+
+            // Section header with dropdown
+            html += '<div class="section-header">';
+            html += '  <div class="section-dot ' + col.dot + '"></div>';
+            html += '  <h2>' + esc(col.label) + '</h2>';
+            html += '  <span class="count-badge">' + filteredDone.length + '</span>';
+            html += '  <select class="done-filter-select" id="done-filter" onchange="setDoneFilter(this.value)">';
+            html += '    <option value="today"' + (doneFilter==='today'?' selected':'') + '>Today (' + (dateCounts[today]||0) + ')</option>';
+            html += '    <option value="yesterday"' + (doneFilter==='yesterday'?' selected':'') + '>Yesterday (' + (dateCounts[yesterday]||0) + ')</option>';
+            html += '    <option value="7d"' + (doneFilter==='7d'?' selected':'') + '>Last 7 days</option>';
+            html += '    <option value="all"' + (doneFilter==='all'?' selected':'') + '>All time (' + colCards.length + ')</option>';
+            html += '  </select>';
+            html += '  <button class="toggle-btn" id="leaderboard-toggle" onclick="toggleLeaderboard()">Value Rank</button>';
+            html += '  <div class="section-line"></div>';
+            html += '</div>';
+
+            // Value kernel summary (top 5 by dollar value)
+            if (leaderboardActive) {
+                var ranked = colCards.slice().sort(function(a,b) { return (b.hours_saved||0) - (a.hours_saved||0); });
+                var top5 = ranked.slice(0, 5);
+                html += '<div class="value-summary">';
+                top5.forEach(function(c, i) {
+                    var val = (c.hours_saved || 0) * rate;
+                    var valStr = val >= 1000 ? '$' + (val/1000).toFixed(1) + 'k' : '$' + Math.floor(val);
+                    html += '<div class="value-kernel">';
+                    html += '  <div class="value-kernel-rank">#' + (i+1) + ' Kernel</div>';
+                    html += '  <div class="value-kernel-title">' + esc(c.title) + '</div>';
+                    html += '  <div class="value-kernel-amount">' + valStr + '</div>';
+                    html += '  <div class="value-kernel-hours">' + (c.hours_saved||0) + 'h @ $' + rate + '/hr</div>';
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+
+            // Cards
+            html += '<div class="card-grid" id="done-grid">';
+            if (filteredDone.length === 0) {
+                html += '<div class="done-empty">No tasks completed ' + (doneFilter === 'today' ? 'today yet' : doneFilter === 'yesterday' ? 'yesterday' : 'in this period') + '</div>';
+            }
+            filteredDone.forEach(function(card) {
+                html += renderCard(card);
+            });
+            html += '</div>';
+
+        } else {
+
+        // ── Non-done sections (unchanged) ──
         html += '<div class="section-header">';
         html += '  <div class="section-dot ' + col.dot + '"></div>';
         html += '  <h2>' + esc(col.label) + '</h2>';
         html += '  <span class="count-badge">' + colCards.length + '</span>';
-        if (isDone) html += '  <button class="toggle-btn" id="leaderboard-toggle" onclick="toggleLeaderboard()">Leaderboard</button>';
         html += '  <div class="section-line"></div>';
         html += '</div>';
 
-        var gridId = isDone ? ' id="done-grid"' : '';
-        var DONE_VISIBLE = 10;
-        html += '<div class="card-grid"' + gridId + '>';
-        if (isDone && colCards.length > DONE_VISIBLE) {
-            // Show only last N (most recent = end of array)
-            var hidden = colCards.slice(0, colCards.length - DONE_VISIBLE);
-            var visible = colCards.slice(colCards.length - DONE_VISIBLE);
-            hidden.forEach(function(card) {
-                html += renderCard(card).replace('class="card ', 'class="card done-collapsed ');
-            });
-            visible.forEach(function(card) {
-                html += renderCard(card);
-            });
-            html += '</div>';
-            html += '<button class="done-expander" id="done-expander" onclick="toggleDoneCollapse()">Show ' + hidden.length + ' more completed tasks</button>';
-        } else {
-            colCards.forEach(function(card, i) {
-                html += renderCard(card, !isDone ? (i + 1) : null, card._status || null);
-            });
-            html += '</div>';
+        html += '<div class="card-grid">';
+        colCards.forEach(function(card, i) {
+            html += renderCard(card, (i + 1), card._status || null);
+        });
+        html += '</div>';
         }
     });
 
@@ -2353,42 +2444,15 @@ function launchTask(btn, cardId) {
 }
 
 // ── Leaderboard Toggle ─────────────────────────────────────────────────
-function toggleLeaderboard() {
-    var grid = document.getElementById('done-grid');
-    var btn = document.getElementById('leaderboard-toggle');
-    if (!grid || !btn) return;
-    var cards = Array.from(grid.children);
+function setDoneFilter(val) {
+    doneFilter = val;
+    render();
+}
 
-    if (!leaderboardActive) {
-        cards.sort(function(a, b) {
-            return parseFloat(b.dataset.hours || 0) - parseFloat(a.dataset.hours || 0);
-        });
-        cards.forEach(function(card, i) {
-            var rank = document.createElement('div');
-            rank.className = 'leaderboard-rank';
-            rank.textContent = '#' + (i + 1);
-            card.appendChild(rank);
-            if (i < 3) card.style.opacity = '0.9';
-            var chain = card.querySelector('.unlocked-chain');
-            if (chain) chain.style.display = 'none';
-        });
-        cards.forEach(function(c) { grid.appendChild(c); });
-        btn.classList.add('active');
-        btn.textContent = 'Chronological';
-        leaderboardActive = true;
-    } else {
-        cards.forEach(function(card) {
-            var rank = card.querySelector('.leaderboard-rank');
-            if (rank) rank.remove();
-            card.style.opacity = '';
-            var chain = card.querySelector('.unlocked-chain');
-            if (chain) chain.style.display = '';
-        });
-        btn.classList.remove('active');
-        btn.textContent = 'Leaderboard';
-        leaderboardActive = false;
-        render(); // re-render to restore original order
-    }
+function toggleLeaderboard() {
+    leaderboardActive = !leaderboardActive;
+    if (leaderboardActive) doneFilter = 'all'; // show all cards for ranking
+    render();
 }
 
 // ── View Mode Toggle ────────────────────────────────────────────────────
@@ -2524,17 +2588,7 @@ function toggleDesc(cardId) {
     btn.textContent = expanded ? 'Show less' : 'Show more';
 }
 
-// ── Done Collapse ───────────────────────────────────────────────────────
-function toggleDoneCollapse() {
-    var collapsed = document.querySelectorAll('.done-collapsed');
-    var btn = document.getElementById('done-expander');
-    if (!btn) return;
-    var showing = collapsed.length > 0 && collapsed[0].classList.contains('show-all');
-    collapsed.forEach(function(el) { el.classList.toggle('show-all', !showing); });
-    btn.textContent = showing
-        ? 'Show ' + collapsed.length + ' more completed tasks'
-        : 'Show less';
-}
+// (Done collapse removed — replaced by date filter dropdown)
 
 // ── Go ──────────────────────────────────────────────────────────────────
 init();
