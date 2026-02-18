@@ -1154,22 +1154,22 @@ var EMBEDDED_DATA = {
     {
       "id": "install-agent-sdk-plugin",
       "title": "Install Agent SDK Dev Plugin",
-      "description": "Step 1: Open Claude Desktop\nStep 2: Click Plugins in sidebar\nStep 3: Find 'Agent SDK Dev'\nStep 4: Click Install\n\nThat's it — ~1 min.",
-      "column": "critical",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": "~1 min",
+      "description": "Invalid card — Claude Desktop has no Plugins sidebar. Agent SDK is an npm package, not a Desktop plugin. Custom subagents already working in Claude Code. Closed as n/a. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0,
+      "time_estimate": null,
       "tags": [
         "setup"
       ],
       "overnight": false,
       "chains": [],
-      "needs_user": "Desktop UI click",
+      "needs_user": null,
       "launch_prompt": null,
       "theme": "setup",
       "created_date": "2026-02-17",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-17",
       "action_url": null
     },
     {
@@ -1595,11 +1595,11 @@ var EMBEDDED_DATA = {
     {
       "id": "mcp-wave2-install",
       "title": "Install MCP Wave 2 (GitHub, N8n, Brave Search)",
-      "description": "Install remaining 3 MCP servers from the stack audit: GitHub (@modelcontextprotocol/server-github), N8n (workflow orchestration), Brave Search (web search). All API keys already in .env. Requires Claude Code restart first to activate Wave 1.",
-      "column": "critical",
-      "priority": "high",
-      "hours_saved": null,
-      "time_estimate": "~15m",
+      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped — no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
       "tags": [
         "infra",
         "meta-os"
@@ -1609,11 +1609,11 @@ var EMBEDDED_DATA = {
         "MCP Wave 1"
       ],
       "needs_user": null,
-      "launch_prompt": "Install MCP Wave 2 servers into global .claude.json: (1) GitHub - @modelcontextprotocol/server-github with GITHUB_TOKEN from .env, (2) N8n - workflow orchestration with N8N_API_KEY, (3) Brave Search - @modelcontextprotocol/server-brave-search with BRAVE_SEARCH_API_KEY. Use Python atomic read-modify-write for .claude.json (runtime writes to same file). Pre-cache all 3 with npx. Verify final config shows 8 total MCP servers.",
+      "launch_prompt": null,
       "theme": "infrastructure",
       "created_date": "2026-02-17",
-      "due_date": "2026-02-18",
-      "completed_date": null,
+      "due_date": null,
+      "completed_date": "2026-02-17",
       "action_url": null
     }
   ]
