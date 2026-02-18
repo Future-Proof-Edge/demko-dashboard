@@ -1049,6 +1049,33 @@
       "due_date": null,
       "completed_date": "2026-02-18",
       "action_url": null
+    },
+    {
+      "id": "white-space-finder",
+      "title": "White Space Finder — Kainos Alpha Engine",
+      "description": "Systematic listening engine that identifies unprecedented market opportunities (kainos alpha) from pain signals. 6-signal filter: Universal + Daily + Emotional + Normalized + Stale Paradigm + AI-Enabled. First 5 opportunities scored: Notification Chaos (9.0), Relationship Decay (8.5), Context Switching Tax (8.0), 'I Saw This Somewhere' Retrieval (8.0), Decision Journal (7.5). Vision: scrape Reddit/X/ProductHunt → LLM filter → score → red team → weekly White Space Report. Integrates with ci_swarm, red_team, Grok, Firecrawl, Brave Search. Feb 18.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~4h build",
+      "tags": [
+        "build",
+        "research",
+        "content"
+      ],
+      "overnight": false,
+      "chains": [
+        "CI Swarm",
+        "Red Team Pipeline",
+        "Frontier Signals Pipeline"
+      ],
+      "needs_user": "Needs Mike: pick first opportunity to deep-dive",
+      "launch_prompt": "Build the White Space Finder kainos alpha engine in C:\\Demko_Local_Project\\Demko Meta OS 2. Create white_space_finder.py that: (1) Scrapes pain signals from Reddit (r/productivity, r/relationships, r/personalfinance), X/Twitter via Grok API, Product Hunt comments, and Brave Search 'I wish there was...' queries. (2) Runs each signal through the 6-filter kainos alpha test (Universal, Daily, Emotional, Normalized, Stale Paradigm, AI-Enabled) using Claude API. (3) Scores each opportunity (1-10 per dimension, minimum 7.0 average to qualify). (4) Outputs a ranked White Space Report as HTML (matching red team report style). (5) Optionally red-teams top 3 via n8n pipeline. Reference topic memory: white_space_finder.md.",
+      "theme": "white-space-finder",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
     }
   ]
 }
