@@ -81,30 +81,6 @@
         .settings-gear:hover { background: #e8e5e0; }
         .settings-gear.connected { background: #edf8f0; border-color: #c3e6cb; color: #27ae60; }
 
-        /* VIEW-ONLY MODE */
-        body.view-only .complete-btn,
-        body.view-only .launch-btn,
-        body.view-only .settings-gear,
-        body.view-only .action-btn,
-        body.view-only .needs-user,
-        body.view-only #settings-overlay,
-        body.view-only #complete-overlay { display: none !important; }
-        .view-badge {
-            display: none; background: #edf4fc; color: #2563eb; padding: 0.3rem 0.8rem;
-            border-radius: 6px; font-size: 0.62rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.06em;
-        }
-        body.view-only .view-badge { display: inline-block; }
-        .share-btn {
-            background: #2563eb; color: #fff; border: none;
-            padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.62rem;
-            font-weight: 700; cursor: pointer; transition: all 0.15s;
-            font-family: 'Inter', sans-serif; text-transform: uppercase;
-            letter-spacing: 0.04em; white-space: nowrap;
-        }
-        .share-btn:hover { background: #1d4ed8; }
-        body.view-only .share-btn { display: none; }
-
         /* SETTINGS PANEL */
         .settings-overlay {
             display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -1643,10 +1619,6 @@ var EMBEDDED_DATA = {
   ]
 };
 
-// ── View-Only Detection ─────────────────────────────────────────────────
-var VIEW_ONLY = new URLSearchParams(window.location.search).has('view');
-if (VIEW_ONLY) document.body.classList.add('view-only');
-
 // ── State ───────────────────────────────────────────────────────────────
 var kanbanData = null;
 var fileSha = null;
@@ -1912,7 +1884,6 @@ function render() {
     html += '    <div class="logo">D</div>';
     html += '    <h1>' + esc(meta.title) + '</h1>';
     html += '    <span class="session-tag">' + esc(meta.session_tag) + '</span>';
-    html += '    <span class="view-badge">View Only</span>';
     html += '  </div>';
     html += '  <div class="topbar-search">';
     html += '    <div class="search-wrap">';
@@ -1958,7 +1929,6 @@ function render() {
     html += '    <div class="topbar-stat"><div class="val val-streak">' + (vel.streak > 0 ? vel.streak + ' &#128293;' : '0') + '</div><div class="lbl">Day Streak</div></div>';
     html += '    <div class="topbar-stat">' + sparkHTML + '<div class="lbl">7-Day</div></div>';
     html += '    <div class="topbar-divider"></div>';
-    html += '    <button class="share-btn" onclick="shareViewURL()" title="Copy view-only link">&#128279; Share</button>';
     html += '    <div class="' + gearClass + '" onclick="openSettings()" title="GitHub Connection">' + (hasPAT ? '&#9889;' : '&#9881;') + '</div>';
     html += '  </div>';
     html += '</div>';
@@ -2218,26 +2188,8 @@ function renderCard(card, seqNum, status) {
     return h;
 }
 
-// ── Share View-Only URL ─────────────────────────────────────────────────
-function shareViewURL() {
-    var url = window.location.origin + window.location.pathname + '?view';
-    navigator.clipboard.writeText(url).then(function() {
-        showToast('View-only link copied!');
-    }).catch(function() {
-        // Fallback for older browsers / file:// protocol
-        var ta = document.createElement('textarea');
-        ta.value = url;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast('View-only link copied!');
-    });
-}
-
 // ── Complete Task Flow ──────────────────────────────────────────────────
 function openCompleteModal(cardId) {
-    if (VIEW_ONLY) return;
     completingCardId = cardId;
     var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
     if (!card) return;
@@ -2368,7 +2320,6 @@ function clearPAT() {
 
 // ── Launch Task ─────────────────────────────────────────────────────────
 function launchTask(btn, cardId) {
-    if (VIEW_ONLY) return;
     var card = kanbanData.cards.find(function(c) { return c.id === cardId; });
     if (!card || !card.launch_prompt) return;
     var encoded = encodeURIComponent(card.launch_prompt);
