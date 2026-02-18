@@ -620,13 +620,13 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 18, 2026 — 40 autonomous tasks completed",
+    "session_tag": "Feb 18, 2026 — 42 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 18, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "🚀 37 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
+    "priority": "🚀 42 of 48 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
   },
   "columns": [
     {
@@ -1743,6 +1743,108 @@ var EMBEDDED_DATA = {
       "created_date": "2026-02-18",
       "due_date": null,
       "completed_date": "2026-02-18",
+      "action_url": null
+    },
+    {
+      "id": "kainos-alpha-red-team",
+      "title": "Kainos Alpha Thesis — Red Team + Data Validation",
+      "description": "Wrote kainos_alpha_thesis.md, ran full n8n red team pipeline (o3 + Claude Opus + Grok-3 → DeepSeek R1 + Perplexity). 5 CRITICAL, 5 HIGH, 3 MEDIUM findings. Key kill: Finding #7 — REIT 10-K filings do NOT have submarket-level rent data. Validated by pulling actual Prologis FY2024 10-K + supplemental: 'Southern California' is one line item (551 buildings, 125M SF). Rexford tops at county. STAG/EastGroup/Terreno all metro-level. CoStar ($20K+/yr) or broker comps are the only submarket sources. Original thesis pivot required. Feb 18.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
+      "tags": [
+        "research",
+        "build",
+        "red-team"
+      ],
+      "overnight": false,
+      "chains": [
+        "Weber Protocol Stack",
+        "Kainos Alpha Pivot"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": "2026-02-18",
+      "action_url": null
+    },
+    {
+      "id": "kainos-alpha-pivot",
+      "title": "Kainos Alpha Pivot — Total Occupancy Cost Intelligence",
+      "description": "Strategic pivot after REIT data thesis was killed. Old: 'We estimate your rent gap' (requires CoStar). New: 'We calculate total occupancy cost exposure and trajectory, then tell you what to do about it — with audit trail.' Rent = 30-40% of total cost, and the client already knows it. The 60-70% they DON'T know (utilities, labor, taxes, compliance, transport, climate risk) is ALL publicly accessible. 12 data layers identified, all API/scrapeable. White space mapped: nobody combines lease mgmt + market data + decision support for tenants. Pain map: 7 core pain points identified. Feb 18.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 4,
+      "time_estimate": null,
+      "tags": [
+        "research",
+        "strategy"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team Input Schema",
+        "Demko Meta OS Re-Index"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": "2026-02-18",
+      "action_url": null
+    },
+    {
+      "id": "red-team-input-schema",
+      "title": "Define Structured Red Team Input Schema",
+      "description": "Transform the red team from generic text critique into structured domain-specific validation. Define input schema: data layers (source, confidence, refresh cadence), decision paths (which layers feed which decisions), assumptions (explicit, testable). Output becomes prioritized build-order intelligence, not just 'here are holes.' The red team becomes the product manager. Integrates with n8n pipeline (o3 + Claude Opus + Grok-3 → DeepSeek R1). First test: re-run reframed Kainos Alpha thesis through refined schema.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~2h",
+      "tags": [
+        "build",
+        "strategy",
+        "meta-os"
+      ],
+      "overnight": false,
+      "chains": [
+        "Kainos Alpha Pivot",
+        "All future red team runs"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "demko-meta-os-reindex",
+      "title": "Re-Index All 44+ Cards Against Unified Frame",
+      "description": "Strategic consolidation: pause all building, ingest everything built so far, re-index against unified frame. Every card should either (a) acquire a data layer, (b) validate a data layer, or (c) convert validated data into a decision with audit trail. Some cards map cleanly (red team = validation, Weber = decision templates). Some are infrastructure (dashboard, session automation). Some may not survive. Time-boxed to one session. Output: revised kanban with clear build order, unified product architecture, and the red team as the prioritization engine.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~3h",
+      "tags": [
+        "strategy",
+        "meta-os"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team Input Schema",
+        "Kainos Alpha Pivot"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
       "action_url": null
     }
   ]
