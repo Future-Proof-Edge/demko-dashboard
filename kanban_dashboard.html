@@ -582,13 +582,13 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 17, 2026 — 36 autonomous tasks completed",
+    "session_tag": "Feb 18, 2026 — 37 autonomous tasks completed",
     "hourly_rate": 250,
-    "last_updated": "Feb 17, 2026",
+    "last_updated": "Feb 18, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "🚀 36 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
+    "priority": "🚀 37 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
   },
   "columns": [
     {
@@ -1585,7 +1585,7 @@ var EMBEDDED_DATA = {
     {
       "id": "mcp-wave2-install",
       "title": "Install MCP Wave 2 (GitHub, N8n, Brave Search)",
-      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped — no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Feb 17.",
+      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped — no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Verified 7/7 Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -1603,7 +1603,7 @@ var EMBEDDED_DATA = {
       "theme": "infrastructure",
       "created_date": "2026-02-17",
       "due_date": null,
-      "completed_date": "2026-02-17",
+      "completed_date": "2026-02-18",
       "action_url": null
     }
   ]
@@ -1873,7 +1873,7 @@ function render() {
     html += '  <div class="topbar-left">';
     html += '    <div class="logo">D</div>';
     html += '    <h1>' + esc(meta.title) + '</h1>';
-    html += '    <span class="session-tag">' + esc(meta.session_tag) + '</span>';
+    html += '    <span class="session-tag">' + esc(meta.last_updated || '') + ' — ' + nDone + ' autonomous tasks completed</span>';
     html += '  </div>';
     html += '  <div class="topbar-search">';
     html += '    <div class="search-wrap">';
@@ -1928,7 +1928,10 @@ function render() {
 
     // Banners
     if (data.banners && data.banners.priority) {
-        html += '<div class="priority-banner"><div class="icon">!</div><div class="text">' + data.banners.priority + '</div></div>';
+        var bannerText = nDone + ' of ' + nTotal + ' tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only.';
+        var overnightCount = cards.filter(function(c){ return c.overnight; }).length;
+        if (overnightCount > 0) bannerText += ' ' + overnightCount + ' ran fully overnight while AFK.';
+        html += '<div class="priority-banner"><div class="icon">!</div><div class="text">' + esc(bannerText) + '</div></div>';
     }
 
     // ── KANBAN VIEW ──
