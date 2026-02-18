@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 18, 2026 — 37 autonomous tasks completed",
+    "session_tag": "Feb 18, 2026 — 38 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 18, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "\ud83d\ude80 37 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
+    "priority": "🚀 37 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
   },
   "columns": [
     {
@@ -35,14 +35,19 @@
     {
       "id": "n8n-red-team-pipeline",
       "title": "n8n Red Team Pipeline + Report Redesign",
-      "description": "Built red_team.py CLI: fires n8n webhook (o3 + Claude Opus + Grok-3 \u2192 DeepSeek R1), polls via execution ID, renders premium HTML report. Fixed polling timeout (ID-based vs timestamp), webhook error visibility. Redesigned report template: structured markdown parser, severity color-coded cards, expandable findings, filter pills, copy-to-clipboard, scroll progress, blind spot hero. Switched to light mode matching dashboard palette (#f8f7f4 cream, warm gray borders, matching severity chips). Feb 17.",
+      "description": "Built red_team.py CLI: fires n8n webhook (o3 + Claude Opus + Grok-3 → DeepSeek R1), polls via execution ID, renders premium HTML report. Fixed polling timeout (ID-based vs timestamp), webhook error visibility. Redesigned report template: structured markdown parser, severity color-coded cards, expandable findings, filter pills, copy-to-clipboard, scroll progress, blind spot hero. Switched to light mode matching dashboard palette (#f8f7f4 cream, warm gray borders, matching severity chips). Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build", "pipelines"],
+      "tags": [
+        "build",
+        "pipelines"
+      ],
       "overnight": false,
-      "chains": ["NotebookLM Transcript Loop"],
+      "chains": [
+        "NotebookLM Transcript Loop"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "pipelines",
@@ -54,12 +59,15 @@
     {
       "id": "wispr-flow-optimization",
       "title": "Wispr Flow Deep Dive & Mic Lock Fix",
-      "description": "Full audit of Wispr Flow voice dictation: Ctrl+Space conflict check (clean), system resource check (clean), config.json diagnostic analysis revealing 38 mic switches \u2192 96 cancelled transcripts \u2192 64 paste failures. Root cause: overrideAudioDeviceId set to dynamic 'communications' instead of specific device. Fix: locked to Blue Snowball device hash. Drafted feedback for Wispr Flow team (email, X, roadmap). Feb 17.",
+      "description": "Full audit of Wispr Flow voice dictation: Ctrl+Space conflict check (clean), system resource check (clean), config.json diagnostic analysis revealing 38 mic switches → 96 cancelled transcripts → 64 paste failures. Root cause: overrideAudioDeviceId set to dynamic 'communications' instead of specific device. Fix: locked to Blue Snowball device hash. Drafted feedback for Wispr Flow team (email, X, roadmap). Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 1.5,
       "time_estimate": null,
-      "tags": ["tool-config", "debugging"],
+      "tags": [
+        "tool-config",
+        "debugging"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -73,14 +81,19 @@
     {
       "id": "dashboard-deploy-sync",
       "title": "Dashboard Deploy Sync Protocol",
-      "description": "Cloned demko-dashboard deploy repo, synced kanban_dashboard.html \u2192 index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.",
+      "description": "Cloned demko-dashboard deploy repo, synced kanban_dashboard.html → index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["infra", "protocol"],
+      "tags": [
+        "infra",
+        "protocol"
+      ],
       "overnight": false,
-      "chains": ["All future dashboard deploys"],
+      "chains": [
+        "All future dashboard deploys"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "dashboard",
@@ -92,12 +105,14 @@
     {
       "id": "3d-scoring-framework",
       "title": "3D Scoring Framework",
-      "description": "Replaced simple impact/effort ROI with Amplification \u00d7 Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.",
+      "description": "Replaced simple impact/effort ROI with Amplification × Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -111,14 +126,19 @@
     {
       "id": "e2e-stress-test",
       "title": "End-to-End Stress Test",
-      "description": "Full pipeline validated: /ci-swarm (6 competitors, 87KB report) \u2192 strategic-reviewer CUV audit (3 rounds, 6.6\u21929.0/10) \u2192 hooks verified (audit logger, file protection, session context). Found & fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.",
+      "description": "Full pipeline validated: /ci-swarm (6 competitors, 87KB report) → strategic-reviewer CUV audit (3 rounds, 6.6→9.0/10) → hooks verified (audit logger, file protection, session context). Found & fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 6,
       "time_estimate": null,
-      "tags": ["build", "protocol"],
+      "tags": [
+        "build",
+        "protocol"
+      ],
       "overnight": false,
-      "chains": ["3D Scoring Framework"],
+      "chains": [
+        "3D Scoring Framework"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -130,12 +150,14 @@
     {
       "id": "flo-health-instructions",
       "title": "Write Flo Health Project Instructions",
-      "description": "CLAUDE_FloHealth.md \u2014 full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.",
+      "description": "CLAUDE_FloHealth.md — full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": true,
       "chains": [],
       "needs_user": null,
@@ -149,12 +171,14 @@
     {
       "id": "eod-handoff-protocol",
       "title": "End-of-Day Handoff Protocol",
-      "description": "HANDOFF_PROTOCOL.md \u2014 task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.",
+      "description": "HANDOFF_PROTOCOL.md — task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": true,
       "chains": [],
       "needs_user": null,
@@ -168,12 +192,14 @@
     {
       "id": "tighten-kill-filter",
       "title": "Tighten Kill Filter Prompts",
-      "description": "3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates \u2192 7 real ones. Built by parallel agent. Feb 16.",
+      "description": "3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates → 7 real ones. Built by parallel agent. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": true,
       "chains": [],
       "needs_user": null,
@@ -186,15 +212,21 @@
     },
     {
       "id": "p0-hooks-layer",
-      "title": "P0 \u2014 Hooks Layer (Deterministic Enforcement)",
+      "title": "P0 — Hooks Layer (Deterministic Enforcement)",
       "description": "CUV Stop Gate, Audit Logger, File Protection, Anti-Rationalization Gate, Session Context Injection, PreCompact Backup, Windows Notification. All 7 hooks wired in settings.local.json. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 8,
       "time_estimate": null,
-      "tags": ["infra", "protocol"],
+      "tags": [
+        "infra",
+        "protocol"
+      ],
       "overnight": false,
-      "chains": ["Stress Test", "CLAUDE.md Fix"],
+      "chains": [
+        "Stress Test",
+        "CLAUDE.md Fix"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -205,15 +237,19 @@
     },
     {
       "id": "p1-skills-layer",
-      "title": "P1 \u2014 Skills Layer (One-Command Workflows)",
-      "description": "/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close \u2014 5 skills in .claude/skills/. Feb 16.",
+      "title": "P1 — Skills Layer (One-Command Workflows)",
+      "description": "/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close — 5 skills in .claude/skills/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Stress Test"],
+      "chains": [
+        "Stress Test"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -224,15 +260,19 @@
     },
     {
       "id": "p3-context-management",
-      "title": "P3 \u2014 Context Management (Compaction Survival)",
+      "title": "P3 — Context Management (Compaction Survival)",
       "description": "PreCompact backup hook, SessionStart reload, auto-compact at 50%, bash output cap, compaction directives in CLAUDE.md. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["infra"],
+      "tags": [
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["Overnight autonomous work"],
+      "chains": [
+        "Overnight autonomous work"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -243,15 +283,22 @@
     },
     {
       "id": "p4-custom-subagents",
-      "title": "P4 \u2014 Custom Subagents (4 Specialized Agents)",
+      "title": "P4 — Custom Subagents (4 Specialized Agents)",
       "description": "ci-researcher (haiku), strategic-reviewer (sonnet), doc-fixer (haiku), codebase-auditor (haiku) in .claude/agents/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Flo Health Instructions", "Handoff Protocol", "Kill Filter", "Stress Test"],
+      "chains": [
+        "Flo Health Instructions",
+        "Handoff Protocol",
+        "Kill Filter",
+        "Stress Test"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -268,7 +315,9 @@
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["cleanup"],
+      "tags": [
+        "cleanup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -287,7 +336,9 @@
       "priority": "done",
       "hours_saved": 1.5,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -301,14 +352,18 @@
     {
       "id": "organize-root-dir",
       "title": "Organize Root Directory",
-      "description": "222 files \u2192 organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.",
+      "description": "222 files → organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["cleanup"],
+      "tags": [
+        "cleanup"
+      ],
       "overnight": false,
-      "chains": ["CI Header Fix"],
+      "chains": [
+        "CI Header Fix"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -325,7 +380,9 @@
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["protocol"],
+      "tags": [
+        "protocol"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -344,9 +401,13 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["setup"],
+      "tags": [
+        "setup"
+      ],
       "overnight": false,
-      "chains": ["All deployments"],
+      "chains": [
+        "All deployments"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "setup",
@@ -358,14 +419,18 @@
     {
       "id": "notebooklm-transcript-loop",
       "title": "NotebookLM Transcript Loop",
-      "description": "notebooklm_loop.py \u2014 single command: download \u2192 compress \u2192 transcribe \u2192 extract \u2192 red team. Feb 16.",
+      "description": "notebooklm_loop.py — single command: download → compress → transcribe → extract → red team. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Kill Filter Prompts"],
+      "chains": [
+        "Kill Filter Prompts"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "pipelines",
@@ -377,14 +442,18 @@
     {
       "id": "profile-sync-automation",
       "title": "Profile Sync Automation",
-      "description": "deploy_claude_profile.py \u2014 Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.",
+      "description": "deploy_claude_profile.py — Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Deploy Identity Rules"],
+      "chains": [
+        "Deploy Identity Rules"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "pipelines",
@@ -395,15 +464,21 @@
     },
     {
       "id": "understand-claude-v18-evolution",
-      "title": "P0 \u2014 Understand CLAUDE.md v1.6\u2192v1.8 Evolution",
-      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6\u2192v1.7\u2192v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 \u2014 passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16. Reviewed Feb 17.",
+      "title": "P0 — Understand CLAUDE.md v1.6→v1.8 Evolution",
+      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6→v1.7→v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 — passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16. Reviewed Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["protocol", "review"],
+      "tags": [
+        "protocol",
+        "review"
+      ],
       "overnight": false,
-      "chains": ["Build in Public CUV Upgrades", "Frontier Signals Pipeline"],
+      "chains": [
+        "Build in Public CUV Upgrades",
+        "Frontier Signals Pipeline"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
@@ -414,13 +489,16 @@
     },
     {
       "id": "configure-mcp-api-keys",
-      "title": "API Key Inventory Sync (Google Doc \u2192 Global)",
+      "title": "API Key Inventory Sync (Google Doc → Global)",
       "description": "Synced all API keys from canonical Google Doc to Windows user env vars + .env. Added 6 missing keys: GEMINI_API_KEY, XAI_API_KEY, X_CLIENT_ID, X_CLIENT_SECRET, N8N_API_KEY, GOOGLE_AI_STUDIO_API_KEY. Updated DEEPSEEK_API_KEY to match doc. All 17 keys now in .env + Windows env. Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 1,
       "time_estimate": null,
-      "tags": ["setup", "infra"],
+      "tags": [
+        "setup",
+        "infra"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -439,11 +517,19 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["setup", "infra", "critical"],
+      "tags": [
+        "setup",
+        "infra",
+        "critical"
+      ],
       "overnight": false,
-      "chains": ["All MCP-dependent workflows", "Google Drive access", "N8n automation"],
+      "chains": [
+        "All MCP-dependent workflows",
+        "Google Drive access",
+        "N8n automation"
+      ],
       "needs_user": null,
-      "launch_prompt": "Fix MCP server scope in Claude Code. Current state: .claude.json has 'mcpServers': {} at global level but gdrive is only configured under project 'C:/Demko_Local_Project/Demko Meta OS 2'. Steps: (1) Copy gdrive MCP config to global mcpServers section in .claude.json, (2) Verify gdrive_mcp_server.py works from any directory (uses absolute paths \u2014 should be fine), (3) Add N8n MCP server if available, (4) Test: launch Claude Code from home dir, verify gdrive tools appear in /mcp, (5) Document which MCPs are cloud-hosted (Gamma via claude.ai) vs local (gdrive via stdio).",
+      "launch_prompt": "Fix MCP server scope in Claude Code. Current state: .claude.json has 'mcpServers': {} at global level but gdrive is only configured under project 'C:/Demko_Local_Project/Demko Meta OS 2'. Steps: (1) Copy gdrive MCP config to global mcpServers section in .claude.json, (2) Verify gdrive_mcp_server.py works from any directory (uses absolute paths — should be fine), (3) Add N8n MCP server if available, (4) Test: launch Claude Code from home dir, verify gdrive tools appear in /mcp, (5) Document which MCPs are cloud-hosted (Gamma via claude.ai) vs local (gdrive via stdio).",
       "theme": "setup",
       "created_date": "2026-02-17",
       "due_date": null,
@@ -458,9 +544,14 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["build", "infra"],
+      "tags": [
+        "build",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["All Google Drive operations"],
+      "chains": [
+        "All Google Drive operations"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "setup",
@@ -472,12 +563,14 @@
     {
       "id": "install-agent-sdk-plugin",
       "title": "Install Agent SDK Dev Plugin",
-      "description": "Invalid card \u2014 Claude Desktop has no Plugins sidebar. Agent SDK is an npm package, not a Desktop plugin. Custom subagents already working in Claude Code. Closed as n/a. Feb 17.",
+      "description": "Invalid card — Claude Desktop has no Plugins sidebar. Agent SDK is an npm package, not a Desktop plugin. Custom subagents already working in Claude Code. Closed as n/a. Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0,
       "time_estimate": null,
-      "tags": ["setup"],
+      "tags": [
+        "setup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -496,7 +589,9 @@
       "priority": "done",
       "hours_saved": 0,
       "time_estimate": null,
-      "tags": ["setup"],
+      "tags": [
+        "setup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -509,15 +604,19 @@
     },
     {
       "id": "launch-claude-code-cli",
-      "title": "Launch Button \u2192 Claude Code CLI",
-      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() fires claude-code://launch?prompt=... URL. Fixed Feb 17: changed -p (print mode, blank screen) to interactive mode. Tested and working \u2014 Windows Terminal opens with Claude Code session pre-loaded with task prompt.",
+      "title": "Launch Button → Claude Code CLI",
+      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() fires claude-code://launch?prompt=... URL. Fixed Feb 17: changed -p (print mode, blank screen) to interactive mode. Tested and working — Windows Terminal opens with Claude Code session pre-loaded with task prompt.",
       "column": "done",
       "priority": "done",
       "hours_saved": null,
       "time_estimate": "~20 min",
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["All launch_prompt cards"],
+      "chains": [
+        "All launch_prompt cards"
+      ],
       "needs_user": "Test in browser",
       "launch_prompt": null,
       "theme": "dashboard",
@@ -528,17 +627,24 @@
     },
     {
       "id": "memory-architecture-split",
-      "title": "Phase 2 \u2014 Memory Architecture Split (3-Tier)",
+      "title": "Phase 2 — Memory Architecture Split (3-Tier)",
       "description": "MEMORY.md split into 3 tiers: (1) RULES layer (<150 lines, loaded into prompt), (2) KNOWLEDGE topic files (linked, fetched on demand), (3) LEARNINGS.md (append-only session lessons, not in prompt). Session-close protocol updated to route lessons to LEARNINGS.md. Self-referential TIER 2 rule added. Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 1.5,
       "time_estimate": null,
-      "tags": ["protocol", "infra"],
+      "tags": [
+        "protocol",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["CUV Gate Implementation", "Auto Session-Close", "Auto-Ingest System"],
+      "chains": [
+        "CUV Gate Implementation",
+        "Auto Session-Close",
+        "Auto-Ingest System"
+      ],
       "needs_user": null,
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md \u2014 move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY \u2014 preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons \u2192 LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
       "theme": "meta-os",
       "created_date": "2026-02-17",
       "due_date": null,
@@ -547,17 +653,23 @@
     },
     {
       "id": "build-in-public-autopost",
-      "title": "Build in Public \u2014 Daily Auto-Post to X",
-      "description": "Full implementation: build_in_public.py (git log \u2192 AI draft \u2192 Tweepy post \u2192 archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16.",
+      "title": "Build in Public — Daily Auto-Post to X",
+      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16.",
       "column": "pending",
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~1h",
-      "tags": ["build", "content"],
+      "tags": [
+        "build",
+        "content"
+      ],
       "overnight": false,
-      "chains": ["Build in Public Flywheel", "X Engagement Tracker"],
+      "chains": [
+        "Build in Public Flywheel",
+        "X Engagement Tracker"
+      ],
       "needs_user": "Needs Mike: X API keys",
-      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (\u2264280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
+      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
       "theme": "content-x",
       "created_date": "2026-02-16",
       "due_date": null,
@@ -567,14 +679,19 @@
     {
       "id": "frontier-signals-pipeline",
       "title": "Frontier Signals Pipeline (Twitter/X)",
-      "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds \u2192 FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
+      "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds → FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
       "column": "pending",
       "priority": "high",
       "hours_saved": null,
       "time_estimate": "~2h build",
-      "tags": ["build", "infra"],
+      "tags": [
+        "build",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["CUV v1.8 frontier retro-check"],
+      "chains": [
+        "CUV v1.8 frontier retro-check"
+      ],
       "needs_user": "Needs Mike: builder list",
       "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing.",
       "theme": "content-x",
@@ -585,15 +702,21 @@
     },
     {
       "id": "build-in-public-flywheel",
-      "title": "Build in Public Content Flywheel \u2014 CUV Upgrades",
+      "title": "Build in Public Content Flywheel — CUV Upgrades",
       "description": "5 CUV upgrades implemented: U1 engagement window reminder, U2 constellation format (standalone + quote-tweets), U3 metrics injection (streak/day/time-saved), U4 engagement hit list (5 accounts after posting), U5 blog/index.html with navigation. --dry-run flag added. Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["build", "content"],
+      "tags": [
+        "build",
+        "content"
+      ],
       "overnight": false,
-      "chains": ["X Engagement Tracker", "Frontier Signals Pipeline"],
+      "chains": [
+        "X Engagement Tracker",
+        "Frontier Signals Pipeline"
+      ],
       "needs_user": null,
       "launch_prompt": "Implement the 5 CUV upgrades for build_in_public.py in C:\\Demko_Local_Project\\Demko Meta OS 2: U1 Add engagement window reminder (post within 30 min of high-traffic times). U2 Switch from long threads to constellation format (standalone tweets + quote-tweets). U3 Inject streak counter, day number, and time-saved stats into tweet opener. U4 After posting, generate an engagement hit list of 5 accounts to reply to. U5 Create blog/index.html with navigation across all blog posts. Test with --dry-run flag. Commit when done.",
       "theme": "content-x",
@@ -610,9 +733,16 @@
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["infra", "setup"],
+      "tags": [
+        "infra",
+        "setup"
+      ],
       "overnight": false,
-      "chains": ["All Google Drive operations", "Mobile Capture Pipeline", "NotebookLM Transcript Loop"],
+      "chains": [
+        "All Google Drive operations",
+        "Mobile Capture Pipeline",
+        "NotebookLM Transcript Loop"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "setup",
@@ -623,15 +753,19 @@
     },
     {
       "id": "x-engagement-tracker",
-      "title": "X Engagement Tracker \u2014 Polish & Ship",
+      "title": "X Engagement Tracker — Polish & Ship",
       "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
       "column": "pending",
       "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~1h",
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
-      "chains": ["Frontier Signals Pipeline"],
+      "chains": [
+        "Frontier Signals Pipeline"
+      ],
       "needs_user": "Needs Mike: feedback",
       "launch_prompt": null,
       "theme": "content-x",
@@ -643,14 +777,19 @@
     {
       "id": "origin-story-narrative",
       "title": "Plan & Write Origin Story Narrative",
-      "description": "Life hacker \u2192 factory architect story. 7-act arc planned: (1) The Addiction \u2014 15yr friction-killing pattern, (2) Copywriting Lineage \u2014 Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment \u2014 zero fracking knowledge \u2192 $12M pitch, (4) Human Router Problem \u2014 copy-paste between AI tools, (5) Claude Code Arrives \u2014 90/10 flip, (6) Factory Takes Shape \u2014 Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis \u2014 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write.",
+      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write.",
       "column": "pending",
       "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~2h",
-      "tags": ["content", "narrative"],
+      "tags": [
+        "content",
+        "narrative"
+      ],
       "overnight": false,
-      "chains": ["Build in Public Flywheel"],
+      "chains": [
+        "Build in Public Flywheel"
+      ],
       "needs_user": "Needs Mike: pick format",
       "launch_prompt": null,
       "theme": "content-x",
@@ -667,7 +806,9 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -681,12 +822,14 @@
     {
       "id": "mobile-capture-pipeline",
       "title": "Mobile Capture Pipeline",
-      "description": "End-to-end test: Pixel 9a \u2192 Google Recorder \u2192 Drive \u2192 Claude Code ingestion.",
+      "description": "End-to-end test: Pixel 9a → Google Recorder → Drive → Claude Code ingestion.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
       "time_estimate": "~30 min",
-      "tags": ["infra"],
+      "tags": [
+        "infra"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": "Needs phone + Drive",
@@ -700,14 +843,19 @@
     {
       "id": "interactive-dashboard-rewrite",
       "title": "Interactive Dashboard Rewrite",
-      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON \u2192 python render \u2192 copy repo \u2192 git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
+      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON → python render → copy repo → git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["build", "infra"],
+      "tags": [
+        "build",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["All future dashboard updates"],
+      "chains": [
+        "All future dashboard updates"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "dashboard",
@@ -724,11 +872,13 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["build"],
+      "tags": [
+        "build"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy \u2014 newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
       "theme": "dashboard",
       "created_date": "2026-02-17",
       "due_date": null,
@@ -743,9 +893,14 @@
       "priority": "done",
       "hours_saved": 1,
       "time_estimate": null,
-      "tags": ["protocol", "infra"],
+      "tags": [
+        "protocol",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["All future MEMORY.md and CLAUDE.md writes"],
+      "chains": [
+        "All future MEMORY.md and CLAUDE.md writes"
+      ],
       "needs_user": null,
       "launch_prompt": "Implement 3-layer MEMORY.md write protection in C:\\Demko_Local_Project\\Demko Meta OS 2: (1) In CLAUDE.md Pre-Flight Gate section, reclassify MEMORY.md writes as TIER 2 and CLAUDE.md writes as TIER 3. (2) Create a PreToolUse advisory hook script (memory-cuv-gate.sh) that warns when Edit or Write targets *MEMORY.md or *CLAUDE.md files. (3) Add a self-referential protection rule in the MEMORY.md header. Reference red_team_input_memory_cuv_gate.md for full spec. Prerequisite: LEARNINGS.md must exist first. Commit when done.",
       "theme": "meta-os",
@@ -762,7 +917,10 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["debugging", "cleanup"],
+      "tags": [
+        "debugging",
+        "cleanup"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -781,9 +939,14 @@
       "priority": "done",
       "hours_saved": 3,
       "time_estimate": null,
-      "tags": ["build", "infra"],
+      "tags": [
+        "build",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["All dashboard deploys"],
+      "chains": [
+        "All dashboard deploys"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "dashboard",
@@ -795,12 +958,15 @@
     {
       "id": "openrouter-evaluation",
       "title": "Evaluate OpenRouter as Unified API Layer",
-      "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority \u2014 costs aren't a concern, this is an optimization play.",
+      "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
       "time_estimate": "~1h",
-      "tags": ["infra", "research"],
+      "tags": [
+        "infra",
+        "research"
+      ],
       "overnight": false,
       "chains": [],
       "needs_user": null,
@@ -819,9 +985,14 @@
       "priority": "done",
       "hours_saved": 2,
       "time_estimate": null,
-      "tags": ["infra", "meta-os"],
+      "tags": [
+        "infra",
+        "meta-os"
+      ],
       "overnight": false,
-      "chains": ["Globalize MCP Servers"],
+      "chains": [
+        "Globalize MCP Servers"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "infrastructure",
@@ -833,14 +1004,19 @@
     {
       "id": "mcp-wave2-install",
       "title": "Install MCP Wave 2 (GitHub, N8n, Brave Search)",
-      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped \u2014 no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Verified 7/7 Feb 18.",
+      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped — no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Verified 7/7 Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["infra", "meta-os"],
+      "tags": [
+        "infra",
+        "meta-os"
+      ],
       "overnight": false,
-      "chains": ["MCP Wave 1"],
+      "chains": [
+        "MCP Wave 1"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "infrastructure",
@@ -857,9 +1033,15 @@
       "priority": "done",
       "hours_saved": 0.5,
       "time_estimate": null,
-      "tags": ["meta-os", "infra"],
+      "tags": [
+        "meta-os",
+        "infra"
+      ],
       "overnight": false,
-      "chains": ["MCP Wave 1", "MCP Wave 2"],
+      "chains": [
+        "MCP Wave 1",
+        "MCP Wave 2"
+      ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "infrastructure",
