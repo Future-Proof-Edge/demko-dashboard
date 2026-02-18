@@ -122,16 +122,7 @@
             font-size: 1.1rem; font-weight: 800; color: #dc3545; flex-shrink: 0;
         }
         .priority-banner .text { font-size: 0.85rem; color: #555; line-height: 1.5; }
-        .parallel-bar {
-            background: #fff; border: 1px solid #e8e5e0; border-left: 4px solid #3498db;
-            border-radius: 10px; padding: 0.8rem 1.5rem; margin-bottom: 2rem;
-            display: flex; align-items: center; gap: 1rem; font-size: 0.82rem; color: #555;
-        }
-        .parallel-bar .icon {
-            width: 36px; height: 36px; background: #edf4fc; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
-        }
-        .parallel-bar strong { color: #3498db; }
+
 
         /* SECTION HEADERS */
         .section-header {
@@ -597,8 +588,7 @@ var EMBEDDED_DATA = {
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "🚀 36 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK.",
-    "parallel": "Run up to 5 tasks in parallel on claude.ai. Click “Launch” to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently."
+    "priority": "🚀 36 of 43 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
   },
   "columns": [
     {
@@ -1939,9 +1929,6 @@ function render() {
     // Banners
     if (data.banners && data.banners.priority) {
         html += '<div class="priority-banner"><div class="icon">!</div><div class="text">' + data.banners.priority + '</div></div>';
-    }
-    if (data.banners && data.banners.parallel) {
-        html += '<div class="parallel-bar"><div class="icon">||</div><div><strong>Run up to 5 tasks in parallel</strong> on claude.ai. Click &ldquo;Launch&rdquo; to copy the task prompt and open a new Claude tab. Paste (Ctrl+V) and hit Enter. Each runs independently.</div></div>';
     }
 
     // ── KANBAN VIEW ──
