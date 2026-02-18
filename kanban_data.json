@@ -811,6 +811,44 @@
       "due_date": null,
       "completed_date": null,
       "action_url": null
+    },
+    {
+      "id": "mcp-wave1-install",
+      "title": "MCP Wave 1 Install + v3 Close-Out System",
+      "description": "Installed 4 global MCP servers (Firecrawl, Sequential Thinking, Playwright, Memory) into .claude.json. Built session_close.py deterministic close-out script (render, sync, push both repos, structured JSON report). Upgraded MEMORY.md: v3 close-out protocol (8-step -> 5-step, architecture inversion), tiered expiry tags ([PERMANENT]/[SEASONAL]/[SESSION]), session breadcrumb rule. Red-team reviewed close-out design (3 rounds, strategic-reviewer agent). Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
+      "tags": ["infra", "meta-os"],
+      "overnight": false,
+      "chains": ["Globalize MCP Servers"],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
+    },
+    {
+      "id": "mcp-wave2-install",
+      "title": "Install MCP Wave 2 (GitHub, N8n, Brave Search)",
+      "description": "Install remaining 3 MCP servers from the stack audit: GitHub (@modelcontextprotocol/server-github), N8n (workflow orchestration), Brave Search (web search). All API keys already in .env. Requires Claude Code restart first to activate Wave 1.",
+      "column": "critical",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~15m",
+      "tags": ["infra", "meta-os"],
+      "overnight": false,
+      "chains": ["MCP Wave 1"],
+      "needs_user": null,
+      "launch_prompt": "Install MCP Wave 2 servers into global .claude.json: (1) GitHub - @modelcontextprotocol/server-github with GITHUB_TOKEN from .env, (2) N8n - workflow orchestration with N8N_API_KEY, (3) Brave Search - @modelcontextprotocol/server-brave-search with BRAVE_SEARCH_API_KEY. Use Python atomic read-modify-write for .claude.json (runtime writes to same file). Pre-cache all 3 with npx. Verify final config shows 8 total MCP servers.",
+      "theme": "infrastructure",
+      "created_date": "2026-02-17",
+      "due_date": "2026-02-18",
+      "completed_date": null,
+      "action_url": null
     }
   ]
 }
