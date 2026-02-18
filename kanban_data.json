@@ -848,6 +848,25 @@
       "due_date": null,
       "completed_date": "2026-02-18",
       "action_url": null
+    },
+    {
+      "id": "v3-closeout-validation",
+      "title": "v3 Close-Out System Validated + Session Rehydration Tested",
+      "description": "Battle-tested v3 close-out protocol end-to-end: session_close.py (render, sync, push x2, Cloudflare), lessons table, LEARNINGS.md append, kanban update, resume state. Discovered nested Claude Code blocker (CLAUDECODE env var) — rehydration requires fresh terminal. Wave 2 MCP confirmed complete (7 global servers). Feb 18.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
+      "tags": ["meta-os", "infra"],
+      "overnight": false,
+      "chains": ["MCP Wave 1", "MCP Wave 2"],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": "2026-02-18",
+      "action_url": null
     }
   ]
 }
