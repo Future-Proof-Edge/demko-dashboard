@@ -1499,6 +1499,30 @@ var EMBEDDED_DATA = {
       "action_url": null
     },
     {
+      "id": "dashboard-upgrade-cloudflare",
+      "title": "Dashboard Upgrade: Dates, Velocity, Timeline + Cloudflare Pages",
+      "description": "Shipped dashboard upgrade: due date chips, velocity/streak metrics, timeline view, Today filter, actionable task buttons (render_dashboard.py + kanban_data.json schema: created_date, due_date, completed_date, action_url). Set up Cloudflare Pages (demko-dashboard.pages.dev) as fast deploy target (~2s vs GitHub Pages CDN lag). Updated session_close.py with Cloudflare deploy step. Updated Edge startup tabs to Cloudflare URL. Feb 17.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "infra"
+      ],
+      "overnight": false,
+      "chains": [
+        "All dashboard deploys"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "dashboard",
+      "created_date": "2026-02-17",
+      "due_date": null,
+      "completed_date": "2026-02-17",
+      "action_url": null
+    },
+    {
       "id": "openrouter-evaluation",
       "title": "Evaluate OpenRouter as Unified API Layer",
       "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
