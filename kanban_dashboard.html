@@ -256,6 +256,8 @@
         .theme-setup { background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; }
         .theme-research { background: #faf5ff; color: #7c3aed; border: 1px solid #ddd6fe; }
         .theme-flo-health { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+        .theme-white-space-finder { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+        .theme-infrastructure { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
 
         .unlocked-chain {
             display: flex; flex-wrap: wrap; gap: 0.3rem;
@@ -1987,6 +1989,8 @@ function render() {
     html += '      <option value="setup">Setup</option>';
     html += '      <option value="research">Research</option>';
     html += '      <option value="flo-health">Flo Health</option>';
+    html += '      <option value="white-space-finder">White Space Finder</option>';
+    html += '      <option value="infrastructure">Infrastructure</option>';
     html += '    </select>';
     html += '    <select id="date-select" class="date-select" onchange="onDateSelect(this.value)">';
     html += '      <option value="all">All time</option>';
@@ -2231,7 +2235,7 @@ function renderTimelineView(cards, vel, velData) {
 var TAG_CLASSES = { protocol: 'tag-protocol', setup: 'tag-setup', build: 'tag-build', infra: 'tag-infra', cleanup: 'tag-cleanup' };
 var CARD_CLASSES = { done: 'card-done', critical: 'card-critical', high: 'card-high', medium: 'card-medium', low: 'card-low' };
 var CHIP_MAP = { critical: ['chip-critical','Critical'], high: ['chip-high','High'], medium: ['chip-medium','Medium'], low: ['chip-low','Backlog'] };
-var THEME_MAP = { 'content-x': 'Content & X', 'meta-os': 'Meta OS', 'dashboard': 'Dashboard', 'pipelines': 'Pipelines', 'setup': 'Setup', 'research': 'Research', 'flo-health': 'Flo Health' };
+var THEME_MAP = { 'content-x': 'Content & X', 'meta-os': 'Meta OS', 'dashboard': 'Dashboard', 'pipelines': 'Pipelines', 'setup': 'Setup', 'research': 'Research', 'flo-health': 'Flo Health', 'white-space-finder': 'White Space Finder', 'infrastructure': 'Infrastructure' };
 
 function renderCard(card, seqNum, status) {
     var p = card.priority;
