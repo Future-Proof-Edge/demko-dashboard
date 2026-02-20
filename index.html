@@ -620,9 +620,9 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 18, 2026 — Kainos Prompt Re-Index: Factory → Product",
+    "session_tag": "Feb 20, 2026 — 45 autonomous tasks completed",
     "hourly_rate": 250,
-    "last_updated": "Feb 18, 2026",
+    "last_updated": "Feb 20, 2026",
     "ci_status": "Green"
   },
   "banners": {
@@ -1849,6 +1849,32 @@ var EMBEDDED_DATA = {
       "action_url": null
     },
     {
+      "id": "claude-projects-architecture",
+      "title": "Set Up Claude.ai Projects Architecture (Factory → Product)",
+      "description": "Map Demko Meta OS (factory) to Claude.ai Projects (products). Decisions needed: (1) Which work streams become standalone Claude.ai Projects? (Flo Health, Weber, Kainos Alpha, Content/YouTube — yes. Setup, dashboard, pipelines — probably not, those stay in factory.) (2) What custom instructions go in each Project? (3) How do lessons flow back to factory? (Memory auto-capture is thin; manual /session-close is thick but requires Code.) (4) Should dashboard 'themes' become 'projects' or stay separate? Themes are operational groupings (meta-os, setup, pipelines); Projects are domain containers (Flo Health, Kainos Alpha). They overlap but aren't identical. (5) Apply Global Protocol Sheet to Settings → Personal Preferences. (6) Load 8 memory edits into Memory Slots. Created during Cowork integration session Feb 18.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~2h",
+      "tags": [
+        "strategy",
+        "meta-os",
+        "setup"
+      ],
+      "overnight": false,
+      "chains": [
+        "Cowork Integration",
+        "All Claude.ai surface routing"
+      ],
+      "needs_user": "Needs Mike: theme vs project decision",
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-18",
+      "due_date": "2026-02-19",
+      "completed_date": null,
+      "action_url": null
+    },
+    {
       "id": "bls-labor-pipeline",
       "title": "Data Layer #1: BLS Labor Cost Pipeline",
       "description": "Build API client for BLS QCEW + OES data. Pull occupational wages and employment counts by county/MSA for warehouse-relevant roles (forklift operators, pickers, shipping clerks, warehouse managers). Store with 5-year trend. Unlocks: labor cost benchmarking, relocation analysis, site cost scorecard. FREE API, quarterly refresh, 95% US job coverage.",
@@ -1980,6 +2006,32 @@ var EMBEDDED_DATA = {
       "created_date": "2026-02-18",
       "due_date": null,
       "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "autonomous-batch-feb20",
+      "title": "Autonomous Task Batch: 6 Tasks Complete (Leave My Office)",
+      "description": "Completed 6 autonomous tasks (#4-#9) while user was away. (1) Fixed SSI input_text/text field mismatch in n8n pipeline. (2) Codebase health audit: 16 issues found (1 CRITICAL, 7 HIGH, 5 MEDIUM, 3 LOW). (3) Untracked file catalog: 18 to commit, 8 HTML to gitignore. (4) E2E pipeline verification: fixed async webhook timeout (524 → 0.3s via sequential chaining). (5) Built /lint-config skill with two-pass audit architecture, integrated into /session-close as Step 0. (6) Updated n8n Cloud workflow with async response + Gmail delivery. Two insights graduated to LEARNINGS.md.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 6,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "pipelines",
+        "meta-os"
+      ],
+      "overnight": false,
+      "chains": [
+        "n8n Red Team Pipeline",
+        "Lint Config Skill"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     }
   ]

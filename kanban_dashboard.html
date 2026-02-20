@@ -620,13 +620,13 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 18, 2026 — 42 autonomous tasks completed",
+    "session_tag": "Feb 20, 2026 — 45 autonomous tasks completed",
     "hourly_rate": 250,
-    "last_updated": "Feb 18, 2026",
+    "last_updated": "Feb 20, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "🚀 42 of 48 tasks completed autonomously by AI agents. Autonomous = Claude executed the work end-to-end (code, config, deploy) with human direction only. 3 ran fully overnight while AFK."
+    "priority": "🔄 RE-INDEXED: 48 infra cards → foundation laid. Now building Kainos Alpha product — Total Occupancy Cost Intelligence for multi-site industrial tenants. 8 data layers identified, 4 decision paths defined."
   },
   "columns": [
     {
@@ -1273,9 +1273,9 @@ var EMBEDDED_DATA = {
     {
       "id": "build-in-public-autopost",
       "title": "Build in Public — Daily Auto-Post to X",
-      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16.",
+      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16. [REPRIORITIZED Feb 18: medium — content supports product, but product comes first.]",
       "column": "pending",
-      "priority": "high",
+      "priority": "medium",
       "hours_saved": null,
       "time_estimate": "~1h",
       "tags": [
@@ -1373,9 +1373,9 @@ var EMBEDDED_DATA = {
     {
       "id": "x-engagement-tracker",
       "title": "X Engagement Tracker — Polish & Ship",
-      "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16.",
-      "column": "pending",
-      "priority": "medium",
+      "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16. [DEPRIORITIZED Feb 18: content tooling, not product — revisit after Site Cost Scorecard ships.]",
+      "column": "backlog",
+      "priority": "low",
       "hours_saved": null,
       "time_estimate": "~1h",
       "tags": [
@@ -1396,9 +1396,9 @@ var EMBEDDED_DATA = {
     {
       "id": "origin-story-narrative",
       "title": "Plan & Write Origin Story Narrative",
-      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write.",
-      "column": "pending",
-      "priority": "medium",
+      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write. [DEPRIORITIZED Feb 18: write AFTER Kainos Alpha has a working demo to reference.]",
+      "column": "backlog",
+      "priority": "low",
       "hours_saved": null,
       "time_estimate": "~2h",
       "tags": [
@@ -1672,9 +1672,9 @@ var EMBEDDED_DATA = {
     {
       "id": "white-space-finder",
       "title": "White Space Finder — Kainos Alpha Engine",
-      "description": "Systematic listening engine that identifies unprecedented market opportunities (kainos alpha) from pain signals. 6-signal filter: Universal + Daily + Emotional + Normalized + Stale Paradigm + AI-Enabled. First 5 opportunities scored: Notification Chaos (9.0), Relationship Decay (8.5), Context Switching Tax (8.0), 'I Saw This Somewhere' Retrieval (8.0), Decision Journal (7.5). Vision: scrape Reddit/X/ProductHunt → LLM filter → score → red team → weekly White Space Report. Integrates with ci_swarm, red_team, Grok, Firecrawl, Brave Search. Feb 18.",
-      "column": "pending",
-      "priority": "high",
+      "description": "Systematic listening engine that identifies unprecedented market opportunities (kainos alpha) from pain signals. 6-signal filter: Universal + Daily + Emotional + Normalized + Stale Paradigm + AI-Enabled. First 5 opportunities scored: Notification Chaos (9.0), Relationship Decay (8.5), Context Switching Tax (8.0), 'I Saw This Somewhere' Retrieval (8.0), Decision Journal (7.5). Vision: scrape Reddit/X/ProductHunt → LLM filter → score → red team → weekly White Space Report. Integrates with ci_swarm, red_team, Grok, Firecrawl, Brave Search. Feb 18. [SUPERSEDED Feb 18: The white space has been found — Total Occupancy Cost Intelligence. This engine becomes a 'next product' scanner. Revisit after Kainos Alpha v1 ships.]",
+      "column": "backlog",
+      "priority": "low",
       "hours_saved": null,
       "time_estimate": "~4h build",
       "tags": [
@@ -1799,11 +1799,11 @@ var EMBEDDED_DATA = {
     {
       "id": "red-team-input-schema",
       "title": "Define Structured Red Team Input Schema",
-      "description": "Transform the red team from generic text critique into structured domain-specific validation. Define input schema: data layers (source, confidence, refresh cadence), decision paths (which layers feed which decisions), assumptions (explicit, testable). Output becomes prioritized build-order intelligence, not just 'here are holes.' The red team becomes the product manager. Integrates with n8n pipeline (o3 + Claude Opus + Grok-3 → DeepSeek R1). First test: re-run reframed Kainos Alpha thesis through refined schema.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~2h",
+      "description": "Built red_team_input_schema.json: 8 data layers (BLS labor, EIA utility, FEMA climate, property tax, SEC leases, census permits, transport cost, regulatory burden) each with source, API endpoint, confidence, refresh cadence, assumptions, known gaps, decisions unlocked. 4 decision paths defined (Site Cost Scorecard, Relocation Analysis, Lease Renewal Intelligence, Portfolio Risk Dashboard) with required/optional data layer mapping. Red team instructions structured to output build-order intelligence. Feb 18.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
       "tags": [
         "build",
         "strategy",
@@ -1816,20 +1816,20 @@ var EMBEDDED_DATA = {
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "meta-os",
+      "theme": "kainos-alpha",
       "created_date": "2026-02-18",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-18",
       "action_url": null
     },
     {
       "id": "demko-meta-os-reindex",
-      "title": "Re-Index All 44+ Cards Against Unified Frame",
-      "description": "Strategic consolidation: pause all building, ingest everything built so far, re-index against unified frame. Every card should either (a) acquire a data layer, (b) validate a data layer, or (c) convert validated data into a decision with audit trail. Some cards map cleanly (red team = validation, Weber = decision templates). Some are infrastructure (dashboard, session automation). Some may not survive. Time-boxed to one session. Output: revised kanban with clear build order, unified product architecture, and the red team as the prioritization engine.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~3h",
+      "title": "Kainos Prompt Re-Index (Factory → Product)",
+      "description": "Multi-signal ingestion engine: read 6 sources (kainos_alpha_unlock.md, influencer_watchlist.json, kanban_data.json, GitHub trends, Claude Code best practices, CRE public data landscape). Diagnosed: 28/48 cards = infrastructure (factory overbuilt), only 1 card = decision output (bottleneck). Classified all cards into unified frame: Acquire/Validate/Decide/Infra/Content. Output: revised kanban with 5 new product cards, structured red team input schema (8 data layers, 4 decision paths), clear build order. The factory phase is DONE — now building the product. Feb 18.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 5,
+      "time_estimate": null,
       "tags": [
         "strategy",
         "meta-os"
@@ -1837,14 +1837,201 @@ var EMBEDDED_DATA = {
       "overnight": false,
       "chains": [
         "Red Team Input Schema",
-        "Kainos Alpha Pivot"
+        "Kainos Alpha Pivot",
+        "All data layer pipelines"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": "2026-02-18",
+      "action_url": null
+    },
+    {
+      "id": "claude-projects-architecture",
+      "title": "Set Up Claude.ai Projects Architecture (Factory → Product)",
+      "description": "Map Demko Meta OS (factory) to Claude.ai Projects (products). Decisions needed: (1) Which work streams become standalone Claude.ai Projects? (Flo Health, Weber, Kainos Alpha, Content/YouTube — yes. Setup, dashboard, pipelines — probably not, those stay in factory.) (2) What custom instructions go in each Project? (3) How do lessons flow back to factory? (Memory auto-capture is thin; manual /session-close is thick but requires Code.) (4) Should dashboard 'themes' become 'projects' or stay separate? Themes are operational groupings (meta-os, setup, pipelines); Projects are domain containers (Flo Health, Kainos Alpha). They overlap but aren't identical. (5) Apply Global Protocol Sheet to Settings → Personal Preferences. (6) Load 8 memory edits into Memory Slots. Created during Cowork integration session Feb 18.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~2h",
+      "tags": [
+        "strategy",
+        "meta-os",
+        "setup"
+      ],
+      "overnight": false,
+      "chains": [
+        "Cowork Integration",
+        "All Claude.ai surface routing"
+      ],
+      "needs_user": "Needs Mike: theme vs project decision",
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-18",
+      "due_date": "2026-02-19",
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "bls-labor-pipeline",
+      "title": "Data Layer #1: BLS Labor Cost Pipeline",
+      "description": "Build API client for BLS QCEW + OES data. Pull occupational wages and employment counts by county/MSA for warehouse-relevant roles (forklift operators, pickers, shipping clerks, warehouse managers). Store with 5-year trend. Unlocks: labor cost benchmarking, relocation analysis, site cost scorecard. FREE API, quarterly refresh, 95% US job coverage.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~4h",
+      "tags": [
+        "build",
+        "data-layer",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Site Cost Scorecard",
+        "Relocation Analysis",
+        "Lease Renewal Intelligence"
+      ],
+      "needs_user": null,
+      "launch_prompt": "Build bls_labor_pipeline.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\data_layers\\. Steps: (1) Register for BLS API key at https://data.bls.gov/registrationEngine/. (2) Build API client for QCEW (quarterly county-level employment + wages by NAICS) and OES (occupational wages by MSA). (3) Define warehouse-relevant occupation codes: 53-7051 (forklift), 53-7062 (laborers/pickers), 43-5071 (shipping clerks), 11-1021 (managers). (4) Pull 5 years of history for 20 target MSAs (LA, Atlanta, Seattle, Phoenix, Dallas, etc). (5) Store as JSON + CSV with normalized schema: {msa, county, occupation, year, quarter, avg_wage, employment_count}. (6) Add trend calculation (YoY % change). (7) Test with Weber portfolio cities (Atlanta, Seattle, Los Angeles). Reference: red_team_input_schema.json for full data layer spec.",
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "eia-utility-pipeline",
+      "title": "Data Layer #2: EIA Utility Rate Pipeline",
+      "description": "Build API client for EIA Open Data v2. Pull average retail electricity rates by state and utility for commercial + industrial sectors. Store with 5-year trend. Also pull natural gas delivery data. Unlocks: utility cost trajectory, site cost scorecard, relocation analysis. FREE API, monthly refresh.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~4h",
+      "tags": [
+        "build",
+        "data-layer",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Site Cost Scorecard",
+        "Relocation Analysis",
+        "Lease Renewal Intelligence"
+      ],
+      "needs_user": null,
+      "launch_prompt": "Build eia_utility_pipeline.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\data_layers\\. Steps: (1) Register for EIA API key at https://www.eia.gov/opendata/register.php. (2) Build API client for electricity retail sales data (v2 endpoint). Query parameters: sectorid=COM,IND; frequency=monthly; data=revenue,sales,customers,price. (3) Pull 5 years of monthly data for all US states. (4) Also pull natural gas deliveries data (EIA natural gas API). (5) Store as JSON + CSV with normalized schema: {state, utility_id, sector, year, month, avg_rate_cents_kwh, total_sales_mwh, total_revenue, customer_count}. (6) Add trend calculation (YoY % change, 12-month rolling average). (7) Test with Weber portfolio states (GA, WA, CA). Reference: red_team_input_schema.json.",
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "fema-risk-pipeline",
+      "title": "Data Layer #3: FEMA Climate Risk Pipeline",
+      "description": "Download and parse FEMA National Risk Index dataset. Map warehouse addresses to census tracts for per-site risk scoring across 18 natural hazards. Unlocks: climate risk scoring, insurance trajectory, site cost scorecard. FREE download, annual refresh, county + census tract resolution.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~3h",
+      "tags": [
+        "build",
+        "data-layer",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Site Cost Scorecard",
+        "Portfolio Risk Dashboard"
+      ],
+      "needs_user": null,
+      "launch_prompt": "Build fema_risk_pipeline.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\data_layers\\. Steps: (1) Download NRI dataset from https://hazards.fema.gov/nri/data-resources (CSV format, county + census tract). (2) Parse all 18 hazard risk scores per tract. (3) Build geocoder function: given a street address, resolve to census tract FIPS code (use Census geocoder API: https://geocoding.geo.census.gov/geocoder/). (4) Create lookup: address -> tract -> risk scores. (5) Output per-site risk profile: {address, tract_fips, overall_risk_rating, top_3_hazards: [{hazard, score, percentile}], expected_annual_loss}. (6) Test with Weber portfolio addresses. Reference: red_team_input_schema.json.",
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "site-cost-scorecard",
+      "title": "Decision Output #1: Site Cost Scorecard",
+      "description": "First customer-facing output. Combines BLS labor + EIA utility + FEMA climate data into a per-site Total Occupancy Cost report. For a given warehouse address: labor cost trend, utility cost trend, climate risk score, combined trajectory score (rising/stable/falling), comparison to 5 alternative markets. Weber-style forensic HTML report with audit trail. The product pitch: 'Give us your site addresses. We tell you which ones are getting expensive and why.'",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~6h",
+      "tags": [
+        "build",
+        "decision-output",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "BLS Pipeline",
+        "EIA Pipeline",
+        "FEMA Pipeline",
+        "Relocation Analysis"
+      ],
+      "needs_user": null,
+      "launch_prompt": "Build site_cost_scorecard.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\. Steps: (1) Import data from all 3 data layer pipelines (bls_labor, eia_utility, fema_risk). (2) Define input: list of warehouse addresses + relevant job roles. (3) For each site, compute: labor_cost_score (current wages + 3yr trend), utility_cost_score (current rate + 3yr trend), climate_risk_score (FEMA NRI composite). (4) Combine into Total Occupancy Cost Trajectory (weighted composite: labor 40%, utility 30%, climate 30%). (5) Rank sites from highest-risk to lowest. (6) For each site, identify 5 alternative MSAs with lower total cost. (7) Render as HTML report using red_team report template (light mode, #f8f7f4 cream, severity-coded cards). (8) Include audit trail: every number links to its source API + retrieval date. (9) Test with Weber portfolio (Atlanta, Seattle, Los Angeles warehouses).",
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "kainos-red-team-v2",
+      "title": "Red Team v2: Validate Kainos Alpha with Structured Schema",
+      "description": "Re-run the Kainos Alpha thesis through the n8n red team pipeline, but this time using the structured input schema (red_team_input_schema.json). Input: all 8 data layers + 4 decision paths + assumptions. Output: prioritized build-order intelligence, not generic critique. The red team validates the data AND tells us which layer to build next. First structured red team run.",
+      "column": "pending",
+      "priority": "high",
+      "hours_saved": null,
+      "time_estimate": "~1h",
+      "tags": [
+        "build",
+        "red-team",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team Input Schema",
+        "All data layer pipelines"
+      ],
+      "needs_user": null,
+      "launch_prompt": "Run structured red team validation. Steps: (1) Read red_team_input_schema.json. (2) Format the 8 data layers + 4 decision paths into a structured prompt following the red_team_instructions in the schema. (3) Fire the n8n webhook (red_team.py) with the structured input. (4) Parse the output: per-data-layer grades, assumption test results, gap severities, and overall build-order recommendation. (5) Compare the red team's recommended build order to our current order (BLS -> EIA -> FEMA -> property tax -> SEC leases). (6) Render the results as an HTML report. (7) Save build-order output for use in prioritizing next sprint.",
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-18",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "autonomous-batch-feb20",
+      "title": "Autonomous Task Batch: 6 Tasks Complete (Leave My Office)",
+      "description": "Completed 6 autonomous tasks (#4-#9) while user was away. (1) Fixed SSI input_text/text field mismatch in n8n pipeline. (2) Codebase health audit: 16 issues found (1 CRITICAL, 7 HIGH, 5 MEDIUM, 3 LOW). (3) Untracked file catalog: 18 to commit, 8 HTML to gitignore. (4) E2E pipeline verification: fixed async webhook timeout (524 → 0.3s via sequential chaining). (5) Built /lint-config skill with two-pass audit architecture, integrated into /session-close as Step 0. (6) Updated n8n Cloud workflow with async response + Gmail delivery. Two insights graduated to LEARNINGS.md.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 6,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "pipelines",
+        "meta-os"
+      ],
+      "overnight": false,
+      "chains": [
+        "n8n Red Team Pipeline",
+        "Lint Config Skill"
       ],
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
-      "created_date": "2026-02-18",
+      "created_date": "2026-02-20",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     }
   ]
