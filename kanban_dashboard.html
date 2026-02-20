@@ -620,13 +620,13 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 20, 2026 — 53 autonomous tasks completed",
+    "session_tag": "Feb 20, 2026 — 56 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 20, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "✅ PHASE 1 COMPLETE: BLS Labor + EIA Utility + FEMA Climate + Site Cost Scorecard shipped. Phase 2 next: Property Tax (6-8x variance), Labor Availability (43% turnover), Temp Staffing Signal (hidden 13-17% of labor cost)."
+    "priority": "✅ PHASE 1+2 COMPLETE: 6 data layers + scorecard shipped. Property Tax (3.3x variance), Labor Availability (tightness scoring), Temp Staffing (hidden markup). Phase 3 next: Transportation Index, Insurance Premium Proxy, Utility Territory Rates."
   },
   "columns": [
     {
@@ -2038,11 +2038,11 @@ var EMBEDDED_DATA = {
     {
       "id": "property-tax-pipeline",
       "title": "Data Layer #4: Property Tax Pipeline",
-      "description": "Highest-variance cost line: 6-8x between states (AL 0.39% vs NJ 2.23%) = $450K/yr swing on same building. Sources: Tax Foundation 50-State comparison + Lincoln Institute data. County assessor portals for assessed values. Unlocks: tax exposure modeling, abatement opportunity identification, relocation cost delta.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~6h",
+      "description": "Tax Foundation 2025 state-level effective rates (50 states). Cost calculator for given building value, 10-year impact, state comparison. 3.3x variance (NJ 2.23% vs TN 0.68%). Integrated into scorecard. CLI: python -m kainos.property_tax --compare GA,TX,NJ,TN --building-value 20000000. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
       "tags": [
         "build",
         "data-layer",
@@ -2058,17 +2058,17 @@ var EMBEDDED_DATA = {
       "theme": "kainos-alpha",
       "created_date": "2026-02-20",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
       "id": "labor-availability-pipeline",
       "title": "Data Layer #5: Labor Availability Pipeline",
-      "description": "43% annual warehouse turnover means labor AVAILABILITY matters as much as labor COST. Sources: BLS JOLTS (job openings + quits rate by MSA), BLS LAUS (county unemployment rate). Combine with existing QCEW wages for full labor picture. Unlocks: hiring difficulty signal, turnover cost modeling, workforce risk scoring.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~4h",
+      "description": "BLS LAUS API v2 (county unemployment) + QCEW warehouse employment depth = tightness score (0-100). Fulton County GA: 3.6% unemployment, 100K warehouse workers, very_tight (95/100). Integrated into scorecard. CLI: python -m kainos.labor_availability --county 13121. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
       "tags": [
         "build",
         "data-layer",
@@ -2084,17 +2084,17 @@ var EMBEDDED_DATA = {
       "theme": "kainos-alpha",
       "created_date": "2026-02-20",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
       "id": "temp-staffing-signal",
       "title": "Data Layer #6: Temp Staffing Signal Pipeline",
-      "description": "Hidden P&L bomb: 30% of warehouse workforce is temp, 45% agency markup = 13-17% of true labor cost sitting in different GL account. Source: BLS QCEW NAICS 5613 (Temporary Help Services) employment + wages by county. Cross-reference with warehouse employment to compute temp penetration rate. Unlocks: automate-or-convert FTE decision, true labor cost visibility.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~4h",
+      "description": "BLS QCEW NAICS 5613 (Temporary Help Services). Temp staffing concentration vs total employment + hidden agency markup estimate (45% markup on temp payroll). Fulton Co GA: 3.4% concentration, ~$960M/yr county-wide markup. Integrated into scorecard. CLI: python -m kainos.temp_staffing --county 13121. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
       "tags": [
         "build",
         "data-layer",
@@ -2110,7 +2110,7 @@ var EMBEDDED_DATA = {
       "theme": "kainos-alpha",
       "created_date": "2026-02-20",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
