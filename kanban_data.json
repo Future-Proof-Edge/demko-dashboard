@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 20, 2026 — 57 autonomous tasks completed",
+    "session_tag": "Feb 20, 2026 — 58 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 20, 2026",
     "ci_status": "Green"
@@ -32,6 +32,25 @@
     }
   ],
   "cards": [
+    {
+      "id": "scorecard-dollarization",
+      "title": "Dollarize Site Scorecard (v0.4) + Tax Incentives Layer",
+      "description": "Converted scorecard from rates/grades to actual $/yr per site. Added WAREHOUSE_DEFAULTS (200K SF, 150 workers, 9 kWh/SF, 1500 MCF gas, $20M value, 30% temp penetration, 45% agency markup). dollarize_scorecard() computes: labor (workers x wage), electricity (SF x kWh x rate), gas (MCF x rate), property tax (direct), temp markup (temps x wage x 45%). HTML now shows two tables: TFOC dollar comparison (top) + rate detail (bottom) with site-vs-site deltas and cheapest-site badges. Tax incentives layer added (Layer 7) with GA JTC tier lookup and 5-state reference data. Incentives show as green negative cost line in TFOC. Result: Atlanta $8.1M vs Seattle $10.5M vs Moreno Valley $11.4M — the CFO output.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
+      "tags": ["kainos", "build"],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
+      "action_url": null
+    },
     {
       "id": "n8n-red-team-pipeline",
       "title": "n8n Red Team Pipeline + Report Redesign",
