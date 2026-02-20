@@ -620,7 +620,7 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 20, 2026 — 56 autonomous tasks completed",
+    "session_tag": "Feb 20, 2026 — 57 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 20, 2026",
     "ci_status": "Green"
@@ -2026,6 +2026,33 @@ var EMBEDDED_DATA = {
         "Property Tax Pipeline",
         "Labor Availability Pipeline",
         "Temp Staffing Signal Pipeline"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
+      "action_url": null
+    },
+    {
+      "id": "red-team-cost-taxonomy-completeness",
+      "title": "Red Team: Cost Taxonomy Variable Completeness (7-Question Adversarial)",
+      "description": "Full n8n red team pipeline run (o3 + Claude Opus + Grok-3 + Gemini → DeepSeek R1 synthesis) against the entire cost taxonomy variable map. 7 adversarial questions: missing variables, wrong build priorities, persona blind spots, cold chain gap, market timing signals, competitive moat analysis, data staleness reality check. 114KB HTML report generated. Drove the cost_taxonomy.py canonical definitions and informed Phase 2 build order. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 4,
+      "time_estimate": null,
+      "tags": [
+        "red-team",
+        "strategy",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Cost Taxonomy v1.0",
+        "Phase 2 Pipeline Build Order",
+        "Phase 3 Planning"
       ],
       "needs_user": null,
       "launch_prompt": null,
