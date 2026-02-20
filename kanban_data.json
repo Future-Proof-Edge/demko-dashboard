@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 20, 2026 — 45 autonomous tasks completed",
+    "session_tag": "Feb 20, 2026 — 53 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 20, 2026",
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "🔄 RE-INDEXED: 48 infra cards → foundation laid. Now building Kainos Alpha product — Total Occupancy Cost Intelligence for multi-site industrial tenants. 8 data layers identified, 4 decision paths defined."
+    "priority": "✅ PHASE 1 COMPLETE: BLS Labor + EIA Utility + FEMA Climate + Site Cost Scorecard shipped. Phase 2 next: Property Tax (6-8x variance), Labor Availability (43% turnover), Temp Staffing Signal (hidden 13-17% of labor cost)."
   },
   "columns": [
     {
@@ -1258,9 +1258,9 @@
     {
       "id": "bls-labor-pipeline",
       "title": "Data Layer #1: BLS Labor Cost Pipeline",
-      "description": "Build API client for BLS QCEW + OES data. Pull occupational wages and employment counts by county/MSA for warehouse-relevant roles (forklift operators, pickers, shipping clerks, warehouse managers). Store with 5-year trend. Unlocks: labor cost benchmarking, relocation analysis, site cost scorecard. FREE API, quarterly refresh, 95% US job coverage.",
-      "column": "critical",
-      "priority": "critical",
+      "description": "QCEW CSV API pipeline. 10 demo counties, 8 warehouse NAICS codes, 5-year wage trajectories with CAGR. Tested: Fulton County GA warehousing +6.4%/yr, Couriers +7.8%/yr. CLI: python -m kainos.bls_labor --county 13121 --years 5. Feb 20.",
+      "column": "done",
+      "priority": "done",
       "hours_saved": null,
       "time_estimate": "~4h",
       "tags": [
@@ -1279,17 +1279,17 @@
       "theme": "kainos-alpha",
       "created_date": "2026-02-18",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
       "id": "eia-utility-pipeline",
       "title": "Data Layer #2: EIA Utility Rate Pipeline",
-      "description": "Build API client for EIA Open Data v2. Pull average retail electricity rates by state and utility for commercial + industrial sectors. Store with 5-year trend. Also pull natural gas delivery data. Unlocks: utility cost trajectory, site cost scorecard, relocation analysis. FREE API, monthly refresh.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~4h",
+      "description": "EIA Open Data v2 API pipeline. Industrial electricity + natural gas rates by state with 5-year CAGR. Tested: GA industrial 6.83c/kWh. CLI: python -m kainos.eia_utility --state GA. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
       "tags": [
         "build",
         "data-layer",
@@ -1302,21 +1302,21 @@
         "Lease Renewal Intelligence"
       ],
       "needs_user": null,
-      "launch_prompt": "Build eia_utility_pipeline.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\data_layers\\. Steps: (1) Register for EIA API key at https://www.eia.gov/opendata/register.php. (2) Build API client for electricity retail sales data (v2 endpoint). Query parameters: sectorid=COM,IND; frequency=monthly; data=revenue,sales,customers,price. (3) Pull 5 years of monthly data for all US states. (4) Also pull natural gas deliveries data (EIA natural gas API). (5) Store as JSON + CSV with normalized schema: {state, utility_id, sector, year, month, avg_rate_cents_kwh, total_sales_mwh, total_revenue, customer_count}. (6) Add trend calculation (YoY % change, 12-month rolling average). (7) Test with Weber portfolio states (GA, WA, CA). Reference: red_team_input_schema.json.",
+      "launch_prompt": null,
       "theme": "kainos-alpha",
       "created_date": "2026-02-18",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
       "id": "fema-risk-pipeline",
       "title": "Data Layer #3: FEMA Climate Risk Pipeline",
-      "description": "Download and parse FEMA National Risk Index dataset. Map warehouse addresses to census tracts for per-site risk scoring across 18 natural hazards. Unlocks: climate risk scoring, insurance trajectory, site cost scorecard. FREE download, annual refresh, county + census tract resolution.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~3h",
+      "description": "FEMA NRI bulk CSV (85K tracts, 467 cols) + Census Bureau Geocoder pipeline. Address → census tract → 18-hazard risk profile. 9/9 demo sites scored. CLI: python -m kainos.fema_climate --address '3655 Brookside Pkwy, Alpharetta, GA 30022'. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
       "tags": [
         "build",
         "data-layer",
@@ -1328,21 +1328,21 @@
         "Portfolio Risk Dashboard"
       ],
       "needs_user": null,
-      "launch_prompt": "Build fema_risk_pipeline.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\data_layers\\. Steps: (1) Download NRI dataset from https://hazards.fema.gov/nri/data-resources (CSV format, county + census tract). (2) Parse all 18 hazard risk scores per tract. (3) Build geocoder function: given a street address, resolve to census tract FIPS code (use Census geocoder API: https://geocoding.geo.census.gov/geocoder/). (4) Create lookup: address -> tract -> risk scores. (5) Output per-site risk profile: {address, tract_fips, overall_risk_rating, top_3_hazards: [{hazard, score, percentile}], expected_annual_loss}. (6) Test with Weber portfolio addresses. Reference: red_team_input_schema.json.",
+      "launch_prompt": null,
       "theme": "kainos-alpha",
       "created_date": "2026-02-18",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
       "id": "site-cost-scorecard",
       "title": "Decision Output #1: Site Cost Scorecard",
-      "description": "First customer-facing output. Combines BLS labor + EIA utility + FEMA climate data into a per-site Total Occupancy Cost report. For a given warehouse address: labor cost trend, utility cost trend, climate risk score, combined trajectory score (rising/stable/falling), comparison to 5 alternative markets. Weber-style forensic HTML report with audit trail. The product pitch: 'Give us your site addresses. We tell you which ones are getting expensive and why.'",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~6h",
+      "description": "3-layer site scorecard combining BLS labor + EIA utility + FEMA climate into per-site cost profiles with HTML output. 9 demo sites scored across all layers. Signal dedup (top 2 NAICS), graceful EIA fallback. CLI: python -m kainos.site_scorecard --address '...' --county 13121 --label Atlanta --html. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 4,
+      "time_estimate": null,
       "tags": [
         "build",
         "decision-output",
@@ -1356,11 +1356,11 @@
         "Relocation Analysis"
       ],
       "needs_user": null,
-      "launch_prompt": "Build site_cost_scorecard.py in C:\\Demko_Local_Project\\Demko Meta OS 2\\. Steps: (1) Import data from all 3 data layer pipelines (bls_labor, eia_utility, fema_risk). (2) Define input: list of warehouse addresses + relevant job roles. (3) For each site, compute: labor_cost_score (current wages + 3yr trend), utility_cost_score (current rate + 3yr trend), climate_risk_score (FEMA NRI composite). (4) Combine into Total Occupancy Cost Trajectory (weighted composite: labor 40%, utility 30%, climate 30%). (5) Rank sites from highest-risk to lowest. (6) For each site, identify 5 alternative MSAs with lower total cost. (7) Render as HTML report using red_team report template (light mode, #f8f7f4 cream, severity-coded cards). (8) Include audit trail: every number links to its source API + retrieval date. (9) Test with Weber portfolio (Atlanta, Seattle, Los Angeles warehouses).",
+      "launch_prompt": null,
       "theme": "kainos-alpha",
       "created_date": "2026-02-18",
       "due_date": null,
-      "completed_date": null,
+      "completed_date": "2026-02-20",
       "action_url": null
     },
     {
@@ -1390,6 +1390,111 @@
       "action_url": null
     },
     {
+      "id": "total-cost-research",
+      "title": "Total Occupancy Cost Variable Map (Deep Research)",
+      "description": "Comprehensive research deliverable mapping the full warehouse cost stack. Key finding: Prologis ratio ($1 rent = $7 labor = $10 transport). Labor is 45-57% of opex, property tax has 6-8x variance ($450K/yr swing), temp staffing is hidden 13-17% of true labor cost. Reprioritized build order based on impact x accessibility. HTML report + topic memory file saved. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
+      "tags": [
+        "research",
+        "strategy",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Property Tax Pipeline",
+        "Labor Availability Pipeline",
+        "Temp Staffing Signal Pipeline"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
+      "action_url": null
+    },
+    {
+      "id": "property-tax-pipeline",
+      "title": "Data Layer #4: Property Tax Pipeline",
+      "description": "Highest-variance cost line: 6-8x between states (AL 0.39% vs NJ 2.23%) = $450K/yr swing on same building. Sources: Tax Foundation 50-State comparison + Lincoln Institute data. County assessor portals for assessed values. Unlocks: tax exposure modeling, abatement opportunity identification, relocation cost delta.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~6h",
+      "tags": [
+        "build",
+        "data-layer",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Site Cost Scorecard v2",
+        "Relocation Analysis"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "labor-availability-pipeline",
+      "title": "Data Layer #5: Labor Availability Pipeline",
+      "description": "43% annual warehouse turnover means labor AVAILABILITY matters as much as labor COST. Sources: BLS JOLTS (job openings + quits rate by MSA), BLS LAUS (county unemployment rate). Combine with existing QCEW wages for full labor picture. Unlocks: hiring difficulty signal, turnover cost modeling, workforce risk scoring.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~4h",
+      "tags": [
+        "build",
+        "data-layer",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "BLS Labor Pipeline",
+        "Site Cost Scorecard v2"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "temp-staffing-signal",
+      "title": "Data Layer #6: Temp Staffing Signal Pipeline",
+      "description": "Hidden P&L bomb: 30% of warehouse workforce is temp, 45% agency markup = 13-17% of true labor cost sitting in different GL account. Source: BLS QCEW NAICS 5613 (Temporary Help Services) employment + wages by county. Cross-reference with warehouse employment to compute temp penetration rate. Unlocks: automate-or-convert FTE decision, true labor cost visibility.",
+      "column": "critical",
+      "priority": "critical",
+      "hours_saved": null,
+      "time_estimate": "~4h",
+      "tags": [
+        "build",
+        "data-layer",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "BLS Labor Pipeline",
+        "Site Cost Scorecard v2"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": null
+    },
+    {
       "id": "autonomous-batch-feb20",
       "title": "Autonomous Task Batch: 6 Tasks Complete (Leave My Office)",
       "description": "Completed 6 autonomous tasks (#4-#9) while user was away. (1) Fixed SSI input_text/text field mismatch in n8n pipeline. (2) Codebase health audit: 16 issues found (1 CRITICAL, 7 HIGH, 5 MEDIUM, 3 LOW). (3) Untracked file catalog: 18 to commit, 8 HTML to gitignore. (4) E2E pipeline verification: fixed async webhook timeout (524 → 0.3s via sequential chaining). (5) Built /lint-config skill with two-pass audit architecture, integrated into /session-close as Step 0. (6) Updated n8n Cloud workflow with async response + Gmail delivery. Two insights graduated to LEARNINGS.md.",
@@ -1406,6 +1511,84 @@
       "chains": [
         "n8n Red Team Pipeline",
         "Lint Config Skill"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
+      "action_url": null
+    },
+    {
+      "id": "surface-architecture-diagram",
+      "title": "Claude Surface Architecture Diagram + Routing Clarity",
+      "description": "5-iteration visual diagram explaining Mike's multi-surface Claude architecture. Forensic search proved 'Mike OS replaces Demko Meta OS' was NEVER said. Established core rhythm: ideate in Claude.ai (Mike OS project), execute in CLI, manual copy-paste handoff between them. Diagram covers: hero split (Ideate/Execute), name decoder (4 terms), power ranking (#1 CLI, #2 Claude.ai, #3 Claude Code Web = 'The Trap'), decision table, handoff flow, brain maintenance reality (auto vs manual sync), 5 traps to avoid. Located at ~/.agent/diagrams/claude-surface-architecture.html. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "meta-os",
+        "documentation"
+      ],
+      "overnight": false,
+      "chains": [
+        "Claude.ai Projects Architecture",
+        "Brain Maintenance"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
+      "action_url": null
+    },
+    {
+      "id": "new-machine-setup-script",
+      "title": "New Machine Setup Script (setup_new_machine.py)",
+      "description": "Automated bootstrap for spinning up Demko Meta OS 2 on a new machine. 6-step pipeline: check prerequisites (Python, Node, git, Claude CLI), create directories (~/.claude/), check .env file, run sync_brain.py, offer clipboard copy for Claude.ai paste, run validate_brain.py. Tested clean on primary machine. Only manual step: transfer .env file. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "infra",
+        "meta-os"
+      ],
+      "overnight": false,
+      "chains": [
+        "Laptop setup",
+        "Brain Sync Protocol"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-02-20",
+      "due_date": null,
+      "completed_date": "2026-02-20",
+      "action_url": null
+    },
+    {
+      "id": "portable-brain-v2",
+      "title": "Portable Brain v2.0 — Red Team Delivery Gate + Tier Decision Tree",
+      "description": "Major brain update: added Red Team Delivery Gate (mandatory evaluation at every task completion), Tier Classification Decision Tree (explicit flowchart replacing vibes-based tiering), credential failure mode (FAIL loudly with structured error), Global-First Principle scoped to infra/config only (no longer conflicts with Knowledge Layer Precedence). Hash: 50016965cef8. 5-model red team validated. Feb 20.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 3,
+      "time_estimate": null,
+      "tags": [
+        "protocol",
+        "meta-os",
+        "red-team"
+      ],
+      "overnight": false,
+      "chains": [
+        "All future task completion flows",
+        "CUV Gate"
       ],
       "needs_user": null,
       "launch_prompt": null,
