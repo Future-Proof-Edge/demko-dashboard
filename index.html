@@ -2273,6 +2273,12 @@ function esc(text) {
     return d.innerHTML;
 }
 
+// C3+C4 fix: sanitize values used in HTML id/data/class attributes and JS string literals
+function escId(s) {
+    if (!s) return '';
+    return String(s).replace(/[^a-zA-Z0-9_-]/g, '');
+}
+
 function render() {
     var data = kanbanData;
     var meta = data.meta;
@@ -2581,10 +2587,12 @@ function renderCard(card, seqNum, status) {
     if (status === 'go') cls += ' card-go';
     else if (status === 'wait') cls += ' card-wait';
     var hoursAttr = card.hours_saved != null ? ' data-hours="' + card.hours_saved + '"' : '';
-    var themeAttr = card.theme ? ' data-theme="' + card.theme + '"' : '';
+    var safeId = escId(card.id);
+    var safeTheme = escId(card.theme);
+    var themeAttr = safeTheme ? ' data-theme="' + safeTheme + '"' : '';
     var h = '';
 
-    h += '<div class="card ' + cls + '" data-id="' + card.id + '"' + hoursAttr + themeAttr + '>';
+    h += '<div class="card ' + cls + '" data-id="' + safeId + '"' + hoursAttr + themeAttr + '>';
     h += '  <div class="card-top">';
     if (seqNum) {
         var badgeCls = status === 'go' ? 'seq-badge seq-badge-go' : 'seq-badge seq-badge-wait';
@@ -2615,13 +2623,13 @@ function renderCard(card, seqNum, status) {
     h += '  </div>';
 
     // Description with micro-steps support
-    h += '  <div class="card-desc" id="desc-' + card.id + '">' + renderDescription(card.description) + '</div>';
+    h += '  <div class="card-desc" id="desc-' + safeId + '">' + renderDescription(card.description) + '</div>';
     var descLen = (card.description || '').length;
-    h += '  <button class="show-more' + (descLen > 120 ? ' visible' : '') + '" id="more-' + card.id + '" onclick="toggleDesc(\'' + card.id + '\')">Show more</button>';
+    h += '  <button class="show-more' + (descLen > 120 ? ' visible' : '') + '" id="more-' + safeId + '" onclick="toggleDesc(\'' + safeId + '\')">Show more</button>';
     h += '  <div class="card-footer">';
     h += '    <div class="card-tags">';
     if (card.theme && THEME_MAP[card.theme]) {
-        h += '<span class="theme-chip theme-' + card.theme + '">' + THEME_MAP[card.theme] + '</span>';
+        h += '<span class="theme-chip theme-' + safeTheme + '">' + THEME_MAP[card.theme] + '</span>';
     }
     (card.tags || []).forEach(function(tag) {
         if (card.theme && tag.toLowerCase() === card.theme.toLowerCase()) return;
@@ -2642,10 +2650,10 @@ function renderCard(card, seqNum, status) {
             }
         }
         if (card.launch_prompt && !card.needs_user) {
-            h += '<button class="launch-btn" onclick="launchTask(this,\'' + card.id + '\')">&#8599; Launch</button>';
+            h += '<button class="launch-btn" onclick="launchTask(this,\'' + safeId + '\')">&#8599; Launch</button>';
         }
         if (!card.needs_user) {
-            h += '<button class="complete-btn" onclick="openCompleteModal(\'' + card.id + '\')">&#10003; Done</button>';
+            h += '<button class="complete-btn" onclick="openCompleteModal(\'' + safeId + '\')">&#10003; Done</button>';
         }
         h += '</div>';
     } else if (card.needs_user) {
