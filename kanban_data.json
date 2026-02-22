@@ -7,7 +7,7 @@
     "ci_status": "Green"
   },
   "banners": {
-    "priority": "✅ PHASE 1+2 COMPLETE: 6 data layers + scorecard shipped. Property Tax (3.3x variance), Labor Availability (tightness scoring), Temp Staffing (hidden markup). Phase 3 next: Transportation Index, Insurance Premium Proxy, Utility Territory Rates."
+    "priority": "âœ… PHASE 1+2 COMPLETE: 6 data layers + scorecard shipped. Property Tax (3.3x variance), Labor Availability (tightness scoring), Temp Staffing (hidden markup). Phase 3 next: Transportation Index, Insurance Premium Proxy, Utility Territory Rates."
   },
   "columns": [
     {
@@ -35,7 +35,7 @@
     {
       "id": "scorecard-dollarization",
       "title": "Dollarize Site Scorecard (v0.4) + Tax Incentives Layer",
-      "description": "Converted scorecard from rates/grades to actual $/yr per site. Added WAREHOUSE_DEFAULTS (200K SF, 150 workers, 9 kWh/SF, 1500 MCF gas, $20M value, 30% temp penetration, 45% agency markup). dollarize_scorecard() computes: labor (workers x wage), electricity (SF x kWh x rate), gas (MCF x rate), property tax (direct), temp markup (temps x wage x 45%). HTML now shows two tables: TFOC dollar comparison (top) + rate detail (bottom) with site-vs-site deltas and cheapest-site badges. Tax incentives layer added (Layer 7) with GA JTC tier lookup and 5-state reference data. Incentives show as green negative cost line in TFOC. Result: Atlanta $8.1M vs Seattle $10.5M vs Moreno Valley $11.4M — the CFO output.",
+      "description": "Converted scorecard from rates/grades to actual $/yr per site. Added WAREHOUSE_DEFAULTS (200K SF, 150 workers, 9 kWh/SF, 1500 MCF gas, $20M value, 30% temp penetration, 45% agency markup). dollarize_scorecard() computes: labor (workers x wage), electricity (SF x kWh x rate), gas (MCF x rate), property tax (direct), temp markup (temps x wage x 45%). HTML now shows two tables: TFOC dollar comparison (top) + rate detail (bottom) with site-vs-site deltas and cheapest-site badges. Tax incentives layer added (Layer 7) with GA JTC tier lookup and 5-state reference data. Incentives show as green negative cost line in TFOC. Result: Atlanta $8.1M vs Seattle $10.5M vs Moreno Valley $11.4M â€” the CFO output.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
@@ -57,7 +57,7 @@
     {
       "id": "n8n-red-team-pipeline",
       "title": "n8n Red Team Pipeline + Report Redesign",
-      "description": "Built red_team.py CLI: fires n8n webhook (o3 + Claude Opus + Grok-3 → DeepSeek R1), polls via execution ID, renders premium HTML report. Fixed polling timeout (ID-based vs timestamp), webhook error visibility. Redesigned report template: structured markdown parser, severity color-coded cards, expandable findings, filter pills, copy-to-clipboard, scroll progress, blind spot hero. Switched to light mode matching dashboard palette (#f8f7f4 cream, warm gray borders, matching severity chips). Feb 17.",
+      "description": "Built red_team.py CLI: fires n8n webhook (o3 + Claude Opus + Grok-3 â†’ DeepSeek R1), polls via execution ID, renders premium HTML report. Fixed polling timeout (ID-based vs timestamp), webhook error visibility. Redesigned report template: structured markdown parser, severity color-coded cards, expandable findings, filter pills, copy-to-clipboard, scroll progress, blind spot hero. Switched to light mode matching dashboard palette (#f8f7f4 cream, warm gray borders, matching severity chips). Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -81,7 +81,7 @@
     {
       "id": "wispr-flow-optimization",
       "title": "Wispr Flow Deep Dive & Mic Lock Fix",
-      "description": "Full audit of Wispr Flow voice dictation: Ctrl+Space conflict check (clean), system resource check (clean), config.json diagnostic analysis revealing 38 mic switches → 96 cancelled transcripts → 64 paste failures. Root cause: overrideAudioDeviceId set to dynamic 'communications' instead of specific device. Fix: locked to Blue Snowball device hash. Drafted feedback for Wispr Flow team (email, X, roadmap). Feb 17.",
+      "description": "Full audit of Wispr Flow voice dictation: Ctrl+Space conflict check (clean), system resource check (clean), config.json diagnostic analysis revealing 38 mic switches â†’ 96 cancelled transcripts â†’ 64 paste failures. Root cause: overrideAudioDeviceId set to dynamic 'communications' instead of specific device. Fix: locked to Blue Snowball device hash. Drafted feedback for Wispr Flow team (email, X, roadmap). Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 1.5,
@@ -103,7 +103,7 @@
     {
       "id": "dashboard-deploy-sync",
       "title": "Dashboard Deploy Sync Protocol",
-      "description": "Cloned demko-dashboard deploy repo, synced kanban_dashboard.html → index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.",
+      "description": "Cloned demko-dashboard deploy repo, synced kanban_dashboard.html â†’ index.html, pushed to GitHub Pages. Fixed stale deploy missing Done-on-top layout, leaderboard toggle, chain arrows, and scoring badges. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -119,15 +119,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "dashboard",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-15",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-15",
       "action_url": null
     },
     {
       "id": "3d-scoring-framework",
       "title": "3D Scoring Framework",
-      "description": "Replaced simple impact/effort ROI with Amplification × Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.",
+      "description": "Replaced simple impact/effort ROI with Amplification Ã— Creative / Effort in meta_learning_loop.py. New dimensions: Amplification (1-10, downstream outputs affected), Creative (1-10, novel thinking vs mechanical). Updated dataclass, Stage 2 prompt, output formatting, and memory capture. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -140,15 +140,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-11",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-11",
       "action_url": null
     },
     {
       "id": "e2e-stress-test",
       "title": "End-to-End Stress Test",
-      "description": "Full pipeline validated: /ci-swarm (6 competitors, 87KB report) → strategic-reviewer CUV audit (3 rounds, 6.6→9.0/10) → hooks verified (audit logger, file protection, session context). Found & fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.",
+      "description": "Full pipeline validated: /ci-swarm (6 competitors, 87KB report) â†’ strategic-reviewer CUV audit (3 rounds, 6.6â†’9.0/10) â†’ hooks verified (audit logger, file protection, session context). Found & fixed 2 gaps: wired CUV Stop Gate + Anti-Rationalization Gate into Stop hooks. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 6,
@@ -164,15 +164,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-14",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-14",
       "action_url": null
     },
     {
       "id": "flo-health-instructions",
       "title": "Write Flo Health Project Instructions",
-      "description": "CLAUDE_FloHealth.md — full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.",
+      "description": "CLAUDE_FloHealth.md â€” full board intelligence playbook derived from 7 corpus files. Competitor table, 6 strategic themes, Synthetic Council config, artifact standards, demo readiness checklist. Built autonomously while user was away. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
@@ -185,15 +185,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "flo-health",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-12",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-12",
       "action_url": null
     },
     {
       "id": "eod-handoff-protocol",
       "title": "End-of-Day Handoff Protocol",
-      "description": "HANDOFF_PROTOCOL.md — task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.",
+      "description": "HANDOFF_PROTOCOL.md â€” task block template, model selection guide, P1-P5 priority ranking, context payload guide, morning verification checklist, sample Flo CI sweep, anti-patterns. Built by parallel agent. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
@@ -206,15 +206,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-12",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-12",
       "action_url": null
     },
     {
       "id": "tighten-kill-filter",
       "title": "Tighten Kill Filter Prompts",
-      "description": "3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates → 7 real ones. Built by parallel agent. Feb 16.",
+      "description": "3 fixes in extract_recording_feedback.py: cross-claim deduplication (Kill 1), 16h effort ceiling hard gate (Kill 4), metrics-as-features bug with regex safety net. 34 false BUILD candidates â†’ 7 real ones. Built by parallel agent. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -227,14 +227,14 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "pipelines",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-11",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-11",
       "action_url": null
     },
     {
       "id": "p0-hooks-layer",
-      "title": "P0 — Hooks Layer (Deterministic Enforcement)",
+      "title": "P0 â€” Hooks Layer (Deterministic Enforcement)",
       "description": "CUV Stop Gate, Audit Logger, File Protection, Anti-Rationalization Gate, Session Context Injection, PreCompact Backup, Windows Notification. All 7 hooks wired in settings.local.json. Feb 16.",
       "column": "done",
       "priority": "done",
@@ -252,15 +252,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-13",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-13",
       "action_url": null
     },
     {
       "id": "p1-skills-layer",
-      "title": "P1 — Skills Layer (One-Command Workflows)",
-      "description": "/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close — 5 skills in .claude/skills/. Feb 16.",
+      "title": "P1 â€” Skills Layer (One-Command Workflows)",
+      "description": "/ci-swarm, /red-team, /strategic-brief, /recording-feedback, /session-close â€” 5 skills in .claude/skills/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
@@ -275,14 +275,14 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-14",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-14",
       "action_url": null
     },
     {
       "id": "p3-context-management",
-      "title": "P3 — Context Management (Compaction Survival)",
+      "title": "P3 â€” Context Management (Compaction Survival)",
       "description": "PreCompact backup hook, SessionStart reload, auto-compact at 50%, bash output cap, compaction directives in CLAUDE.md. Feb 16.",
       "column": "done",
       "priority": "done",
@@ -305,7 +305,7 @@
     },
     {
       "id": "p4-custom-subagents",
-      "title": "P4 — Custom Subagents (4 Specialized Agents)",
+      "title": "P4 â€” Custom Subagents (4 Specialized Agents)",
       "description": "ci-researcher (haiku), strategic-reviewer (sonnet), doc-fixer (haiku), codebase-auditor (haiku) in .claude/agents/. Feb 16.",
       "column": "done",
       "priority": "done",
@@ -374,7 +374,7 @@
     {
       "id": "organize-root-dir",
       "title": "Organize Root Directory",
-      "description": "222 files → organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.",
+      "description": "222 files â†’ organized into ci_reports/, transcripts/, media/, red_team_results/, session_logs/, recording_feedback/. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -433,15 +433,15 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "setup",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-10",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-10",
       "action_url": null
     },
     {
       "id": "notebooklm-transcript-loop",
       "title": "NotebookLM Transcript Loop",
-      "description": "notebooklm_loop.py — single command: download → compress → transcribe → extract → red team. Feb 16.",
+      "description": "notebooklm_loop.py â€” single command: download â†’ compress â†’ transcribe â†’ extract â†’ red team. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 5,
@@ -464,7 +464,7 @@
     {
       "id": "profile-sync-automation",
       "title": "Profile Sync Automation",
-      "description": "deploy_claude_profile.py — Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.",
+      "description": "deploy_claude_profile.py â€” Playwright Edge automation deploys CLAUDE_AI_PROFILE_INSTRUCTIONS.md to claude.ai. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -486,8 +486,8 @@
     },
     {
       "id": "understand-claude-v18-evolution",
-      "title": "P0 — Understand CLAUDE.md v1.6→v1.8 Evolution",
-      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6→v1.7→v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 — passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16. Reviewed Feb 17.",
+      "title": "P0 â€” Understand CLAUDE.md v1.6â†’v1.8 Evolution",
+      "description": "Another session evolved CLAUDE.md through 3 versions (v1.6â†’v1.7â†’v1.8) with major changes you haven't reviewed yet. Key changes: (1) CUV restructured from 5-item checklist to 4-dimension + frontier retro-check lens model, (2) Frontier Whisper added for TIER 1 â€” passive frontier awareness on tactical tasks, (3) CRITIQUE_FRAMEWORK.md created with full convergence criteria, (4) FRONTIER_SIGNALS.md referenced as evidence source, (5) 47-finding red team (4 models) drove v1.8. Files to review: INTELLIGENCE_DELTA.md (full changelog), CLAUDE.md Rule 3 (CUV), CLAUDE.md Rule 4 (Frontier Whisper), CRITIQUE_FRAMEWORK.md. Feb 16. Reviewed Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -511,7 +511,7 @@
     },
     {
       "id": "configure-mcp-api-keys",
-      "title": "API Key Inventory Sync (Google Doc → Global)",
+      "title": "API Key Inventory Sync (Google Doc â†’ Global)",
       "description": "Synced all API keys from canonical Google Doc to Windows user env vars + .env. Added 6 missing keys: GEMINI_API_KEY, XAI_API_KEY, X_CLIENT_ID, X_CLIENT_SECRET, N8N_API_KEY, GOOGLE_AI_STUDIO_API_KEY. Updated DEEPSEEK_API_KEY to match doc. All 17 keys now in .env + Windows env. Feb 17.",
       "column": "done",
       "priority": "done",
@@ -551,7 +551,7 @@
         "N8n automation"
       ],
       "needs_user": null,
-      "launch_prompt": "Fix MCP server scope in Claude Code. Current state: .claude.json has 'mcpServers': {} at global level but gdrive is only configured under project 'C:/Demko_Local_Project/Demko Meta OS 2'. Steps: (1) Copy gdrive MCP config to global mcpServers section in .claude.json, (2) Verify gdrive_mcp_server.py works from any directory (uses absolute paths — should be fine), (3) Add N8n MCP server if available, (4) Test: launch Claude Code from home dir, verify gdrive tools appear in /mcp, (5) Document which MCPs are cloud-hosted (Gamma via claude.ai) vs local (gdrive via stdio).",
+      "launch_prompt": "Fix MCP server scope in Claude Code. Current state: .claude.json has 'mcpServers': {} at global level but gdrive is only configured under project 'C:/Demko_Local_Project/Demko Meta OS 2'. Steps: (1) Copy gdrive MCP config to global mcpServers section in .claude.json, (2) Verify gdrive_mcp_server.py works from any directory (uses absolute paths â€” should be fine), (3) Add N8n MCP server if available, (4) Test: launch Claude Code from home dir, verify gdrive tools appear in /mcp, (5) Document which MCPs are cloud-hosted (Gamma via claude.ai) vs local (gdrive via stdio).",
       "theme": "setup",
       "created_date": "2026-02-17",
       "due_date": null,
@@ -560,7 +560,7 @@
     },
     {
       "id": "gdrive-mcp-update-tool",
-      "title": "GDrive MCP — Edit Existing Docs + Auto-Permissions",
+      "title": "GDrive MCP â€” Edit Existing Docs + Auto-Permissions",
       "description": "Added gdrive_update_doc tool to custom MCP server (clear + replace content in-place, optional title rename). Auto-allowed all 8 GDrive tools in settings.local.json permissions. Also reformatted API key Google Doc with full inventory (added 3 missing keys: Poe, Brave, Firecrawl). Feb 17.",
       "column": "done",
       "priority": "done",
@@ -585,7 +585,7 @@
     {
       "id": "install-agent-sdk-plugin",
       "title": "Install Agent SDK Dev Plugin",
-      "description": "Invalid card — Claude Desktop has no Plugins sidebar. Agent SDK is an npm package, not a Desktop plugin. Custom subagents already working in Claude Code. Closed as n/a. Feb 17.",
+      "description": "Invalid card â€” Claude Desktop has no Plugins sidebar. Agent SDK is an npm package, not a Desktop plugin. Custom subagents already working in Claude Code. Closed as n/a. Feb 17.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0,
@@ -626,8 +626,8 @@
     },
     {
       "id": "launch-claude-code-cli",
-      "title": "Launch Button → Claude Code CLI",
-      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() fires claude-code://launch?prompt=... URL. Fixed Feb 17: changed -p (print mode, blank screen) to interactive mode. Tested and working — Windows Terminal opens with Claude Code session pre-loaded with task prompt.",
+      "title": "Launch Button â†’ Claude Code CLI",
+      "description": "Protocol handler registered (claude-code:// in HKCU registry, claude-code-launcher.bat). Dashboard launchTask() fires claude-code://launch?prompt=... URL. Fixed Feb 17: changed -p (print mode, blank screen) to interactive mode. Tested and working â€” Windows Terminal opens with Claude Code session pre-loaded with task prompt.",
       "column": "done",
       "priority": "done",
       "hours_saved": null,
@@ -649,7 +649,7 @@
     },
     {
       "id": "memory-architecture-split",
-      "title": "Phase 2 — Memory Architecture Split (3-Tier)",
+      "title": "Phase 2 â€” Memory Architecture Split (3-Tier)",
       "description": "MEMORY.md split into 3 tiers: (1) RULES layer (<150 lines, loaded into prompt), (2) KNOWLEDGE topic files (linked, fetched on demand), (3) LEARNINGS.md (append-only session lessons, not in prompt). Session-close protocol updated to route lessons to LEARNINGS.md. Self-referential TIER 2 rule added. Feb 17.",
       "column": "done",
       "priority": "done",
@@ -666,7 +666,7 @@
         "Auto-Ingest System"
       ],
       "needs_user": null,
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md — move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY — preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons → LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2 and ~/.claude/projects/.../memory/: Phase 2 Memory Architecture Split. (1) Create LEARNINGS.md â€” move all session lessons from MEMORY.md here, append-only format with dates. (2) Slim MEMORY.md to RULES ONLY â€” preferences, shorthand commands, stack info, protocol pointers. Target <150 lines. (3) Verify all topic files (llm_aggregator_research.md etc) are linked in Reference Files section. (4) Add self-referential rule at top of MEMORY.md: 'Any edit to this file is TIER 2 (CUV required).' (5) Update session-close protocol to route lessons â†’ LEARNINGS.md, not MEMORY.md. (6) Test: start new session, verify MEMORY.md loads clean, verify topic files are findable.",
       "theme": "meta-os",
       "created_date": "2026-02-17",
       "due_date": null,
@@ -675,8 +675,8 @@
     },
     {
       "id": "build-in-public-autopost",
-      "title": "Build in Public — Daily Auto-Post to X",
-      "description": "Full implementation: build_in_public.py (git log → AI draft → Tweepy post → archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16. [REPRIORITIZED Feb 18: medium — content supports product, but product comes first.]",
+      "title": "Build in Public â€” Daily Auto-Post to X",
+      "description": "Full implementation: build_in_public.py (git log â†’ AI draft â†’ Tweepy post â†’ archive), .env with X API keys, pip install deps, Windows Scheduled Task at 6 PM daily. Posts to @futureproofedge. Needs X Developer account created first. Feb 16. [REPRIORITIZED Feb 18: medium â€” content supports product, but product comes first.]",
       "column": "pending",
       "priority": "medium",
       "hours_saved": null,
@@ -691,7 +691,7 @@
         "X Engagement Tracker"
       ],
       "needs_user": "Needs Mike: X API keys",
-      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (≤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
+      "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (â‰¤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
       "theme": "content-x",
       "created_date": "2026-02-16",
       "due_date": null,
@@ -701,7 +701,7 @@
     {
       "id": "frontier-signals-pipeline",
       "title": "Frontier Signals Pipeline (Twitter/X)",
-      "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds → FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
+      "description": "Weekly batch: scrape/summarize top 10 builders' Twitter/X feeds â†’ FRONTIER_SIGNALS.md. Referenced during CUV dim 5 retro-check and Frontier Whisper. Solves training-data staleness (red team Theme 4). Uses existing GROK_API_KEY for X API. Integrate into Friday CI Swarm schedule. Output: structured artifact with signals clustered by theme (AI agents, prompt eng, meta-cognitive systems).",
       "column": "pending",
       "priority": "high",
       "hours_saved": null,
@@ -724,7 +724,7 @@
     },
     {
       "id": "build-in-public-flywheel",
-      "title": "Build in Public Content Flywheel — CUV Upgrades",
+      "title": "Build in Public Content Flywheel â€” CUV Upgrades",
       "description": "5 CUV upgrades implemented: U1 engagement window reminder, U2 constellation format (standalone + quote-tweets), U3 metrics injection (streak/day/time-saved), U4 engagement hit list (5 accounts after posting), U5 blog/index.html with navigation. --dry-run flag added. Feb 17.",
       "column": "done",
       "priority": "done",
@@ -775,8 +775,8 @@
     },
     {
       "id": "x-engagement-tracker",
-      "title": "X Engagement Tracker — Polish & Ship",
-      "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16. [DEPRIORITIZED Feb 18: content tooling, not product — revisit after Site Cost Scorecard ships.]",
+      "title": "X Engagement Tracker â€” Polish & Ship",
+      "description": "Phase 1-2 complete: engagement_tracker.py, render_engagement.py, influencer_watchlist.json all working. --demo produces 8-tweet dashboard with sparklines, influencer grid, and growth charts. TODO: user feedback pass, test --fetch with live API, --init-watchlist to resolve user IDs, deploy dashboard to GitHub Pages. Feb 16. [DEPRIORITIZED Feb 18: content tooling, not product â€” revisit after Site Cost Scorecard ships.]",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
@@ -799,7 +799,7 @@
     {
       "id": "origin-story-narrative",
       "title": "Plan & Write Origin Story Narrative",
-      "description": "Life hacker → factory architect story. 7-act arc planned: (1) The Addiction — 15yr friction-killing pattern, (2) Copywriting Lineage — Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment — zero fracking knowledge → $12M pitch, (4) Human Router Problem — copy-paste between AI tools, (5) Claude Code Arrives — 90/10 flip, (6) Factory Takes Shape — Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis — 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write. [DEPRIORITIZED Feb 18: write AFTER Kainos Alpha has a working demo to reference.]",
+      "description": "Life hacker â†’ factory architect story. 7-act arc planned: (1) The Addiction â€” 15yr friction-killing pattern, (2) Copywriting Lineage â€” Ogilvy, Kennedy, Schwartz, Hormozi, (3) The Kyle Moment â€” zero fracking knowledge â†’ $12M pitch, (4) Human Router Problem â€” copy-paste between AI tools, (5) Claude Code Arrives â€” 90/10 flip, (6) Factory Takes Shape â€” Meta OS with adversarial truth, CUV, 3 surfaces, multi-model red team, (7) Infinite Leverage Thesis â€” 1% compounding, READ-WRITE 100x. Weave in influence_list.md (30+ names). All source material gathered and reviewed. Ready to write. [DEPRIORITIZED Feb 18: write AFTER Kainos Alpha has a working demo to reference.]",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
@@ -844,7 +844,7 @@
     {
       "id": "mobile-capture-pipeline",
       "title": "Mobile Capture Pipeline",
-      "description": "End-to-end test: Pixel 9a → Google Recorder → Drive → Claude Code ingestion.",
+      "description": "End-to-end test: Pixel 9a â†’ Google Recorder â†’ Drive â†’ Claude Code ingestion.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
@@ -865,7 +865,7 @@
     {
       "id": "interactive-dashboard-rewrite",
       "title": "Interactive Dashboard Rewrite",
-      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON → python render → copy repo → git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
+      "description": "Complete architectural rewrite of Kanban dashboard. Eliminated fragile 4-step pipeline (edit JSON â†’ python render â†’ copy repo â†’ git push). New version: client-side JS rendering, live GitHub API fetch on load (no more stale cache), clickable Done buttons with hours-saved modal, GitHub API persistence via PAT. One deploy, then all updates happen from the dashboard itself. Feb 16.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
@@ -881,9 +881,9 @@
       "needs_user": null,
       "launch_prompt": null,
       "theme": "dashboard",
-      "created_date": "2026-02-16",
+      "created_date": "2026-02-13",
       "due_date": null,
-      "completed_date": "2026-02-16",
+      "completed_date": "2026-02-13",
       "action_url": null
     },
     {
@@ -900,7 +900,7 @@
       "overnight": false,
       "chains": [],
       "needs_user": null,
-      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy — newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
+      "launch_prompt": "In C:\\Demko_Local_Project\\Demko Meta OS 2\\render_dashboard.py, modify the client-side JS render() function so the Done section only shows the 10 most recent cards initially. Add a 'Show N more' expander button below the visible cards that reveals the rest when clicked. Sort done cards by most recently completed (use card array order as proxy â€” newest cards are appended last). Style the expander to match existing dashboard aesthetics.",
       "theme": "dashboard",
       "created_date": "2026-02-17",
       "due_date": null,
@@ -980,7 +980,7 @@
     {
       "id": "openrouter-evaluation",
       "title": "Evaluate OpenRouter as Unified API Layer",
-      "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
+      "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority â€” costs aren't a concern, this is an optimization play.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
@@ -1026,7 +1026,7 @@
     {
       "id": "mcp-wave2-install",
       "title": "Install MCP Wave 2 (GitHub, N8n, Brave Search)",
-      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped — no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Verified 7/7 Feb 18.",
+      "description": "Installed 2 of 3 Wave 2 MCP servers globally: GitHub (@modelcontextprotocol/server-github with gh auth token), Brave Search (@modelcontextprotocol/server-brave-search). N8n skipped â€” no official MCP package exists, already integrated via webhook in red_team.py. Total: 7 global MCP servers (gdrive, firecrawl, sequential-thinking, playwright, memory, github, brave-search). Verified 7/7 Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -1050,7 +1050,7 @@
     {
       "id": "v3-closeout-validation",
       "title": "v3 Close-Out System Validated + Session Rehydration Tested",
-      "description": "Battle-tested v3 close-out protocol end-to-end: session_close.py (render, sync, push x2, Cloudflare), lessons table, LEARNINGS.md append, kanban update, resume state. Discovered nested Claude Code blocker (CLAUDECODE env var) — rehydration requires fresh terminal. Wave 2 MCP confirmed complete (7 global servers). Feb 18.",
+      "description": "Battle-tested v3 close-out protocol end-to-end: session_close.py (render, sync, push x2, Cloudflare), lessons table, LEARNINGS.md append, kanban update, resume state. Discovered nested Claude Code blocker (CLAUDECODE env var) â€” rehydration requires fresh terminal. Wave 2 MCP confirmed complete (7 global servers). Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -1074,8 +1074,8 @@
     },
     {
       "id": "white-space-finder",
-      "title": "White Space Finder — Kainos Alpha Engine",
-      "description": "Systematic listening engine that identifies unprecedented market opportunities (kainos alpha) from pain signals. 6-signal filter: Universal + Daily + Emotional + Normalized + Stale Paradigm + AI-Enabled. First 5 opportunities scored: Notification Chaos (9.0), Relationship Decay (8.5), Context Switching Tax (8.0), 'I Saw This Somewhere' Retrieval (8.0), Decision Journal (7.5). Vision: scrape Reddit/X/ProductHunt → LLM filter → score → red team → weekly White Space Report. Integrates with ci_swarm, red_team, Grok, Firecrawl, Brave Search. Feb 18. [SUPERSEDED Feb 18: The white space has been found — Total Occupancy Cost Intelligence. This engine becomes a 'next product' scanner. Revisit after Kainos Alpha v1 ships.]",
+      "title": "White Space Finder â€” Kainos Alpha Engine",
+      "description": "Systematic listening engine that identifies unprecedented market opportunities (kainos alpha) from pain signals. 6-signal filter: Universal + Daily + Emotional + Normalized + Stale Paradigm + AI-Enabled. First 5 opportunities scored: Notification Chaos (9.0), Relationship Decay (8.5), Context Switching Tax (8.0), 'I Saw This Somewhere' Retrieval (8.0), Decision Journal (7.5). Vision: scrape Reddit/X/ProductHunt â†’ LLM filter â†’ score â†’ red team â†’ weekly White Space Report. Integrates with ci_swarm, red_team, Grok, Firecrawl, Brave Search. Feb 18. [SUPERSEDED Feb 18: The white space has been found â€” Total Occupancy Cost Intelligence. This engine becomes a 'next product' scanner. Revisit after Kainos Alpha v1 ships.]",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
@@ -1101,7 +1101,7 @@
     },
     {
       "id": "gamma-video1-presentation",
-      "title": "Gamma Presentation — Video 1 Deck",
+      "title": "Gamma Presentation â€” Video 1 Deck",
       "description": "Generated 10-card presentation from video_01_script.md via Gamma MCP. Theme: Founder (dark, minimalist, professional). 16:9 format, medium text, confident tone. 48 Gamma credits used. Available at gamma.app under 'API Generated'. Feb 18.",
       "column": "done",
       "priority": "done",
@@ -1125,7 +1125,7 @@
     },
     {
       "id": "elevenlabs-video1-voiceover",
-      "title": "ElevenLabs Voiceover — Video 1 (Mike's Voice)",
+      "title": "ElevenLabs Voiceover â€” Video 1 (Mike's Voice)",
       "description": "Generated full voiceover for video_01_script.md using Mike's cloned voice (6yF582kBXeHoRFU3ZdLW) via ElevenLabs API. 10 sections, 5.8 MB total. Model: eleven_multilingual_v2. Resolved API key quota issue (had to create new unrestricted key). Output: content/youtube/video_01_script_audio/. Feb 18.",
       "column": "done",
       "priority": "done",
@@ -1150,8 +1150,8 @@
     },
     {
       "id": "kainos-alpha-red-team",
-      "title": "Kainos Alpha Thesis — Red Team + Data Validation",
-      "description": "Wrote kainos_alpha_thesis.md, ran full n8n red team pipeline (o3 + Claude Opus + Grok-3 → DeepSeek R1 + Perplexity). 5 CRITICAL, 5 HIGH, 3 MEDIUM findings. Key kill: Finding #7 — REIT 10-K filings do NOT have submarket-level rent data. Validated by pulling actual Prologis FY2024 10-K + supplemental: 'Southern California' is one line item (551 buildings, 125M SF). Rexford tops at county. STAG/EastGroup/Terreno all metro-level. CoStar ($20K+/yr) or broker comps are the only submarket sources. Original thesis pivot required. Feb 18.",
+      "title": "Kainos Alpha Thesis â€” Red Team + Data Validation",
+      "description": "Wrote kainos_alpha_thesis.md, ran full n8n red team pipeline (o3 + Claude Opus + Grok-3 â†’ DeepSeek R1 + Perplexity). 5 CRITICAL, 5 HIGH, 3 MEDIUM findings. Key kill: Finding #7 â€” REIT 10-K filings do NOT have submarket-level rent data. Validated by pulling actual Prologis FY2024 10-K + supplemental: 'Southern California' is one line item (551 buildings, 125M SF). Rexford tops at county. STAG/EastGroup/Terreno all metro-level. CoStar ($20K+/yr) or broker comps are the only submarket sources. Original thesis pivot required. Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -1176,8 +1176,8 @@
     },
     {
       "id": "kainos-alpha-pivot",
-      "title": "Kainos Alpha Pivot — Total Occupancy Cost Intelligence",
-      "description": "Strategic pivot after REIT data thesis was killed. Old: 'We estimate your rent gap' (requires CoStar). New: 'We calculate total occupancy cost exposure and trajectory, then tell you what to do about it — with audit trail.' Rent = 30-40% of total cost, and the client already knows it. The 60-70% they DON'T know (utilities, labor, taxes, compliance, transport, climate risk) is ALL publicly accessible. 12 data layers identified, all API/scrapeable. White space mapped: nobody combines lease mgmt + market data + decision support for tenants. Pain map: 7 core pain points identified. Feb 18.",
+      "title": "Kainos Alpha Pivot â€” Total Occupancy Cost Intelligence",
+      "description": "Strategic pivot after REIT data thesis was killed. Old: 'We estimate your rent gap' (requires CoStar). New: 'We calculate total occupancy cost exposure and trajectory, then tell you what to do about it â€” with audit trail.' Rent = 30-40% of total cost, and the client already knows it. The 60-70% they DON'T know (utilities, labor, taxes, compliance, transport, climate risk) is ALL publicly accessible. 12 data layers identified, all API/scrapeable. White space mapped: nobody combines lease mgmt + market data + decision support for tenants. Pain map: 7 core pain points identified. Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
@@ -1227,8 +1227,8 @@
     },
     {
       "id": "demko-meta-os-reindex",
-      "title": "Kainos Prompt Re-Index (Factory → Product)",
-      "description": "Multi-signal ingestion engine: read 6 sources (kainos_alpha_unlock.md, influencer_watchlist.json, kanban_data.json, GitHub trends, Claude Code best practices, CRE public data landscape). Diagnosed: 28/48 cards = infrastructure (factory overbuilt), only 1 card = decision output (bottleneck). Classified all cards into unified frame: Acquire/Validate/Decide/Infra/Content. Output: revised kanban with 5 new product cards, structured red team input schema (8 data layers, 4 decision paths), clear build order. The factory phase is DONE — now building the product. Feb 18.",
+      "title": "Kainos Prompt Re-Index (Factory â†’ Product)",
+      "description": "Multi-signal ingestion engine: read 6 sources (kainos_alpha_unlock.md, influencer_watchlist.json, kanban_data.json, GitHub trends, Claude Code best practices, CRE public data landscape). Diagnosed: 28/48 cards = infrastructure (factory overbuilt), only 1 card = decision output (bottleneck). Classified all cards into unified frame: Acquire/Validate/Decide/Infra/Content. Output: revised kanban with 5 new product cards, structured red team input schema (8 data layers, 4 decision paths), clear build order. The factory phase is DONE â€” now building the product. Feb 18.",
       "column": "done",
       "priority": "done",
       "hours_saved": 5,
@@ -1253,8 +1253,8 @@
     },
     {
       "id": "claude-projects-architecture",
-      "title": "Set Up Claude.ai Projects Architecture (Factory → Product)",
-      "description": "Resolved organically through usage. Global Protocol Sheet created (global_protocol_sheet.md), Surface Architecture Diagram shipped (Feb 20), multi-model red team validated design (Feb 19 session audit). Surface routing formalized in portable brain v2.0. Theme vs project decision resolved through practice — themes are operational groupings in kanban, Projects are domain containers on Claude.ai. Both coexist. Original Feb 15 'NOT recommended' reversed Feb 18; architecture emerged through iteration rather than formal sit-down. Feb 22.",
+      "title": "Set Up Claude.ai Projects Architecture (Factory â†’ Product)",
+      "description": "Resolved organically through usage. Global Protocol Sheet created (global_protocol_sheet.md), Surface Architecture Diagram shipped (Feb 20), multi-model red team validated design (Feb 19 session audit). Surface routing formalized in portable brain v2.0. Theme vs project decision resolved through practice â€” themes are operational groupings in kanban, Projects are domain containers on Claude.ai. Both coexist. Original Feb 15 'NOT recommended' reversed Feb 18; architecture emerged through iteration rather than formal sit-down. Feb 22.",
       "column": "done",
       "priority": "done",
       "hours_saved": 2,
@@ -1334,7 +1334,7 @@
     {
       "id": "fema-risk-pipeline",
       "title": "Data Layer #3: FEMA Climate Risk Pipeline",
-      "description": "FEMA NRI bulk CSV (85K tracts, 467 cols) + Census Bureau Geocoder pipeline. Address → census tract → 18-hazard risk profile. 9/9 demo sites scored. CLI: python -m kainos.fema_climate --address '3655 Brookside Pkwy, Alpharetta, GA 30022'. Feb 20.",
+      "description": "FEMA NRI bulk CSV (85K tracts, 467 cols) + Census Bureau Geocoder pipeline. Address â†’ census tract â†’ 18-hazard risk profile. 9/9 demo sites scored. CLI: python -m kainos.fema_climate --address '3655 Brookside Pkwy, Alpharetta, GA 30022'. Feb 20.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -1441,7 +1441,7 @@
     {
       "id": "red-team-cost-taxonomy-completeness",
       "title": "Red Team: Cost Taxonomy Variable Completeness (7-Question Adversarial)",
-      "description": "Full n8n red team pipeline run (o3 + Claude Opus + Grok-3 + Gemini → DeepSeek R1 synthesis) against the entire cost taxonomy variable map. 7 adversarial questions: missing variables, wrong build priorities, persona blind spots, cold chain gap, market timing signals, competitive moat analysis, data staleness reality check. 114KB HTML report generated. Drove the cost_taxonomy.py canonical definitions and informed Phase 2 build order. Feb 20.",
+      "description": "Full n8n red team pipeline run (o3 + Claude Opus + Grok-3 + Gemini â†’ DeepSeek R1 synthesis) against the entire cost taxonomy variable map. 7 adversarial questions: missing variables, wrong build priorities, persona blind spots, cold chain gap, market timing signals, competitive moat analysis, data staleness reality check. 114KB HTML report generated. Drove the cost_taxonomy.py canonical definitions and informed Phase 2 build order. Feb 20.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
@@ -1546,7 +1546,7 @@
     {
       "id": "autonomous-batch-feb20",
       "title": "Autonomous Task Batch: 6 Tasks Complete (Leave My Office)",
-      "description": "Completed 6 autonomous tasks (#4-#9) while user was away. (1) Fixed SSI input_text/text field mismatch in n8n pipeline. (2) Codebase health audit: 16 issues found (1 CRITICAL, 7 HIGH, 5 MEDIUM, 3 LOW). (3) Untracked file catalog: 18 to commit, 8 HTML to gitignore. (4) E2E pipeline verification: fixed async webhook timeout (524 → 0.3s via sequential chaining). (5) Built /lint-config skill with two-pass audit architecture, integrated into /session-close as Step 0. (6) Updated n8n Cloud workflow with async response + Gmail delivery. Two insights graduated to LEARNINGS.md.",
+      "description": "Completed 6 autonomous tasks (#4-#9) while user was away. (1) Fixed SSI input_text/text field mismatch in n8n pipeline. (2) Codebase health audit: 16 issues found (1 CRITICAL, 7 HIGH, 5 MEDIUM, 3 LOW). (3) Untracked file catalog: 18 to commit, 8 HTML to gitignore. (4) E2E pipeline verification: fixed async webhook timeout (524 â†’ 0.3s via sequential chaining). (5) Built /lint-config skill with two-pass audit architecture, integrated into /session-close as Step 0. (6) Updated n8n Cloud workflow with async response + Gmail delivery. Two insights graduated to LEARNINGS.md.",
       "column": "done",
       "priority": "done",
       "hours_saved": 6,
@@ -1623,7 +1623,7 @@
     },
     {
       "id": "portable-brain-v2",
-      "title": "Portable Brain v2.0 — Red Team Delivery Gate + Tier Decision Tree",
+      "title": "Portable Brain v2.0 â€” Red Team Delivery Gate + Tier Decision Tree",
       "description": "Major brain update: added Red Team Delivery Gate (mandatory evaluation at every task completion), Tier Classification Decision Tree (explicit flowchart replacing vibes-based tiering), credential failure mode (FAIL loudly with structured error), Global-First Principle scoped to infra/config only (no longer conflicts with Knowledge Layer Precedence). Hash: 50016965cef8. 5-model red team validated. Feb 20.",
       "column": "done",
       "priority": "done",
@@ -1649,8 +1649,8 @@
     },
     {
       "id": "brandon-creative-director",
-      "title": "Brandon — Creative Director Skill + Brand Guide + Skill Creation Methodology",
-      "description": "Created /brandon skill: Kainos Alpha Creative Director persona with full brand system (Stratos theme, Geist typography, 11-color token system, Flux-1-Pro image formula). Forged through 3 deliberate iterations (Founder=hodgepodge, Pearl=basic, Stratos=identity-first). Origin story baked into skill as instruction set. Red-teamed by 4 models (30 findings, 8 fixes applied). Quality gate: 5 objective heuristics + 3 taste checks. Kill list: 7 anti-patterns that never ship. Extracted reusable Skill Creation Methodology (6-step pattern: real deliverable → iterate failures → document history → extract persona → red team persona → ship as asset). Methodology artifact saved to memory. Future vision: skills as rentable encapsulated expertise in a marketplace. Feb 20.",
+      "title": "Brandon â€” Creative Director Skill + Brand Guide + Skill Creation Methodology",
+      "description": "Created /brandon skill: Kainos Alpha Creative Director persona with full brand system (Stratos theme, Geist typography, 11-color token system, Flux-1-Pro image formula). Forged through 3 deliberate iterations (Founder=hodgepodge, Pearl=basic, Stratos=identity-first). Origin story baked into skill as instruction set. Red-teamed by 4 models (30 findings, 8 fixes applied). Quality gate: 5 objective heuristics + 3 taste checks. Kill list: 7 anti-patterns that never ship. Extracted reusable Skill Creation Methodology (6-step pattern: real deliverable â†’ iterate failures â†’ document history â†’ extract persona â†’ red team persona â†’ ship as asset). Methodology artifact saved to memory. Future vision: skills as rentable encapsulated expertise in a marketplace. Feb 20.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -1677,8 +1677,8 @@
     },
     {
       "id": "weber-forensic-analyst-skill",
-      "title": "Weber — Forensic RE Analyst Skill (Skill #2)",
-      "description": "Created /weber skill: Forensic Real Estate Analyst persona forged through Weber Logistics engagement. 3-iteration origin story (Rate Table→$3.8M Headline→Dollarized Scorecard). Core insight: 'rate × consumption assumption = annual cost' is the universal multiplication that turns data into decisions. 10-lens forensic audit framework, 7-layer data pipeline (BLS/EIA/FEMA/Tax/Labor/Temp/Incentives), 4-layer output architecture (hero number, cost table, trajectory, material risks). 9 anti-patterns in kill list. Quality gate: 8 objective checks + 5 judgment checks. Mode detection for 9 trigger patterns (audit/scan/scorecard/redline/stress-test/kill-case/portfolio/deck/full). Second skill built using the Brandon-forged methodology. Feb 20.",
+      "title": "Weber â€” Forensic RE Analyst Skill (Skill #2)",
+      "description": "Created /weber skill: Forensic Real Estate Analyst persona forged through Weber Logistics engagement. 3-iteration origin story (Rate Tableâ†’$3.8M Headlineâ†’Dollarized Scorecard). Core insight: 'rate Ã— consumption assumption = annual cost' is the universal multiplication that turns data into decisions. 10-lens forensic audit framework, 7-layer data pipeline (BLS/EIA/FEMA/Tax/Labor/Temp/Incentives), 4-layer output architecture (hero number, cost table, trajectory, material risks). 9 anti-patterns in kill list. Quality gate: 8 objective checks + 5 judgment checks. Mode detection for 9 trigger patterns (audit/scan/scorecard/redline/stress-test/kill-case/portfolio/deck/full). Second skill built using the Brandon-forged methodology. Feb 20.",
       "column": "done",
       "priority": "done",
       "hours_saved": 3,
@@ -1705,7 +1705,7 @@
     },
     {
       "id": "flo-health-dir-methodology",
-      "title": "flo.health DIR Methodology v2.1 — Red Team Hardened",
+      "title": "flo.health DIR Methodology v2.1 â€” Red Team Hardened",
       "description": "Decision Intelligence Research methodology for flo.health board-level consulting engagement. 87 sources across 11 categories with full acquisition plans (cost, access, priority). 7 critical decisions (B2B acceleration, FDA pathway, privacy architecture, IPO timing, menopause expansion, data liability readiness, core product & retention). 45-day 5-phase execution timeline. User Trust Covenant as organizing principle. 7 red team scenarios. 5-model red team validated (GPT-4o, Grok-3, DeepSeek V3, Gemini 2.5 Pro, Perplexity): 31 findings, 7 incorporated, 24 rejected. flo.health branded HTML visual with sidebar TOC. Feb 22.",
       "column": "done",
       "priority": "done",
@@ -1732,7 +1732,7 @@
     {
       "id": "n8n-workspace-fix",
       "title": "n8n Workspace Re-Provision (Billing Lapse Fix)",
-      "description": "n8n Cloud workspace went offline (Feb payment didn't fire). Diagnosed via admin panel, re-provisioned. All workflows restored. Gmail OAuth credential expired during re-provision — needs manual re-auth in n8n UI. Feb 22.",
+      "description": "n8n Cloud workspace went offline (Feb payment didn't fire). Diagnosed via admin panel, re-provisioned. All workflows restored. Gmail OAuth credential expired during re-provision â€” needs manual re-auth in n8n UI. Feb 22.",
       "column": "done",
       "priority": "done",
       "hours_saved": 0.5,
@@ -1756,7 +1756,7 @@
     },
     {
       "id": "n8n-webhook-response-fix",
-      "title": "n8n Webhook Response → Instant {status: queued}",
+      "title": "n8n Webhook Response â†’ Instant {status: queued}",
       "description": "Updated red-team-review webhook Respond to Webhook node body from verbose message to {\"status\": \"queued\"}. Webhook was already responseMode=responseNode (not lastNode as initially reported). Response time: 0.48s. Feb 22.",
       "column": "done",
       "priority": "done",
@@ -1781,7 +1781,7 @@
     {
       "id": "red-team-batch-7-theses",
       "title": "Red Team Batch: 7 Core Theses (28 Model Reviews)",
-      "description": "Fired 7 thesis payloads through n8n red team pipeline (o3 + Claude Opus + Grok-3 + Gemini → DeepSeek R1). All 7 completed (1m58s-3m13s). 64 total findings, 96 noise eliminated. Gmail delivery failed (OAuth expired) — pulled all 7 execution results via API, rendered as combined HTML report locally. Theses: Behavioral Alpha, Kainos Labs 7 Pains, Weber TOC Leakage, Kainos Alpha CRE Signal, White Space Methodology v2.0, Core Positioning, Demko Meta OS Architecture. Feb 22.",
+      "description": "Fired 7 thesis payloads through n8n red team pipeline (o3 + Claude Opus + Grok-3 + Gemini â†’ DeepSeek R1). All 7 completed (1m58s-3m13s). 64 total findings, 96 noise eliminated. Gmail delivery failed (OAuth expired) â€” pulled all 7 execution results via API, rendered as combined HTML report locally. Theses: Behavioral Alpha, Kainos Labs 7 Pains, Weber TOC Leakage, Kainos Alpha CRE Signal, White Space Methodology v2.0, Core Positioning, Demko Meta OS Architecture. Feb 22.",
       "column": "done",
       "priority": "done",
       "hours_saved": 4,
@@ -1807,7 +1807,7 @@
     {
       "id": "n8n-gmail-oauth-reauth",
       "title": "Fix n8n Gmail OAuth (Expired After Re-Provision)",
-      "description": "Gmail OAuth credential in n8n expired when workspace was re-provisioned. Email Results node fails silently (continueOnFail=true). Needs manual re-auth: n8n UI → Credentials → Gmail OAuth → Re-authenticate. Until fixed, red team reports won't email — use API pull + local render as workaround.",
+      "description": "Gmail OAuth credential in n8n expired when workspace was re-provisioned. Email Results node fails silently (continueOnFail=true). Needs manual re-auth: n8n UI â†’ Credentials â†’ Gmail OAuth â†’ Re-authenticate. Until fixed, red team reports won't email â€” use API pull + local render as workaround.",
       "column": "pending",
       "priority": "medium",
       "hours_saved": null,
@@ -1831,8 +1831,8 @@
     },
     {
       "id": "edge-tts-voice-setup",
-      "title": "Edge-TTS Voice Setup — Sonia (British Neural TTS)",
-      "description": "Installed edge-tts (free, no API key, Azure neural voices). Tested 8 voices across US and British accents. Selected en-GB-SoniaNeural as default — polished BBC-style British female. Sample committed to repo. Saved as permanent preference in MEMORY.md. Replaces robotic Windows SAPI for all TTS use cases. Command: edge-tts --voice 'en-GB-SoniaNeural' --text '...' --write-media output.mp3. Feb 22.",
+      "title": "Edge-TTS Voice Setup â€” Sonia (British Neural TTS)",
+      "description": "Installed edge-tts (free, no API key, Azure neural voices). Tested 8 voices across US and British accents. Selected en-GB-SoniaNeural as default â€” polished BBC-style British female. Sample committed to repo. Saved as permanent preference in MEMORY.md. Replaces robotic Windows SAPI for all TTS use cases. Command: edge-tts --voice 'en-GB-SoniaNeural' --text '...' --write-media output.mp3. Feb 22.",
       "column": "done",
       "priority": "done",
       "hours_saved": 1,
