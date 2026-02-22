@@ -620,7 +620,7 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 22, 2026 — 61 autonomous tasks completed",
+    "session_tag": "Feb 22, 2026 — 65 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 22, 2026",
     "ci_status": "Green"
@@ -1873,11 +1873,11 @@ var EMBEDDED_DATA = {
     {
       "id": "claude-projects-architecture",
       "title": "Set Up Claude.ai Projects Architecture (Factory → Product)",
-      "description": "Map Demko Meta OS (factory) to Claude.ai Projects (products). Decisions needed: (1) Which work streams become standalone Claude.ai Projects? (Flo Health, Weber, Kainos Alpha, Content/YouTube — yes. Setup, dashboard, pipelines — probably not, those stay in factory.) (2) What custom instructions go in each Project? (3) How do lessons flow back to factory? (Memory auto-capture is thin; manual /session-close is thick but requires Code.) (4) Should dashboard 'themes' become 'projects' or stay separate? Themes are operational groupings (meta-os, setup, pipelines); Projects are domain containers (Flo Health, Kainos Alpha). They overlap but aren't identical. (5) Apply Global Protocol Sheet to Settings → Personal Preferences. (6) Load 8 memory edits into Memory Slots. Created during Cowork integration session Feb 18.",
-      "column": "critical",
-      "priority": "critical",
-      "hours_saved": null,
-      "time_estimate": "~2h",
+      "description": "Resolved organically through usage. Global Protocol Sheet created (global_protocol_sheet.md), Surface Architecture Diagram shipped (Feb 20), multi-model red team validated design (Feb 19 session audit). Surface routing formalized in portable brain v2.0. Theme vs project decision resolved through practice — themes are operational groupings in kanban, Projects are domain containers on Claude.ai. Both coexist. Original Feb 15 'NOT recommended' reversed Feb 18; architecture emerged through iteration rather than formal sit-down. Feb 22.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 2,
+      "time_estimate": null,
       "tags": [
         "strategy",
         "meta-os",
@@ -1888,12 +1888,12 @@ var EMBEDDED_DATA = {
         "Cowork Integration",
         "All Claude.ai surface routing"
       ],
-      "needs_user": "Needs Mike: theme vs project decision",
+      "needs_user": null,
       "launch_prompt": null,
       "theme": "meta-os",
       "created_date": "2026-02-18",
       "due_date": "2026-02-19",
-      "completed_date": null,
+      "completed_date": "2026-02-22",
       "action_url": null
     },
     {
@@ -2347,6 +2347,106 @@ var EMBEDDED_DATA = {
       "due_date": null,
       "completed_date": "2026-02-22",
       "action_url": null
+    },
+    {
+      "id": "n8n-workspace-fix",
+      "title": "n8n Workspace Re-Provision (Billing Lapse Fix)",
+      "description": "n8n Cloud workspace went offline (Feb payment didn't fire). Diagnosed via admin panel, re-provisioned. All workflows restored. Gmail OAuth credential expired during re-provision — needs manual re-auth in n8n UI. Feb 22.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
+      "tags": [
+        "infra",
+        "debugging"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team Pipeline",
+        "All n8n workflows"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-02-22",
+      "due_date": null,
+      "completed_date": "2026-02-22",
+      "action_url": null
+    },
+    {
+      "id": "n8n-webhook-response-fix",
+      "title": "n8n Webhook Response → Instant {status: queued}",
+      "description": "Updated red-team-review webhook Respond to Webhook node body from verbose message to {\"status\": \"queued\"}. Webhook was already responseMode=responseNode (not lastNode as initially reported). Response time: 0.48s. Feb 22.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "pipelines"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team Pipeline"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "pipelines",
+      "created_date": "2026-02-22",
+      "due_date": null,
+      "completed_date": "2026-02-22",
+      "action_url": null
+    },
+    {
+      "id": "red-team-batch-7-theses",
+      "title": "Red Team Batch: 7 Core Theses (28 Model Reviews)",
+      "description": "Fired 7 thesis payloads through n8n red team pipeline (o3 + Claude Opus + Grok-3 + Gemini → DeepSeek R1). All 7 completed (1m58s-3m13s). 64 total findings, 96 noise eliminated. Gmail delivery failed (OAuth expired) — pulled all 7 execution results via API, rendered as combined HTML report locally. Theses: Behavioral Alpha, Kainos Labs 7 Pains, Weber TOC Leakage, Kainos Alpha CRE Signal, White Space Methodology v2.0, Core Positioning, Demko Meta OS Architecture. Feb 22.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 4,
+      "time_estimate": null,
+      "tags": [
+        "red-team",
+        "strategy",
+        "kainos-alpha"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team v2 Schema Validation",
+        "Phase 3 Data Layers"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "kainos-alpha",
+      "created_date": "2026-02-22",
+      "due_date": null,
+      "completed_date": "2026-02-22",
+      "action_url": null
+    },
+    {
+      "id": "n8n-gmail-oauth-reauth",
+      "title": "Fix n8n Gmail OAuth (Expired After Re-Provision)",
+      "description": "Gmail OAuth credential in n8n expired when workspace was re-provisioned. Email Results node fails silently (continueOnFail=true). Needs manual re-auth: n8n UI → Credentials → Gmail OAuth → Re-authenticate. Until fixed, red team reports won't email — use API pull + local render as workaround.",
+      "column": "pending",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~5 min",
+      "tags": [
+        "infra",
+        "debugging"
+      ],
+      "overnight": false,
+      "chains": [
+        "Red Team Pipeline",
+        "All n8n email delivery"
+      ],
+      "needs_user": "Needs Mike: click through Google OAuth in n8n UI",
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-02-22",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": "https://futureproofedge.app.n8n.cloud"
     }
   ]
 };
