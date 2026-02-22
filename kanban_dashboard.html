@@ -620,7 +620,7 @@ var GITHUB_BRANCH = 'master';
 var EMBEDDED_DATA = {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 22, 2026 — 65 autonomous tasks completed",
+    "session_tag": "Feb 22, 2026 — 66 autonomous tasks completed",
     "hourly_rate": 250,
     "last_updated": "Feb 22, 2026",
     "ci_status": "Green"
@@ -2447,6 +2447,32 @@ var EMBEDDED_DATA = {
       "due_date": null,
       "completed_date": null,
       "action_url": "https://futureproofedge.app.n8n.cloud"
+    },
+    {
+      "id": "edge-tts-voice-setup",
+      "title": "Edge-TTS Voice Setup — Sonia (British Neural TTS)",
+      "description": "Installed edge-tts (free, no API key, Azure neural voices). Tested 8 voices across US and British accents. Selected en-GB-SoniaNeural as default — polished BBC-style British female. Sample committed to repo. Saved as permanent preference in MEMORY.md. Replaces robotic Windows SAPI for all TTS use cases. Command: edge-tts --voice 'en-GB-SoniaNeural' --text '...' --write-media output.mp3. Feb 22.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1,
+      "time_estimate": null,
+      "tags": [
+        "build",
+        "infra",
+        "tooling"
+      ],
+      "overnight": false,
+      "chains": [
+        "generate_voiceover.py",
+        "All TTS workflows"
+      ],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-02-22",
+      "due_date": null,
+      "completed_date": "2026-02-22",
+      "action_url": null
     }
   ]
 };
