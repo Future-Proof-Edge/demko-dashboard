@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Feb 22, 2026 — 66 autonomous tasks completed",
+    "session_tag": "Feb 23, 2026 — 67 autonomous tasks completed",
     "hourly_rate": 250,
-    "last_updated": "Feb 22, 2026",
+    "last_updated": "Feb 23, 2026",
     "ci_status": "Green"
   },
   "banners": {
@@ -1853,6 +1853,28 @@
       "created_date": "2026-02-22",
       "due_date": null,
       "completed_date": "2026-02-22",
+      "action_url": null
+    },
+    {
+      "id": "mcp-permission-consolidation",
+      "title": "Fix MCP Permission Prompting (settings.json Consolidation)",
+      "description": "Consolidated all 160+ MCP tool permissions from settings.local.json into settings.json as single source of truth. Covers gdrive, playwright, brave-search, firecrawl, gamma, github, memory, context7, sequential-thinking, all Zapier tools. Eliminates all 'Do you want to proceed?' prompts for MCP tools.",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 0.5,
+      "time_estimate": null,
+      "tags": [
+        "infrastructure",
+        "dx"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-02-23",
+      "due_date": null,
+      "completed_date": "2026-02-23",
       "action_url": null
     }
   ]
