@@ -59,6 +59,9 @@
         .val-saved { color: #2563eb; }
         .val-today { color: #27ae60; }
         .val-streak { color: #7c3aed; }
+        .val-accretive-green { color: #27ae60; }
+        .val-accretive-orange { color: #e67e22; }
+        .val-accretive-red { color: #dc3545; }
         .topbar-divider { width: 1px; height: 28px; background: #e8e5e0; }
 
         /* VELOCITY SPARKLINE */
@@ -2843,6 +2846,8 @@ function render() {
     html += '    <div class="topbar-stat"><div class="val val-streak">' + (vel.streak > 0 ? vel.streak + ' &#128293;' : '0') + '</div><div class="lbl">Day Streak</div></div>';
     html += '    <div class="topbar-stat">' + sparkHTML + '<div class="lbl">7-Day</div></div>';
     html += '    <div class="topbar-divider"></div>';
+    html += renderAccretiveStat();
+    html += '    <div class="topbar-divider"></div>';
     html += '    <div class="' + gearClass + '" onclick="openSettings()" title="GitHub Connection">' + (hasPAT ? '&#9889;' : '&#9881;') + '</div>';
     html += '  </div>';
     html += '</div>';
@@ -3445,6 +3450,21 @@ function toggleDesc(cardId) {
 }
 
 // (Done collapse removed — replaced by date filter dropdown)
+
+// ── Accretive Index ─────────────────────────────────────────────────────
+var ACCRETIVE_DATA = {"index": 6.8, "total_scored": 18, "total_skipped": 0, "period_scored": 18, "route_counts": {"DISCARD": 2, "BUFFER": 1, "INGEST": 4, "ALERT": 11}, "trend": "up", "label": "6.8/10 (18 items, 7d)"};
+
+function renderAccretiveStat() {
+    var d = ACCRETIVE_DATA;
+    if (!d || d.total_scored === 0) {
+        return '<div class="topbar-stat"><div class="val" style="color:#bbb">--</div><div class="lbl">Accretive</div></div>';
+    }
+    var idx = d.index;
+    var cls = idx >= 6 ? 'val-accretive-green' : (idx >= 3 ? 'val-accretive-orange' : 'val-accretive-red');
+    var arrow = d.trend === 'up' ? ' &#9650;' : (d.trend === 'down' ? ' &#9660;' : '');
+    var title = d.period_scored + ' items scored (' + d.total_skipped + ' skipped)';
+    return '<div class="topbar-stat" title="' + title + '"><div class="val ' + cls + '">' + idx + arrow + '</div><div class="lbl">Accretive</div></div>';
+}
 
 // ── Go ──────────────────────────────────────────────────────────────────
 init();
