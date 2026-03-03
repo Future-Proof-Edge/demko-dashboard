@@ -2452,6 +2452,34 @@ var EMBEDDED_DATA = {
       "action_url": "https://futureproofedge.app.n8n.cloud"
     },
     {
+      "id": "audio-router-google-recorder",
+      "title": "Audio Router — Google Recorder File Routing by Prefix",
+      "description": "Build audio_router.py: single dispatcher that watches Google Recorder files, parses filename prefix (REDTEAM_, KAINOS_, CI_, CONTENT_, MEMO_, WEBER_), transcribes via Whisper (shared step), then routes transcript to the correct downstream pipeline. Prefixes map to: REDTEAM->red_team.py, KAINOS->Kainos memory files, CI->ci_swarm.py, CONTENT->tweet drafts/content flywheel, MEMO->topic file in memory dir, WEBER->Weber protocol stack. Design decisions needed: (1) input folder (Google Drive sync path), (2) manual invoke vs folder watcher. Builds on existing notebooklm_loop.py Whisper pipeline pattern.",
+      "column": "pending",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~1.5h",
+      "tags": [
+        "build",
+        "infra",
+        "pipelines"
+      ],
+      "overnight": false,
+      "chains": [
+        "notebooklm_loop.py",
+        "Red Team Pipeline",
+        "CI Swarm",
+        "Content Flywheel"
+      ],
+      "needs_user": "Needs Mike: confirm Google Drive sync folder path + manual vs watcher",
+      "launch_prompt": "Build audio_router.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Accept a folder path (default: Google Drive recorder sync dir), 2) Scan for new audio files matching prefix pattern {REDTEAM|KAINOS|CI|CONTENT|MEMO|WEBER}_*.m4a, 3) Transcribe each via OpenAI Whisper API (OPENAI_API_KEY from .env), 4) Route transcript based on prefix: REDTEAM->red_team.py webhook, KAINOS->structured notes saved to kainos memory, CI->entity extraction for ci_swarm, CONTENT->draft tweets via content flywheel pattern, MEMO->summary saved as topic file in ~/.claude/projects memory dir, WEBER->claims extraction for weber protocol, 5) Move processed files to processed/ subfolder, 6) Log routing decisions to audio_router_log.jsonl. Use existing notebooklm_loop.py Whisper code as reference.",
+      "theme": "pipelines",
+      "created_date": "2026-03-02",
+      "due_date": "2026-03-03",
+      "completed_date": null,
+      "action_url": null
+    },
+    {
       "id": "edge-tts-voice-setup",
       "title": "Edge-TTS Voice Setup â€” Sonia (British Neural TTS)",
       "description": "Installed edge-tts (free, no API key, Azure neural voices). Tested 8 voices across US and British accents. Selected en-GB-SoniaNeural as default â€” polished BBC-style British female. Sample committed to repo. Saved as permanent preference in MEMORY.md. Replaces robotic Windows SAPI for all TTS use cases. Command: edge-tts --voice 'en-GB-SoniaNeural' --text '...' --write-media output.mp3. Feb 22.",
@@ -2515,6 +2543,28 @@ var EMBEDDED_DATA = {
       "theme": "kainos-alpha",
       "created_date": "2026-02-23",
       "completed_date": "2026-02-23"
+    },
+    {
+      "id": "evaluate-roo-code",
+      "title": "Evaluate Roo Code VS Code Extension",
+      "description": "Assess Roo Code (open-source Cline fork) as a complement or alternative to Claude Code in VS Code. Key evaluation points: multi-model flexibility (Claude + GPT + Gemini + local models), specialized modes (Architect, Code, Ask, Custom), context management (token transparency, checkpoints, right-click context injection), IDE integration quality, font/UI customization options (the original trigger — Claude Code webview font size not independently adjustable). Compare cost model (free extension + own API keys vs Claude Code subscription). Test with current workflow and .env keys. Verdict: keep Claude Code CLI, add Roo Code, or replace.",
+      "column": "pending",
+      "priority": "medium",
+      "hours_saved": null,
+      "time_estimate": "~30m eval",
+      "tags": [
+        "tooling",
+        "evaluate"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "infrastructure",
+      "created_date": "2026-03-02",
+      "due_date": "2026-03-03",
+      "completed_date": null,
+      "action_url": null
     }
   ]
 };
@@ -3452,7 +3502,7 @@ function toggleDesc(cardId) {
 // (Done collapse removed — replaced by date filter dropdown)
 
 // ── Accretive Index ─────────────────────────────────────────────────────
-var ACCRETIVE_DATA = {"index": 7.2, "total_scored": 19, "total_skipped": 0, "period_scored": 13, "route_counts": {"DISCARD": 1, "BUFFER": 0, "INGEST": 4, "ALERT": 8}, "trend": "up", "label": "7.2/10 (13 items, 7d)"};
+var ACCRETIVE_DATA = {"index": 7.2, "total_scored": 19, "total_skipped": 0, "period_scored": 10, "route_counts": {"DISCARD": 1, "BUFFER": 0, "INGEST": 2, "ALERT": 7}, "trend": "up", "label": "7.2/10 (10 items, 7d)"};
 
 function renderAccretiveStat() {
     var d = ACCRETIVE_DATA;
