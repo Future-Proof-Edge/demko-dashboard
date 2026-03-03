@@ -683,7 +683,8 @@
       "time_estimate": "~1h",
       "tags": [
         "build",
-        "content"
+        "content",
+        "x"
       ],
       "overnight": false,
       "chains": [
@@ -692,7 +693,7 @@
       ],
       "needs_user": "Needs Mike: X API keys",
       "launch_prompt": "Implement the Build in Public daily auto-post system in C:\\Demko_Local_Project\\Demko Meta OS 2. Create build_in_public.py that: 1) Runs git log --since=midnight --oneline on the Demko repo, 2) Skips if no commits, 3) Sends commit messages to OpenAI API to draft a layperson-friendly tweet (â‰¤280 chars) emphasizing time saved/cool factor with #BuildInPublic, 4) Posts via Tweepy client.create_tweet(), 5) Appends to tweet_archive.md. Also: create .env with X API key placeholders, pip install tweepy python-dotenv openai, create Windows Scheduled Task for 6 PM daily, test end-to-end.",
-      "theme": "content-x",
+      "theme": "build-in-public",
       "created_date": "2026-02-16",
       "due_date": null,
       "completed_date": null,
@@ -708,7 +709,8 @@
       "time_estimate": "~2h build",
       "tags": [
         "build",
-        "infra"
+        "infra",
+        "x"
       ],
       "overnight": false,
       "chains": [
@@ -716,7 +718,7 @@
       ],
       "needs_user": "Needs Mike: builder list",
       "launch_prompt": "Build frontier_signals.py in C:\\Demko_Local_Project\\Demko Meta OS 2. It should: 1) Read a curated list of Twitter/X accounts from frontier_builders.txt (one handle per line), 2) Use GROK_API_KEY to fetch recent tweets (last 7 days) from each account, 3) Filter for signal (technical insights, tool announcements, pattern shifts) vs noise (personal, promotional), 4) Cluster signals by theme, 5) Output FRONTIER_SIGNALS.md with structured format: ## Theme > - Signal: [Builder] observation > - Source: tweet URL. 6) Integrate into run_weekly_ci.bat to run alongside CI Swarm on Fridays. Graceful degradation if GROK_API_KEY missing.",
-      "theme": "content-x",
+      "theme": "build-in-public",
       "created_date": "2026-02-17",
       "due_date": null,
       "completed_date": null,
@@ -732,7 +734,8 @@
       "time_estimate": null,
       "tags": [
         "build",
-        "content"
+        "content",
+        "x"
       ],
       "overnight": false,
       "chains": [
@@ -741,7 +744,7 @@
       ],
       "needs_user": null,
       "launch_prompt": "Implement the 5 CUV upgrades for build_in_public.py in C:\\Demko_Local_Project\\Demko Meta OS 2: U1 Add engagement window reminder (post within 30 min of high-traffic times). U2 Switch from long threads to constellation format (standalone tweets + quote-tweets). U3 Inject streak counter, day number, and time-saved stats into tweet opener. U4 After posting, generate an engagement hit list of 5 accounts to reply to. U5 Create blog/index.html with navigation across all blog posts. Test with --dry-run flag. Commit when done.",
-      "theme": "content-x",
+      "theme": "build-in-public",
       "created_date": "2026-02-17",
       "due_date": null,
       "completed_date": "2026-02-17",
@@ -782,7 +785,8 @@
       "hours_saved": null,
       "time_estimate": "~1h",
       "tags": [
-        "build"
+        "build",
+        "x"
       ],
       "overnight": false,
       "chains": [
@@ -790,7 +794,7 @@
       ],
       "needs_user": "Needs Mike: feedback",
       "launch_prompt": null,
-      "theme": "content-x",
+      "theme": "build-in-public",
       "created_date": "2026-02-16",
       "due_date": null,
       "completed_date": null,
@@ -814,7 +818,7 @@
       ],
       "needs_user": "Needs Mike: pick format",
       "launch_prompt": null,
-      "theme": "content-x",
+      "theme": "build-in-public",
       "created_date": "2026-02-17",
       "due_date": null,
       "completed_date": null,
@@ -1109,7 +1113,8 @@
       "time_estimate": null,
       "tags": [
         "content",
-        "build"
+        "build",
+        "youtube"
       ],
       "overnight": false,
       "chains": [
@@ -1117,7 +1122,7 @@
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "content-youtube",
+      "theme": "build-in-public",
       "created_date": "2026-02-18",
       "due_date": null,
       "completed_date": "2026-02-18",
@@ -1133,7 +1138,8 @@
       "time_estimate": null,
       "tags": [
         "content",
-        "build"
+        "build",
+        "youtube"
       ],
       "overnight": false,
       "chains": [
@@ -1142,7 +1148,7 @@
       ],
       "needs_user": null,
       "launch_prompt": null,
-      "theme": "content-youtube",
+      "theme": "build-in-public",
       "created_date": "2026-02-18",
       "due_date": null,
       "completed_date": "2026-02-18",
@@ -2009,6 +2015,53 @@
       "created_date": "2026-03-02",
       "due_date": null,
       "completed_date": "2026-03-02",
+      "action_url": null
+    },
+    {
+      "id": "evaluate-gling-ai",
+      "title": "Evaluate Gling.ai for Loom/Recording Video Editing",
+      "description": "Test Gling.ai as an AI video editor for existing Loom and recording content. Assess: auto-cut silence/filler, quality of edits, pricing, batch processing capability. Goal: make raw recordings publishable with minimal manual effort.",
+      "column": "backlog",
+      "priority": "low",
+      "hours_saved": null,
+      "time_estimate": "~1h",
+      "tags": [
+        "evaluate",
+        "tooling",
+        "content",
+        "loom"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": "Needs Mike: Loom test videos",
+      "launch_prompt": null,
+      "theme": "build-in-public",
+      "created_date": "2026-03-03",
+      "due_date": null,
+      "completed_date": null,
+      "action_url": "https://gling.ai"
+    },
+    {
+      "id": "learn-vscode-parallel-sessions",
+      "title": "Learn VS Code Parallel Claude Code Sessions",
+      "description": "Explore VS Code's built-in support for running multiple Claude Code CLI sessions side by side. Covers: split terminals, terminal tabs, managing multiple sessions on the same repo without conflicts, and when to use worktrees for isolation. Goal: replace PowerShell tab-switching with a single VS Code window showing all active sessions.",
+      "column": "backlog",
+      "priority": "low",
+      "hours_saved": null,
+      "time_estimate": "~30 min",
+      "tags": [
+        "tooling",
+        "dx",
+        "evaluate"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-03-03",
+      "due_date": null,
+      "completed_date": null,
       "action_url": null
     }
   ]
