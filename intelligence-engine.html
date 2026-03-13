@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Proof Edge — Intelligence Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f5f2eb;
+    --paper2: #ede9df;
+    --signal: #c8401a;
+    --signal-dim: rgba(200,64,26,0.12);
+    --wire: rgba(10,10,10,0.15);
+    --wire-strong: rgba(10,10,10,0.35);
+    --teal: #1a6b5c;
+    --amber: #b87a1a;
+    --purple: #4a3b8c;
+    --mono: 'DM Mono', monospace;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 48px;
+    border-bottom: 1px solid var(--wire);
+    position: sticky;
+    top: 0;
+    background: rgba(245,242,235,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  .logo span { color: var(--signal); opacity: 1; }
+
+  .nav-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.45;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--signal);
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+    max-width: 820px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--signal);
+  }
+
+  .hero-body {
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 560px;
+    opacity: 0.7;
+    margin-bottom: 56px;
+  }
+
+  .claim-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--wire);
+    border: 1px solid var(--wire);
+    margin-top: 72px;
+  }
+
+  .claim-cell {
+    background: var(--paper);
+    padding: 28px 32px;
+    position: relative;
+  }
+
+  .claim-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 12px;
+  }
+
+  .claim-text {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    opacity: 0.3;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--wire);
+  }
+
+  /* ── ARCHITECTURE CANVAS ── */
+  .arch-canvas {
+    position: relative;
+    width: 100%;
+    background: var(--paper2);
+    border: 1px solid var(--wire);
+    padding: 60px 40px;
+    overflow: hidden;
+  }
+
+  .arch-canvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--wire) 1px, transparent 1px),
+      linear-gradient(90deg, var(--wire) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+  }
+
+  /* ── NODES ── */
+  .node-cluster {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .node-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .node {
+    background: var(--paper);
+    border: 1px solid var(--wire-strong);
+    padding: 18px 24px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    min-width: 180px;
+    text-align: center;
+  }
+
+  .node:hover {
+    border-color: var(--signal);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(200,64,26,0.12);
+  }
+
+  .node.active {
+    border-color: var(--signal);
+    background: var(--signal-dim);
+  }
+
+  .node-tier {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .node-tier.t0 { color: var(--signal); }
+  .node-tier.t1 { color: var(--teal); }
+  .node-tier.t2 { color: var(--amber); }
+  .node-tier.t3 { color: var(--purple); }
+
+  .node-name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .node-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    opacity: 0.45;
+    margin-top: 4px;
+  }
+
+  .node-connector {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 24px;
+    background: var(--wire-strong);
+  }
+
+  .node-connector::after {
+    content: '▼';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6px;
+    color: var(--ink);
+    opacity: 0.35;
+  }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel {
+    margin-top: 40px;
+    border: 1px solid var(--wire-strong);
+    background: var(--paper);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .detail-panel.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .detail-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--wire);
+    gap: 24px;
+  }
+
+  .detail-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .detail-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .detail-status {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .status-canonical { color: var(--teal); border-color: var(--teal); }
+  .status-active { color: var(--signal); border-color: var(--signal); }
+  .status-compounding { color: var(--amber); border-color: var(--amber); }
+
+  .detail-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .detail-col {
+    padding: 28px 32px;
+    border-right: 1px solid var(--wire);
+  }
+
+  .detail-col:last-child { border-right: none; }
+
+  .detail-col-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.45;
+    margin-bottom: 14px;
+  }
+
+  .detail-col-content {
+    font-size: 14px;
+    line-height: 1.75;
+    opacity: 0.8;
+  }
+
+  .reasoning-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .reasoning-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .reasoning-step-num {
+    color: var(--signal);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .gate-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .gate-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--paper2);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .gate-pass { color: var(--teal); }
+  .gate-block { color: var(--signal); }
+
+  /* ── VALUE PROP ── */
+  .vp-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--wire);
+    border: 1px solid var(--wire);
+  }
+
+  .vp-cell {
+    background: var(--paper);
+    padding: 40px;
+  }
+
+  .vp-cell-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--wire);
+  }
+
+  .vp-cell.theirs .vp-cell-label { color: var(--ink); opacity: 0.35; }
+  .vp-cell.ours .vp-cell-label { color: var(--signal); }
+
+  .vp-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+
+  .vp-item::before {
+    content: '—';
+    flex-shrink: 0;
+    opacity: 0.35;
+  }
+
+  .vp-cell.ours .vp-item::before {
+    content: '→';
+    color: var(--signal);
+    opacity: 1;
+  }
+
+  /* ── PROOF CASES ── */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--wire);
+    border: 1px solid var(--wire);
+  }
+
+  .proof-card {
+    background: var(--paper);
+    padding: 32px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proof-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--wire);
+    transition: background 0.2s;
+  }
+
+  .proof-card:hover::before,
+  .proof-card.active::before { background: var(--signal); }
+
+  .proof-card:hover { background: var(--paper2); }
+
+  .proof-client {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 10px;
+  }
+
+  .proof-title {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .proof-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    opacity: 0.4;
+    line-height: 1.6;
+  }
+
+  /* ── PROOF DETAIL ── */
+  .proof-detail {
+    margin-top: 2px;
+    background: var(--paper2);
+    border: 1px solid var(--wire-strong);
+    border-top: none;
+    padding: 36px 40px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+
+  .proof-detail.visible {
+    opacity: 1;
+    max-height: 600px;
+  }
+
+  .proof-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .proof-detail-col label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .proof-detail-col p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .white-space-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--signal);
+    border: 1px solid var(--signal);
+    padding: 4px 10px;
+    margin-top: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── MOAT DIAGRAM ── */
+  .moat-diagram {
+    display: flex;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .moat-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .moat-col-header {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: center;
+  }
+
+  .moat-col-header.signal { background: var(--signal); }
+
+  .moat-cell {
+    background: var(--paper2);
+    border: 1px solid var(--wire);
+    padding: 14px;
+    font-size: 12px;
+    line-height: 1.55;
+    opacity: 0.8;
+  }
+
+  .moat-cell strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    opacity: 1;
+    font-size: 13px;
+  }
+
+  /* ── SIGNAL LOOP ── */
+  .signal-loop {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border: 1px solid var(--wire);
+    margin-top: 24px;
+  }
+
+  .loop-step {
+    flex: 1;
+    padding: 24px 20px;
+    border-right: 1px solid var(--wire);
+    position: relative;
+    text-align: center;
+  }
+
+  .loop-step:last-child { border-right: none; }
+
+  .loop-step-num {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--signal);
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .loop-step-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .loop-step-desc {
+    font-family: var(--mono);
+    font-size: 9px;
+    opacity: 0.4;
+    line-height: 1.5;
+  }
+
+  .loop-step-arrow {
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--signal);
+    z-index: 2;
+    background: var(--paper);
+    padding: 2px;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    border-top: 1px solid var(--wire);
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .cta-body {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.6;
+    max-width: 480px;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 240px;
+  }
+
+  .btn {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn-primary:hover { background: var(--signal); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--wire-strong);
+  }
+
+  .btn-secondary:hover { border-color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--wire);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  .footer-meta {
+    font-family: var(--mono);
+    font-size: 9px;
+    opacity: 0.25;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── ANIMATE IN ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .site-header { padding: 20px 24px; }
+    .hero { padding: 60px 24px 48px; }
+    .section { padding: 64px 24px; }
+    .claim-grid { grid-template-columns: 1fr; }
+    .detail-body { grid-template-columns: 1fr; }
+    .vp-split { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .proof-detail-grid { grid-template-columns: 1fr; }
+    .moat-diagram { flex-direction: column; }
+    .cta-block { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo"><span>Future Proof Edge</span> / Intelligence Engine</div>
+  <div class="nav-tag">v2.0 — Live Demo</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Demko Meta-OS — Architecture Intelligence</div>
+  <h1 class="hero-headline">
+    We find what<br>
+    <em>doesn't exist.</em>
+  </h1>
+  <p class="hero-body">
+    Every $3B+ company has a strategy team analyzing what competitors are doing.
+    This engine identifies what nobody in the industry has found —
+    cross-pollinated from adjacent domains that traditional consultancies
+    are structurally incapable of seeing.
+  </p>
+
+  <div class="claim-grid fade-up">
+    <div class="claim-cell">
+      <div class="claim-label">The structural moat</div>
+      <div class="claim-text">Cross-domain pattern recognition impossible to replicate without rebuilding an entire org model. Organized by reasoning patterns, not industry verticals.</div>
+    </div>
+    <div class="claim-cell">
+      <div class="claim-label">The output</div>
+      <div class="claim-text">White space opportunities, blind spots, and category-creation windows that timing just made possible. Not feature comparisons. Not table stakes.</div>
+    </div>
+    <div class="claim-cell">
+      <div class="claim-label">The model</div>
+      <div class="claim-text">1–2 enterprise clients paying on enterprise value created. No team, no office, no deck. The engine and relationships with people who write checks.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: OS ARCHITECTURE -->
+<section class="section">
+  <div class="section-rule">
+    <span class="section-num">01</span>
+    <h2 class="section-title">The reasoning architecture</h2>
+    <div class="section-line"></div>
+  </div>
+  <p style="font-size:15px;line-height:1.75;opacity:0.65;max-width:580px;margin-bottom:40px;">
+    The Meta-OS is a five-tier compound intelligence system. Each tier enforces a different class of rigor. Click any node to expose the reasoning framework beneath it.
+  </p>
+
+  <div class="arch-canvas">
+    <div class="node-cluster">
+
+      <!-- Tier 00 -->
+      <div class="node-row">
+        <div class="node" onclick="showNode('kernel')" id="node-kernel">
+          <div class="node-tier t0">Tier 00 — Firmware</div>
+          <div class="node-name">Sovereign Kernel</div>
+          <div class="node-sub">TIER_00_BOOT v1.2 · CANONICAL</div>
+          <div class="node-connector"></div>
+        </div>
+      </div>
+
+      <!-- Tier 01 -->
+      <div class="node-row" style="margin-top:36px;">
+        <div class="node" onclick="showNode('dpc')" id="node-dpc">
+          <div class="node-tier t1">Tier 01 — Control Plane</div>
+          <div class="node-name">Dynamic Prompt Compiler</div>
+          <div class="node-sub">Pre-compiled context · Session-load</div>
+          <div class="node-connector"></div>
+        </div>
+        <div class="node" onclick="showNode('gates')" id="node-gates">
+          <div class="node-tier t1">Tier 01 — Enforcement</div>
+          <div class="node-name">Gate Stack</div>
+          <div class="node-sub">Munger · Claim Integrity · PoL</div>
+          <div class="node-connector"></div>
+        </div>
+      </div>
+
+      <!-- Tier 02 -->
+      <div class="node-row" style="margin-top:36px;">
+        <div class="node" onclick="showNode('kainos')" id="node-kainos">
+          <div class="node-tier t2">Tier 02 — Methodology</div>
+          <div class="node-name">Kainos Alpha</div>
+          <div class="node-sub">DIR · CUV · Red Team · Synthetic Council</div>
+        </div>
+        <div class="node" onclick="showNode('lens')" id="node-lens">
+          <div class="node-tier t2">Tier 02 — Reasoning Library</div>
+          <div class="node-name">47-Lens Taxonomy</div>
+          <div class="node-sub">10 reasoning types · Synthetic personas</div>
+        </div>
+        <div class="node" onclick="showNode('extract')" id="node-extract">
+          <div class="node-tier t2">Tier 02 — Learning</div>
+          <div class="node-name">Typed Extraction</div>
+          <div class="node-sub">6 signal types · Escalation ladder</div>
+        </div>
+      </div>
+
+      <!-- Tier 03 -->
+      <div class="node-row" style="margin-top:36px;">
+        <div class="node" onclick="showNode('pe')" id="node-pe">
+          <div class="node-tier t3">Tier 03 — Deployment</div>
+          <div class="node-name">PE Intelligence Layer</div>
+          <div class="node-sub">Portfolio-wide · Cross-domain</div>
+        </div>
+        <div class="node" onclick="showNode('ci')" id="node-ci">
+          <div class="node-tier t3">Tier 03 — Deployment</div>
+          <div class="node-name">Competitive Intelligence</div>
+          <div class="node-sub">Femtech · Medtech · Real Estate</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Detail Panel -->
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header">
+      <div>
+        <div class="detail-tag" id="d-tag"></div>
+        <div class="detail-title" id="d-title"></div>
+      </div>
+      <div class="detail-status" id="d-status"></div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-col">
+        <div class="detail-col-label">What it does</div>
+        <div class="detail-col-content" id="d-what"></div>
+      </div>
+      <div class="detail-col">
+        <div class="detail-col-label">Reasoning framework</div>
+        <div class="detail-col-content" id="d-reasoning"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: VALUE PROP -->
+<section class="section" style="padding-top:0;">
+  <div class="section-rule">
+    <span class="section-num">02</span>
+    <h2 class="section-title">What this engine produces vs. the alternative</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="vp-split fade-up">
+    <div class="vp-cell theirs">
+      <div class="vp-cell-label">Traditional strategy / CI firms</div>
+      <div class="vp-item">Analyze what competitors are already doing</div>
+      <div class="vp-item">Organized by industry vertical — siloed by design</div>
+      <div class="vp-item">6 weeks for analysis this engine produces in 40 minutes</div>
+      <div class="vp-item">Surface-level feature comparisons and market share data</div>
+      <div class="vp-item">Cannot cross-pollinate patterns across domains</div>
+    </div>
+    <div class="vp-cell ours">
+      <div class="vp-cell-label">Future Proof Edge intelligence engine</div>
+      <div class="vp-item">Identify what <em>doesn't exist</em> — the unclaimed white space</div>
+      <div class="vp-item">Cross-domain pattern library spanning femtech + PE + logistics + real estate</div>
+      <div class="vp-item">40-minute deep analysis with gated rigor — zero hallucinated claims</div>
+      <div class="vp-item">Category-creation opportunities from adjacent industries</div>
+      <div class="vp-item">Every engagement enriches the moat — compounding returns</div>
+    </div>
+  </div>
+
+  <!-- Signal loop -->
+  <h3 style="font-family:var(--sans);font-size:14px;font-weight:600;margin:48px 0 0;letter-spacing:0.05em;">The compounding loop</h3>
+  <div class="signal-loop">
+    <div class="loop-step">
+      <div class="loop-step-arrow">›</div>
+      <div class="loop-step-num">01</div>
+      <div class="loop-step-name">Specification</div>
+      <div class="loop-step-desc">Ambitious claim + constraint + success condition</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-arrow">›</div>
+      <div class="loop-step-num">02</div>
+      <div class="loop-step-name">Compiled</div>
+      <div class="loop-step-desc">Absorbed into DPC as enforced gate</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-arrow">›</div>
+      <div class="loop-step-num">03</div>
+      <div class="loop-step-name">Session</div>
+      <div class="loop-step-desc">Every interaction inherits full system state</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-arrow">›</div>
+      <div class="loop-step-num">04</div>
+      <div class="loop-step-name">Typed signal</div>
+      <div class="loop-step-desc">Friction / Promotion / Retraction extracted</div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-num">05</div>
+      <div class="loop-step-name">Escalation</div>
+      <div class="loop-step-desc">Promoted to new gate — moat deepens</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: PROOF CASES -->
+<section class="section" style="padding-top:0;">
+  <div class="section-rule">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Live proof cases</h2>
+    <div class="section-line"></div>
+  </div>
+  <p style="font-size:15px;line-height:1.75;opacity:0.65;max-width:580px;margin-bottom:40px;">
+    White space analyses already complete. Click to see the intelligence framework behind each one.
+  </p>
+
+  <div class="proof-grid">
+    <div class="proof-card" onclick="showProof('assetmark')" id="proof-assetmark">
+      <div class="proof-client">AssetMark Financial</div>
+      <div class="proof-title">The $3B→$5B Lending Gap</div>
+      <div class="proof-meta">
+        Wealth management · PE-backed<br>
+        White space: Securities lending<br>
+        Status: Analysis complete
+      </div>
+    </div>
+    <div class="proof-card" onclick="showProof('flo')" id="proof-flo">
+      <div class="proof-client">Flo Health</div>
+      <div class="proof-title">Bio-Data Fragmentation & Predictive Gap</div>
+      <div class="proof-meta">
+        Femtech · Board intelligence<br>
+        White space: Metabolic integration<br>
+        Status: Active engagement
+      </div>
+    </div>
+    <div class="proof-card" onclick="showProof('brij')" id="proof-brij">
+      <div class="proof-client">Brij Medical</div>
+      <div class="proof-title">Wound Care Intelligence Layer</div>
+      <div class="proof-meta">
+        Medtech · Competitive sprint<br>
+        White space: DIR spec in progress<br>
+        Status: Active sprint
+      </div>
+    </div>
+  </div>
+
+  <div class="proof-detail" id="proof-detail">
+    <div class="proof-detail-grid" id="proof-detail-grid"></div>
+  </div>
+</section>
+
+<!-- SECTION 4: THE MOAT -->
+<section class="section" style="padding-top:0;">
+  <div class="section-rule">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Why this cannot be replicated</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="moat-diagram fade-up">
+    <div class="moat-col">
+      <div class="moat-col-header">McKinsey / Traditional</div>
+      <div class="moat-cell"><strong>Org model</strong>Vertical silos. Wealth team knows wealth. Healthcare team knows healthcare. Zero cross-domain by design.</div>
+      <div class="moat-cell"><strong>Reasoning</strong>Pattern-matched to historical case libraries within one domain. Analogical reasoning across verticals: impossible.</div>
+      <div class="moat-cell"><strong>Moat</strong>Brand and network. Replicable methodology. No compounding intelligence layer.</div>
+    </div>
+    <div class="moat-col">
+      <div class="moat-col-header signal">Future Proof Edge</div>
+      <div class="moat-cell"><strong>Org model</strong>One architect. Organized by reasoning patterns that cut across every vertical simultaneously.</div>
+      <div class="moat-cell"><strong>Reasoning</strong>47 cross-domain lenses. Femtech growth framework applied to wealth management. Logistics optimization surfacing real estate opportunity.</div>
+      <div class="moat-cell"><strong>Moat</strong>Every engagement enriches the cross-domain pattern library. The system gets harder to replicate with each use. Compounding by design.</div>
+    </div>
+    <div class="moat-col">
+      <div class="moat-col-header">Internal strategy teams</div>
+      <div class="moat-cell"><strong>Org model</strong>Deep domain expertise. Zero external cross-pollination. Blind to their own blind spots.</div>
+      <div class="moat-cell"><strong>Reasoning</strong>Consensus-driven. Anchored to existing strategy. Cannot red-team their own operating assumptions.</div>
+      <div class="moat-cell"><strong>Moat</strong>Political capital. Easily disrupted by a single well-placed external analysis showing what they couldn't see.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block">
+  <div>
+    <h2 class="cta-title">The first analysis is free.<br>Not because we lack confidence.</h2>
+    <p class="cta-body">
+      Asymmetric generosity signals abundance, not desperation.
+      The lending gap at AssetMark took 40 minutes to find.
+      Your blind spot already exists. The only question is whether you find it first.
+    </p>
+  </div>
+  <div class="cta-actions">
+    <a href="mailto:mike@futureproofedge.com" class="btn btn-primary">Request a white space analysis</a>
+    <a href="#" class="btn btn-secondary" onclick="document.querySelector('.arch-canvas').scrollIntoView({behavior:'smooth'}); return false;">Explore the architecture</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Future Proof Edge · Intelligence Engine</div>
+  <div class="footer-meta">Demko Meta-OS v2.0 · Last session: 2026-03-13</div>
+</footer>
+
+<script>
+const nodes = {
+  kernel: {
+    tag: 'Tier 00 · Firmware / Control Plane',
+    title: 'Sovereign Kernel',
+    status: 'CANONICAL',
+    statusClass: 'status-canonical',
+    what: 'The non-negotiable control plane for the entire system. Execution engine, not conversational assistant. Every output must conform to the Artifact Validity Gate: Decision/Claim, Constraints, Risks, Next Action. No exceptions.',
+    reasoning: `<div class="reasoning-chain">
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>ZERO-THOUGHT EXECUTION: Infer next step, don't ask for permission</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>PROOF-OF-LIFE GATE: No claim without verified signal density</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>ADVERSARIAL PROTOCOL #109: Find weakest assumption. SHIP / KILL / GATHER.</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>VALIDITY GATE: 4-part artifact structure enforced before commit</div>
+    </div>`
+  },
+  dpc: {
+    tag: 'Tier 01 · Session Architecture',
+    title: 'Dynamic Prompt Compiler',
+    status: 'COMPOUNDING',
+    statusClass: 'status-compounding',
+    what: 'Pre-compiled context layer that loads before the model generates anything. Contains identity, frameworks, constraints, quality gates, routing rules. Every conversation starts from the accumulated state of the entire system — not from zero.',
+    reasoning: `<div class="reasoning-chain">
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Specifications absorbed as enforced gates — not suggestions</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Session learnings typed → promoted → escalated back into DPC</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Preventive architecture: failure modes blocked before generation</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Distinct from DSPy: not instruction optimization, full context compilation</div>
+    </div>`
+  },
+  gates: {
+    tag: 'Tier 01 · Quality Enforcement',
+    title: 'Gate Stack',
+    status: 'CANONICAL',
+    statusClass: 'status-canonical',
+    what: 'Binary enforcement mechanisms that block non-conforming output before it reaches the user. Each gate is a translated specification: if [condition], then [block or escalate]. Not post-processing — pre-generation constraints.',
+    reasoning: `<div class="gate-list">
+      <div class="gate-item"><span>Munger Gate</span><span class="gate-pass">ENFORCED</span></div>
+      <div class="gate-item"><span>Claim Integrity Gate</span><span class="gate-pass">ENFORCED</span></div>
+      <div class="gate-item"><span>Proof-of-Life Gate</span><span class="gate-pass">ENFORCED</span></div>
+      <div class="gate-item"><span>Skeleton File Block</span><span class="gate-block">BLOCK</span></div>
+      <div class="gate-item"><span>Cognitive Drift Block</span><span class="gate-block">BLOCK</span></div>
+    </div>`
+  },
+  kainos: {
+    tag: 'Tier 02 · Core Methodology',
+    title: 'Kainos Alpha',
+    status: 'ACTIVE',
+    statusClass: 'status-active',
+    what: 'The primary consulting methodology. Question Kernel → DIR spec architecture → bespoke synthetic personas → multi-model reasoning → confidence scoring → tiered insight framework. Delivered as board-grade artifacts. Not slide decks.',
+    reasoning: `<div class="reasoning-chain">
+      <div class="reasoning-step"><span class="reasoning-step-num">D</span>DECISION: What specific judgment needs to be made?</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">I</span>INFORMATION: What signal is needed to make it? Source audit.</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">R</span>RESOURCE: What frameworks, personas, cross-domain patterns apply?</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>CUV Protocol: Critique → Uncertainty → Validate before delivery</div>
+    </div>`
+  },
+  lens: {
+    tag: 'Tier 02 · Reasoning Architecture',
+    title: '47-Lens Taxonomy',
+    status: 'COMPOUNDING',
+    statusClass: 'status-compounding',
+    what: 'Master catalog of reasoning architectures organized across 10 reasoning types. The moat: this library is the cross-domain pattern store that grows with every engagement. McKinsey has domain libraries. This has pattern libraries that cut across all domains simultaneously.',
+    reasoning: `<div class="reasoning-chain">
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>10 reasoning types spanning logical, analogical, adversarial, temporal</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Synthetic expert personas spawned from the lens framework</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Cross-domain firing: femtech lens applied to PE portfolio analysis</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Every engagement adds new lens combinations — compounding moat</div>
+    </div>`
+  },
+  extract: {
+    tag: 'Tier 02 · Self-Improvement Mechanism',
+    title: 'Typed Extraction Protocol',
+    status: 'COMPOUNDING',
+    statusClass: 'status-compounding',
+    what: 'Session-close protocol that routes learning signals to the correct enforcement mechanism. Not a log dump — typed routing with an escalation ladder. A friction signal that appears twice gets promoted to a stronger gate. A retraction rolls back a prior wrong lesson.',
+    reasoning: `<div class="gate-list">
+      <div class="gate-item"><span>Capability</span><span style="color:var(--teal);font-family:var(--mono);font-size:10px;">→ LEARNINGS.md</span></div>
+      <div class="gate-item"><span>Friction</span><span style="color:var(--amber);font-family:var(--mono);font-size:10px;">→ Friction log + flag</span></div>
+      <div class="gate-item"><span>Promotion</span><span style="color:var(--teal);font-family:var(--mono);font-size:10px;">→ Gate escalation</span></div>
+      <div class="gate-item"><span>Retraction</span><span style="color:var(--signal);font-family:var(--mono);font-size:10px;">→ Rollback prior lesson</span></div>
+      <div class="gate-item"><span>Leverage</span><span style="color:var(--purple);font-family:var(--mono);font-size:10px;">→ DPC absorption</span></div>
+    </div>`
+  },
+  pe: {
+    tag: 'Tier 03 · Commercial Deployment',
+    title: 'PE Intelligence Layer',
+    status: 'ACTIVE',
+    statusClass: 'status-active',
+    what: 'White space analysis engine deployed to PE portfolio companies. Phase 1: asymmetric generosity — give the white space away free. Phase 2: sell the ongoing intelligence engine. Phase 3: performance kicker tied to enterprise value created. Built-in network effect across portfolio.',
+    reasoning: `<div class="reasoning-chain">
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Traditional CI output: what competitors are doing. Table stakes.</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>This engine output: what nobody in the industry has identified</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Structural moat: cross-domain library impossible to replicate</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Scale path: Company → PE Portfolio → Cross-fund intelligence layer</div>
+    </div>`
+  },
+  ci: {
+    tag: 'Tier 03 · Commercial Deployment',
+    title: 'Competitive Intelligence Verticals',
+    status: 'ACTIVE',
+    statusClass: 'status-active',
+    what: 'Active CI sprints across femtech (Flo Health), medtech (Brij Medical), and real estate (San Diego industrial). Each engagement enriches the cross-domain pattern library — the moat that compounds with every use.',
+    reasoning: `<div class="reasoning-chain">
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Flo Health: Bio-data fragmentation gap + predictive logic white space</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Brij Medical: Wound care competitive sprint — DIR spec in progress</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>CRE / SD Industrial: Kearny Mesa + Miramar underwriting layer</div>
+      <div class="reasoning-step"><span class="reasoning-step-num">→</span>Pattern: each vertical cross-pollinates into every other engagement</div>
+    </div>`
+  }
+};
+
+const proofs = {
+  assetmark: {
+    cols: [
+      { label: 'White space found', content: 'AssetMark is the ONLY major wealth management platform without securities lending, margin lending, or any lending P&L. Every competitor — LPL, Envestnet, Orion, Schwab — has it. Structural competitive exposure on the path from $3B to $5B. <span class="white-space-tag">LENDING GAP IDENTIFIED</span>' },
+      { label: 'Reasoning framework used', content: 'Cross-domain pattern: banking sector lending integration applied to wealth management platform. The engine fired the banking/fintech lens against a pure-play wealth platform — a connection the internal strategy team structurally cannot make because they don\'t have the banking lens.' },
+      { label: 'Engagement model', content: 'Analysis complete. Board-grade deliverable ready. Phase 1: present to Carrie Westbrook, no charge. Signal: "I\'m so confident in this I\'ll give you the first one free." Phase 2: pitch the ongoing intelligence engine.' }
+    ]
+  },
+  flo: {
+    cols: [
+      { label: 'White space found', content: 'Three structural gaps: (1) Bio-data fragmentation — cycle tracking without metabolic or environmental integration. (2) Reactive vs. predictive logic — historical logging instead of preemptive hormonal shift detection. (3) User data sovereignty — no portable schema, platform lock-in. <span class="white-space-tag">3 GAPS MAPPED</span>' },
+      { label: 'Reasoning framework used', content: 'Femtech lens cross-fired with wearables/metabolic tracking domain and regulatory compliance patterns. The gap between what Flo tracks and what\'s clinically validated in adjacent domains created the white space map. Mandy Ginsberg board intelligence layer active.' },
+      { label: 'Engagement model', content: 'Active engagement. Synthetic C-suite personas built across COO, CMO, CPO functions. 100+ source DIR spec architecture. Zoom with Mandy queued. Board-grade intelligence deliverable in progress.' }
+    ]
+  },
+  brij: {
+    cols: [
+      { label: 'White space found', content: 'Wound care competitive intelligence sprint. DIR spec architecture in development. CEO Tim Gleeson as primary stakeholder. Competitive landscape mapping across wound care segment with cross-domain medtech pattern library active. <span class="white-space-tag">SPRINT IN PROGRESS</span>' },
+      { label: 'Reasoning framework used', content: 'Medtech CI methodology: Kainos Alpha applied to wound care segment. Question Kernel fired first to define the specific competitive intelligence decision. DIR spec defines what signal is needed before any research begins — preventive architecture applied to intelligence gathering.' },
+      { label: 'Engagement model', content: 'Active CI sprint. Parallel track to Flo Health engagement. Each engagement enriches the medtech pattern library — Brij findings will cross-pollinate into future healthcare engagements. Compound intelligence at the portfolio layer.' }
+    ]
+  }
+};
+
+let activeNode = null;
+let activeProof = null;
+
+function showNode(id) {
+  const data = nodes[id];
+  if (!data) return;
+
+  // Toggle off if same node clicked
+  if (activeNode === id) {
+    document.getElementById('detail-panel').classList.remove('visible');
+    document.getElementById('node-' + id).classList.remove('active');
+    activeNode = null;
+    return;
+  }
+
+  // Deactivate previous
+  if (activeNode) {
+    document.getElementById('node-' + activeNode).classList.remove('active');
+  }
+
+  activeNode = id;
+  document.getElementById('node-' + id).classList.add('active');
+
+  document.getElementById('d-tag').textContent = data.tag;
+  document.getElementById('d-title').textContent = data.title;
+  document.getElementById('d-status').textContent = data.status;
+  document.getElementById('d-status').className = 'detail-status ' + data.statusClass;
+  document.getElementById('d-what').textContent = data.what;
+  document.getElementById('d-reasoning').innerHTML = data.reasoning;
+
+  const panel = document.getElementById('detail-panel');
+  panel.classList.add('visible');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+
+function showProof(id) {
+  const data = proofs[id];
+  if (!data) return;
+
+  if (activeProof === id) {
+    document.getElementById('proof-detail').classList.remove('visible');
+    document.getElementById('proof-' + id).classList.remove('active');
+    activeProof = null;
+    return;
+  }
+
+  if (activeProof) {
+    document.getElementById('proof-' + activeProof).classList.remove('active');
+  }
+
+  activeProof = id;
+  document.getElementById('proof-' + id).classList.add('active');
+
+  const grid = document.getElementById('proof-detail-grid');
+  grid.innerHTML = data.cols.map(c => `
+    <div class="proof-detail-col">
+      <label>${c.label}</label>
+      <p>${c.content}</p>
+    </div>
+  `).join('');
+
+  const detail = document.getElementById('proof-detail');
+  detail.classList.add('visible');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+
+// Fade-up observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
