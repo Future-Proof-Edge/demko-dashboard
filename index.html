@@ -272,6 +272,25 @@
             background: #e8f8ee; padding: 0.18rem 0.55rem; border-radius: 5px;
             white-space: nowrap; border: 1px solid #c3e6cb;
         }
+        .blocked-badge {
+            display: inline-flex; align-items: center; gap: 0.2rem;
+            font-size: 0.6rem; font-weight: 700; color: #b91c1c;
+            background: #fef2f2; padding: 0.15rem 0.5rem; border-radius: 5px;
+            border: 1px solid #fecaca; white-space: nowrap;
+        }
+        .wsjf-badge {
+            display: inline-flex; align-items: center;
+            font-size: 0.55rem; font-weight: 600; color: #6b7280;
+            background: #f3f4f6; padding: 0.1rem 0.4rem; border-radius: 4px;
+            white-space: nowrap; margin-left: auto;
+        }
+        .unblocks-badge {
+            display: inline-flex; align-items: center; gap: 0.2rem;
+            font-size: 0.6rem; font-weight: 700; color: #047857;
+            background: #ecfdf5; padding: 0.15rem 0.5rem; border-radius: 5px;
+            border: 1px solid #a7f3d0; white-space: nowrap;
+        }
+        .card-on-critical-path { border-left: 3px solid #f59e0b !important; }
 
         /* COMPLETE BUTTON */
         .complete-btn {
@@ -1319,7 +1338,13 @@ var EMBEDDED_DATA = {
       "created_date": "2026-02-16",
       "due_date": null,
       "completed_date": null,
-      "action_url": null
+      "action_url": null,
+      "blocked_by_names": [
+        "Galloway Teardown Demo Reel — frontier-grade production",
+        "Teachable modules for compounding visualization"
+      ],
+      "unblocks_count": 0,
+      "wsjf_score": 2.0
     },
     {
       "id": "frontier-signals-pipeline",
@@ -1344,7 +1369,12 @@ var EMBEDDED_DATA = {
       "created_date": "2026-02-17",
       "due_date": null,
       "completed_date": null,
-      "action_url": null
+      "action_url": null,
+      "blocked_by_names": [
+        "Source ingestion pipeline spec — DSPy first extraction"
+      ],
+      "unblocks_count": 0,
+      "wsjf_score": 1.33
     },
     {
       "id": "build-in-public-flywheel",
@@ -2483,7 +2513,12 @@ var EMBEDDED_DATA = {
       "created_date": "2026-03-02",
       "due_date": "2026-03-03",
       "completed_date": null,
-      "action_url": null
+      "action_url": null,
+      "blocked_by_names": [
+        "Voice recorder pipeline (EVR Pro + n8n)"
+      ],
+      "unblocks_count": 0,
+      "wsjf_score": 1.0
     },
     {
       "id": "edge-tts-voice-setup",
@@ -2570,7 +2605,10 @@ var EMBEDDED_DATA = {
       "created_date": "2026-03-02",
       "due_date": "2026-03-03",
       "completed_date": null,
-      "action_url": null
+      "action_url": null,
+      "blocked_by_names": [],
+      "unblocks_count": 2,
+      "wsjf_score": 3.0
     },
     {
       "id": "listen-ci-podcast-femtech",
@@ -3329,6 +3367,21 @@ function renderCard(card, seqNum, status) {
         h += '</div>';
     }
 
+    // Dependency badges (from priority engine integration)
+    var depBadges = '';
+    if (card.blocked_by_names && card.blocked_by_names.length && card.column !== 'done') {
+        depBadges += '<span class="blocked-badge">BLOCKED by ' + card.blocked_by_names.length + '</span> ';
+    }
+    if (card.unblocks_count && card.unblocks_count > 0) {
+        depBadges += '<span class="unblocks-badge">Unblocks ' + card.unblocks_count + '</span> ';
+    }
+    if (card.wsjf_score && card.wsjf_score > 0) {
+        depBadges += '<span class="wsjf-badge">WSJF ' + card.wsjf_score.toFixed(1) + '</span>';
+    }
+    if (depBadges) {
+        h += '<div style="display:flex;flex-wrap:wrap;gap:0.3rem;padding:0.3rem 0.6rem 0;margin-top:0.2rem;">' + depBadges + '</div>';
+    }
+
     h += '</div>';
     return h;
 }
@@ -3622,7 +3675,7 @@ function toggleDesc(cardId) {
 // (Done collapse removed — replaced by date filter dropdown)
 
 // ── Accretive Index ─────────────────────────────────────────────────────
-var ACCRETIVE_DATA = {"index": 8.2, "total_scored": 26, "total_skipped": 0, "period_scored": 5, "route_counts": {"DISCARD": 0, "BUFFER": 0, "INGEST": 0, "ALERT": 5}, "trend": "flat", "label": "8.2/10 (5 items, 7d)"};
+var ACCRETIVE_DATA = {"index": 8.1, "total_scored": 28, "total_skipped": 0, "period_scored": 7, "route_counts": {"DISCARD": 0, "BUFFER": 0, "INGEST": 0, "ALERT": 7}, "trend": "flat", "label": "8.1/10 (7 items, 7d)"};
 
 function renderAccretiveStat() {
     var d = ACCRETIVE_DATA;
