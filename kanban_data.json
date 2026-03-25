@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Demko Meta OS",
-    "session_tag": "Mar 18, 2026 — 73 autonomous tasks completed",
+    "session_tag": "Mar 24, 2026 — 74 autonomous tasks completed",
     "hourly_rate": 250,
-    "last_updated": "Mar 18, 2026",
+    "last_updated": "Mar 24, 2026",
     "ci_status": "Green"
   },
   "banners": {
@@ -2062,6 +2062,29 @@
       "created_date": "2026-03-03",
       "due_date": null,
       "completed_date": null,
+      "action_url": null
+    },
+    {
+      "id": "recipient-simulation-gate",
+      "title": "Recipient Simulation Gate — Delivery QA for External Deliverables",
+      "description": "PostToolUse hook + behavioral rule that checks what the recipient actually sees before delivery. 5 checks: first impression (11-sec heuristic), click-through audit (links resolve + no exposure), folder/context audit (no internal docs visible), rendering verification (encoding, markdown artifacts, size limits), cognitive load assessment (self-contained, action clear). Fires on gdrive and email tool calls destined for named external parties. Borrowed from: Litmus email preflight, Adobe InDesign overset detection, Folgo Drive permissions, W3C accessibility simulation layers. Origin: 2026-03-24 Sandra Smith evidence package (6 corrections, all delivery quality).",
+      "column": "done",
+      "priority": "done",
+      "hours_saved": 1,
+      "time_estimate": null,
+      "tags": [
+        "quality-gate",
+        "build",
+        "hooks"
+      ],
+      "overnight": false,
+      "chains": [],
+      "needs_user": null,
+      "launch_prompt": null,
+      "theme": "meta-os",
+      "created_date": "2026-03-24",
+      "due_date": null,
+      "completed_date": "2026-03-24",
       "action_url": null
     }
   ]
