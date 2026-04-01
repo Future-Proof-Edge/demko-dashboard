@@ -984,7 +984,7 @@
     {
       "id": "openrouter-evaluation",
       "title": "Evaluate OpenRouter as Unified API Layer",
-      "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Poe, Gemini). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
+      "description": "Research whether OpenRouter (1% markup, 200+ models, OpenAI-compatible, caching, auto-fallback) makes sense as a routing layer on top of existing direct API keys (Anthropic, OpenAI, DeepSeek, Gemini, xAI/Grok). Would unify billing, add failover, and simplify red_team_review.py multi-model calls. Compare: current direct-to-provider cost vs OpenRouter markup. Low priority — costs aren't a concern, this is an optimization play.",
       "column": "backlog",
       "priority": "low",
       "hours_saved": null,
